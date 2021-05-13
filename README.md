@@ -1,5 +1,11 @@
 # beabee frontend
 
+You need:
+
+- Docker >= 19.03.8
+- Docker Compose >= 1.28.0
+- Node.js >= 12.16.1
+
 This is the new beabee frontend, it will slowly replace the old user interface
 and [beabee/beabee](https://github.com/beabee-communityrm/beabee) will become a pure API.
 
