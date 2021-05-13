@@ -23,4 +23,7 @@ export default {
       plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]],
     },
   },
+  env: {
+    apiUrl: process.env.API_URL
+  }
 }

@@ -5,10 +5,7 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "generate": "nuxt generate",
-    "start": "nuxt start"
+    "start": "docker-compose restart && docker-compose logs -f --tail=0 app"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,8 @@
-FROM node:12.16-alpine
+FROM nginx:1.18.0-alpine as router
+
+COPY nginx.conf /etc/nginx/templates/default.conf.template
+
+FROM node:12.16-alpine as app
 
 WORKDIR /opt/beabee-frontend
 
@@ -11,6 +15,6 @@ EXPOSE 8080
 ENV HOST=0.0.0.0
 ENV PORT=8080
 
-RUN npm run build
+RUN npx nuxt build
 
-CMD [ "npm", "start" ]
+CMD [ "node", "./node_modules/.bin/nuxt", "start" ]
