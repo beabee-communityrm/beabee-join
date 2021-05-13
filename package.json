@@ -1,0 +1,27 @@
+{
+  "name": "beabee-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "start": "nuxt start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beabee-communityrm/beabee-frontend.git"
+  },
+  "author": "",
+  "license": "AGPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/beabee-communityrm/beabee-frontend/issues"
+  },
+  "homepage": "https://github.com/beabee-communityrm/beabee-frontend#readme",
+  "dependencies": {
+    "@nuxt/http": "^0.6.4",
+    "nuxt": "^2.15.6"
+  }
+}
