@@ -7,8 +7,8 @@ To set up:
 
 ```sh
 cp .env.example .env
-docker-compose up -d
 npm install
+docker-compose up -d
 ```
 
 You can use the default settings in `.env.example` which point to the dev API and old frontend

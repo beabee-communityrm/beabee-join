@@ -22,6 +22,3 @@ services:
       - .env
     ports:
       - ${PORT}:80
-
-volumes:
-  db_data:
