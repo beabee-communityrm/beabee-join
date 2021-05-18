@@ -71,10 +71,6 @@ p.highlight {
   text-align: center;
 }
 
-nav li .button__text {
-  font-size: 0.85rem;
-}
-
 label,
 .label {
   font-size: 0.8125rem;
@@ -174,6 +170,14 @@ label,
   background-color: transparent;
 }
 
+.button__icon {
+  padding: 0.25rem;
+}
+
+.button--small {
+  font-size: 0.85rem;
+}
+
 .stacked-button-group {
   display: flex;
   justify-content: flex-start;
@@ -265,15 +269,11 @@ button.number {
 }
 
 form section {
-  padding: 1em 0;
+  padding: 1rem 2rem;
 }
 
 form section header {
   padding-bottom: 0.5em;
-}
-
-form section p:not(:last-child) {
-  margin-bottom: 1em;
 }
 
 /* Signup form layout
@@ -282,7 +282,6 @@ form section p:not(:last-child) {
 .form-wrapper {
   width: 32em;
   margin: 1em auto;
-  padding: 1em 2em;
   background-color: #fff;
   border-radius: 3px;
   box-shadow: 0 0 15px rgba(var(--b-darkblue-rgb), 0.5);
@@ -297,25 +296,41 @@ form section p:not(:last-child) {
 
 }
 
-#header {
-  margin-bottom: 1em;
-  padding: 1em 0 0;
+.main-header {
+  margin-bottom: 0.5rem;
+  padding: 2rem 2rem 1rem;
 }
 
-#header hgroup {
+.main-header hgroup {
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: 80px 1fr;
+  grid-template-columns: 60px 1fr;
   align-items: center;
 }
 
-#header hgroup h2 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+.main-header hgroup h1 {
+  margin-bottom: 0;
+}
+
+.main-header hgroup h2 {
+  font-size: 1.5rem;
+}
+
+.main-header .intro p {
+  margin-top: 0.5rem;
+}
+
+.main-header--dark-bg {
+  color: #fff;
+  background-color: var(--b-maingreen);
 }
 
 #footer {
-  padding: 1em 0;
+  padding: 1rem 2rem 2rem;
+}
+
+nav {
+  padding: 1rem 2rem 0;
 }
 
 nav ul {
@@ -347,16 +362,6 @@ nav li .button__text.active {
   color: var(--b-maingreen);
   font-weight: 700;
   border-bottom: 3px solid var(--b-maingreen);
-}
-
-.header--flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.header__actions {
-  font-size: 80%
 }
 
 #amount {
@@ -463,16 +468,20 @@ color: rgba(var(--b-maingreen-rgb), 1);
   background-color: rgba(var(--b-maingreen-rgb), 0.2);
 }
 
-#account-data header {
-  margin-bottom: 0.5em;
-}
-
-#account-data header h4 {
+#account-data header h5 {
   margin-bottom: 0;
 }
 
+#account-data header p {
+  margin-bottom: 0.5rem;
+}
+
+#account-data fieldset p:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
 #payment div.card {
-  padding: 1em 0.5em;
+  padding: 0.75rem 0.5rem;
   border-bottom: 1px solid rgba(var(--b-darkblue-rgb), 0.4);
 }
 
@@ -537,10 +546,35 @@ color: rgba(var(--b-maingreen-rgb), 1);
 }
 
 #submit-form {
-  padding: 1rem 0 0.5rem;
+  padding: 1rem 2rem;
 }
 
 #submit-form .button {
   font-weight: 700;
   width: 100%;
+}
+
+/* Account setup
+*/
+
+.header--flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.header__actions {
+}
+
+.review-field {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: minmax(100px, 0.25fr) 1fr;
+  align-items: baseline;
+  margin-bottom: 0;
+}
+
+.review-field__value {
+  font-size: 1rem;
+  font-weight: 400;
 }
