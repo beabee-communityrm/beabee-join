@@ -1,26 +1,28 @@
 <template>
-  <div id="signup">
+  <div id="signup" class="form-wrapper">
     <header id="header">
-      <h1>
-        <img src="~assets/img/newspaper-logo.svg" alt="The Newspaper">
-      </h1>
-      <div>
-        <h2 class="logo">THE NEWSPAPER</h2>
-        <p class="highlight">Join 2,500 people building a new kind of newspaper!</p>
-      </div>
+      <hgroup>
+        <h1>
+          <img src="~assets/img/newspaper-logo.svg" alt="The Newspaper">
+        </h1>
+        <h2>THE NEWSPAPER</h2>
+      </hgroup>
+      <p class="highlight">
+        Join 2,500 people building a new kind of newspaper!
+      </p>
     </header>
     <nav>
       <ul>
         <li>
-          <button class="text" type="button" v-on:click="regularity = 'single'" v-bind:class="{ active: regularity == 'single' }">
+          <button class="button button__text" type="button" v-on:click="regularity = 'single'" v-bind:class="{ active: regularity == 'single' }">
             One time
           </button>
         </li><li>
-          <button class="text" type="button" v-on:click="regularity = 'monthly'" v-bind:class="{ active: regularity == 'monthly' }">
+          <button class="button button__text" type="button" v-on:click="regularity = 'monthly'" v-bind:class="{ active: regularity == 'monthly' }">
             Monthly
           </button>
         </li><li>
-          <button class="text" type="button" v-on:click="regularity = 'yearly'" v-bind:class="{ active: regularity == 'yearly' }">
+          <button class="button button__text" type="button" v-on:click="regularity = 'yearly'" v-bind:class="{ active: regularity == 'yearly' }">
             Annually
           </button>
         </li>
@@ -63,7 +65,7 @@
       <section id="account-data">
         <header>
           <h4>Member account</h4>
-          <p><small>Are you a member already? <a href="">Log in here</a>.</small></p>
+          <p><small>Are you a member already? <a href="">Log in</a></small></p>
         </header>
         <fieldset>
           <p>

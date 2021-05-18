@@ -1,5 +1,5 @@
 <template>
-  <div id="signup">
+  <div id="signup" class="form-wrapper">
     <header id="header">
       <hgroup>
         <h1>
@@ -14,17 +14,16 @@
     <nav>
       <ul>
         <li>
-          <button class="text" type="button" v-on:click="regularity = 'monthly'" v-bind:class="{ active: regularity == 'monthly' }">
+          <button class="button button__text" type="button" v-on:click="regularity = 'monthly'" v-bind:class="{ active: regularity == 'monthly' }">
             Monthly
           </button>
         </li><li>
-          <button class="text" type="button" v-on:click="regularity = 'yearly'" v-bind:class="{ active: regularity == 'yearly' }">
+          <button class="button button__text" type="button" v-on:click="regularity = 'yearly'" v-bind:class="{ active: regularity == 'yearly' }">
             Annually
           </button>
         </li>
       </ul>
     </nav>
-
     <form action="/send" method="post">
       <section id="amount">
         <p class="set-amount">

@@ -3,7 +3,7 @@ export default {
     // CSS file in the project
     '~/assets/css/ress.min.css',
     '~/assets/css/fonts.css',
-    // '~/assets/css/fork-awesome.min.css',
+    '~/assets/css/fork-awesome.min.css',
     '~/assets/css/main.css',
   ],
   head: {
