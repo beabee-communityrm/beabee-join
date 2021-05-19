@@ -59,7 +59,7 @@
       </section><!-- /#amount -->
       <section id="account-data">
         <header>
-          <h4>Member account</h4>
+          <h5>Member account</h5>
           <p><small>Are you a member already? <a href="">Log in here</a>.</small></p>
         </header>
         <fieldset>
@@ -81,24 +81,24 @@
 
       <section id="payment">
         <header>
-          <h4>Payment method</h4>
+          <h5>Payment method</h5>
         </header>
         <div>
-          <p><i class="fa fa-lock" aria-hidden="true"></i> <small>Your payment will be processed securely with GoCardless under the Direct Debit Guarantee scheme.</small>
-          </p>
           <p class="checkbox">
             <input type="checkbox" id="service-fees" name="service-fees">
             <label for="service-fees">Our payment processor charges us per transaction, which means we receive less from monthly contributions. Are you happy to absorb the 23p transaction fee? Alternatively you could pay annually.
             </label>
           </p>
+          <p><i class="fa fa-lock" aria-hidden="true"></i> <small>Your payment will be processed securely with GoCardless under the Direct Debit Guarantee scheme.</small>
+          </p>
         </div>
       </section><!-- /#payment -->
-      <div id="submit-form">
-        <input class="button" type="submit" :value="submitText">
-      </div>
-      <p class="text-center"><small>By proceeding, you are accepting the <a href="">Terms of Service</a>
-        and <a href="">Privacy Policy</a>.</small>
-      </p>
+      <section>
+        <p><input class="button button--fullwidth" type="submit" :value="submitText"></p>
+        <p class="text-center"><small>By proceeding, you are accepting the <a href="">Terms of Service</a>
+          and <a href="">Privacy Policy</a>.</small>
+        </p>
+      </section>
     </form>
     <footer id="footer">
       <p>

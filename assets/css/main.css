@@ -119,6 +119,7 @@ label,
 
 .button {
   color: #fff;
+  font-weight: 700;
   background-color: rgba(var(--b-darkblue-rgb), 0.7);
   justify-content: center;
   padding: calc(0.5em - 1px) 1em;
@@ -136,10 +137,6 @@ label,
 .button:focus:not(:active) {}
 
 .button:active {
-}
-
-.button.small {
-  height: 2em;
 }
 
 .button.hollow {
@@ -176,6 +173,12 @@ label,
 
 .button--small {
   font-size: 0.85rem;
+  height: 2em;
+}
+
+.button--fullwidth {
+  width: 100%;
+  margin-bottom: 0.5rem;
 }
 
 .stacked-button-group {
@@ -242,6 +245,7 @@ button.number {
 .radio {
   display: flex;
   align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 .checkbox {
@@ -289,7 +293,7 @@ form section header {
 
 @media screen and (max-width: 700px) { /* small screens only */
 
-  #signup {
+  .form-wrapper {
     width: 100%;
     margin: 0.5em auto;
   }
@@ -297,7 +301,6 @@ form section header {
 }
 
 .main-header {
-  margin-bottom: 0.5rem;
   padding: 2rem 2rem 1rem;
 }
 
@@ -306,6 +309,7 @@ form section header {
   grid-gap: 1em;
   grid-template-columns: 60px 1fr;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .main-header hgroup h1 {
@@ -324,13 +328,12 @@ form section header {
   color: #fff;
   background-color: var(--b-maingreen);
 }
-
 #footer {
   padding: 1rem 2rem 2rem;
 }
 
 nav {
-  padding: 1rem 2rem 0;
+  padding:0 2rem;
 }
 
 nav ul {
@@ -472,10 +475,6 @@ color: rgba(var(--b-maingreen-rgb), 1);
   margin-bottom: 0;
 }
 
-#account-data header p {
-  margin-bottom: 0.5rem;
-}
-
 #account-data fieldset p:not(:last-child) {
   margin-bottom: 1rem;
 }
@@ -543,15 +542,6 @@ color: rgba(var(--b-maingreen-rgb), 1);
 #payment p.radio input[type=radio]:checked + label {
   font-weight: 700;
   color: var(--b-maingreen);
-}
-
-#submit-form {
-  padding: 1rem 2rem;
-}
-
-#submit-form .button {
-  font-weight: 700;
-  width: 100%;
 }
 
 /* Account setup

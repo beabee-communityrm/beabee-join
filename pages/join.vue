@@ -143,9 +143,6 @@
               </label>
             </p>
             <div class="collapsible-card">
-              <p><small>You will be taken to GoCardless to confirm your payment details, after
-                which you will be returned here to complete the process.</small>
-              </p>
               <p class="checkbox">
                 <input type="checkbox" id="service-fees" name="service-fees">
                 <label for="service-fees"> Agree to pay 2.23€ for processing fees.
@@ -153,13 +150,19 @@
                   for your generosity in covering it.
                 </label>
               </p>
+              <p><i class="fa fa-lock" aria-hidden="true"></i> <small>You will be taken to GoCardless to confirm your payment details, after
+                which you will be returned here to complete the process.</small>
+              </p>
             </div>
           </div> <!-- /.card -->
         </fieldset>
       </section><!-- /#payment -->
-      <div id="submit-form">
-        <input class="button" type="submit" :value="submitText">
-      </div>
+      <section>
+        <p><input class="button button--fullwidth" type="submit" :value="submitText"></p>
+        <p class="text-center"><small>By proceeding, you are accepting the <a href="">Terms of Service</a>
+          and <a href="">Privacy Policy</a>.</small>
+        </p>
+      </section>
       <p class="text-center"><small>By proceeding, you are accepting the <a href="">Terms of Service</a>
         and <a href="">Privacy Policy</a>.</small>
       </p>

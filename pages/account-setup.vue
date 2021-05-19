@@ -2,7 +2,7 @@
   <div class="form-wrapper">
     <header class="main-header main-header--dark-bg">
       <hgroup>
-        <h1>
+        <h1 class="logo">
           <img src="~assets/img/newspaper-logo.svg" alt="The Newspaper name">
         </h1>
         <h2>Welcome Johanna!</h2>
@@ -35,7 +35,7 @@
           <span class="label review-field__value">••••••••••••••••</span>
         </p>
       </section><!-- /.account-details -->
-      <section id="address">
+      <section class="address-data">
         <header class="header header--flex">
           <h5 class="header__title">Address</h5>
           <p class="header__actions">
@@ -47,9 +47,6 @@
             <small class="label review-field__label">Address line 1</small>
             <span class="label review-field__value">12 The Old Vicarage, Rock Lane, Tockholes</span>
           </p>
-          <p class="review-field">
-            <small class="label review-field__label">Address line 2</small>
-          </p>
           <div class="grid">
             <p class="review-field">
               <small class="label review-field__label">City/town</small>
@@ -60,28 +57,36 @@
                 <span class="label review-field__value">BB3 OLX</span>
               </p>
           </div>
+        </div>
+      </section><!-- /.address-data -->
+      <section class="consent-notices">
+        <header>
           <p>
             Can we send you occasional mail? Sometimes we send our members special
             printed editions and other exclusive materials. You can change your mind later.
           </p>
+        </header>
+        <div>
           <p class="checkbox">
             <input type="checkbox" id="mail-consent" name="mail-consent">
             <label for="mail-consent">Yes! I want to get your mails.</label>
           </p>
+          <p class="checkbox">
+            <input type="checkbox" id="mail-consent" name="mail-consent">
+            <label for="mail-consent">
+              Yes, you can send me opportunities to get
+              involved in THE NEWSPAPER NAME via email.
+            </label>
+          </p>
         </div>
-      </section><!-- /#address-data -->
-      <div id="submit-form">
-        <p class="checkbox">
-          <input type="checkbox" id="mail-consent" name="mail-consent">
-          <label for="mail-consent">
-            Yes, you can send me opportunities to get
-            involved in THE NEWSPAPER NAME via email.
-          </label>
-        </p>
-        <p>
-          <input class="button" type="submit" value="Save">
-        </p>
-      </div>
+      </section><!-- /.consent-notices -->
+      <footer>
+        <section>
+          <p>
+            <input class="button button--fullwidth" type="submit" value="Save">
+          </p>
+        </section>
+      </footer>
     </form>
   </div>
 </template>
