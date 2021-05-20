@@ -1,3 +1,10 @@
+<style scoped>
+  .period-input {
+    position: absolute;
+    opacity: 0;
+  }
+</style>
+
 <template>
   <div id="signup" class="form-wrapper">
     <header class="main-header">
@@ -11,20 +18,22 @@
         All members become co-owners of the Bristol Cable, with exclusive opportunities to have a say while supporting quality journalism and our innovative model.
       </p>
     </header>
-    <nav>
-      <ul>
-        <li>
-          <button class="button button__text button--small" type="button" v-on:click="regularity = 'monthly'" v-bind:class="{ active: regularity == 'monthly' }">
-            Monthly
-          </button>
-        </li><li>
-          <button class="button button__text button--small" type="button" v-on:click="regularity = 'yearly'" v-bind:class="{ active: regularity == 'yearly' }">
-            Annually
-          </button>
-        </li>
-      </ul>
-    </nav>
-    <form @submit.prevent="submit">
+    <form method="POST">
+      <nav>
+        <ul>
+          <li>
+            <input class="period-input" type="radio" id="period-monthly" name="period" value="monthly" v-model="period">
+            <label for="period-monthly" class="button button__text button--small" v-bind:class="{ active: period == 'monthly' }">
+              Monthly
+            </label>
+          </li><li>
+            <input class="period-input" type="radio" id="period-annually" name="period" value="annually" v-model="period">
+            <label for="period-annually" class="button button__text button--small" type="button" v-bind:class="{ active: period == 'annually' }">
+              Annually
+            </label>
+          </li>
+        </ul>
+      </nav>
       <section id="amount">
         <p class="set-amount">
             <span class="placeholder-currency">€</span>
