@@ -32,6 +32,7 @@ export default {
     },
   },
   env: {
-    apiUrl: process.env.API_URL
+    AUDIENCE_URL: process.env.AUDIENCE_URL,
+    API_URL: process.env.API_URL
   }
 }
