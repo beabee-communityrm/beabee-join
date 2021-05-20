@@ -38,7 +38,7 @@
         <p class="set-amount">
             <span class="placeholder-currency">€</span>
             <span class="placeholder-regularity">{{ regularityVerbose }}</span>
-            <input class="input" type="number" id="custom-amount" name="custom-amount" v-model="amount"
+            <input class="input" type="number" id="custom-amount" name="amount" v-model="amount"
                   autofocus min="3" step="1">
            <!--
            https://stackoverflow.com/questions/45396280/customizing-increment-arrows-on-input-of-type-number-using-css
@@ -94,8 +94,12 @@
         </header>
         <div>
           <p class="checkbox">
-            <input type="checkbox" id="service-fees" name="service-fees">
-            <label for="service-fees">Our payment processor charges us per transaction, which means we receive less from monthly contributions. Are you happy to absorb the 23p transaction fee? Alternatively you could pay annually.
+            <input type="checkbox" id="service-fees" name="payFee" value="true" v-model="payFee">
+            <label for="service-fees">
+               Our payment processor charges us per transaction, which means we
+               receive less from monthly contributions. Are you happy to absorb
+               the {{ fee }} transaction fee? Alternatively you could pay
+               annually.
             </label>
           </p>
           <p><i class="fa fa-lock" aria-hidden="true"></i> <small>Your payment will be processed securely with GoCardless under the Direct Debit Guarantee scheme.</small>
@@ -126,17 +130,18 @@ export default {
   data: function() {
     return {
       amount: 20,
-      regularity: 'monthly'
+      period: 'monthly',
+      payFee: true
     }
   },
-  mounted: function() {
-    console.log("mounted!")
-  },
   computed: {
+    fee: function () {
+      return this.amount ? (this.amount + 20) + 'p' : '?'
+    },
     regularityVerbose: function() {
-      if (this.regularity == 'monthly') {
+      if (this.period == 'monthly') {
         return '/ month'
-      } else if (this.regularity == 'yearly') {
+      } else if (this.period == 'annually') {
         return '/ year'
       } else {
         return ''
@@ -144,42 +149,15 @@ export default {
     },
     submitText: function() {
       var period;
-      if (this.regularity == 'single') {
+      if (this.period == 'single') {
         period = '';
       } else {
-        period = ' ' + this.regularity;
+        period = ' ' + this.period;
       }
       return 'Contribute €' + this.amount + period + ' via GoCardless'
     }
-  },
-  methods: {
-    submit: function() {
-      this.$router.push('/account-setup')
-      /*
-      axios.post(this.formURL, {
-          amount: this.amount,
-          regularity: this.regularity
-      })
-      .then(res => {
-        this.$router.push('/account-setup')
-      })
-      .catch(err => { console.log(err) })
-      */
-    },
-    updateActivePayment: function() {
-      // collapsible cards - payment methods
-      var selectedPayments = document.getElementsByName('payment');
-      for (var selectedPayment of selectedPayments) {
-        if(selectedPayment.checked == true) {
-          selectedPayment.parentElement.parentElement.classList.add('active');
-        } else {
-          selectedPayment.parentElement.parentElement.classList.remove('active');
-        }
-      }
-    }
   }
 }
-
 </script>
 
 <style>
