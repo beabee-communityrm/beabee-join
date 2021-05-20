@@ -1,27 +1,42 @@
 import express from 'express'
-const axios = require('axios')
+import axios from 'axios';
 
-var app = express()
+const app = express()
+
 app.use(express.urlencoded({ extended: true }))
 
-app.post('/send', (req, res) => {
-  var amount = req.body.amount
-  console.log(req.body)
+app.get('/join-cable/complete', async (req, res, next) => {
+  try {
+    await axios.post(process.env.API_URL + '/signup/complete', {
+      redirectFlowId: req.query.redirect_flow_id
+    });
+    res.redirect('/account-setup');
+  } catch (error) {
+    console.log(error.response.data);
+    if (error.response.data.code === 'duplicate-email') {
+      // TODO: handle this
+    }
+    next();
+  }
+});
 
-  axios.post('https://ptsv2.com/t/xyxzu-1620661181/post', {
-    amount: amount,
-  })
-  .then(function (response) {
-    console.log(response.data);
-    res.sendStatus(200)
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
-
+app.post('/join-cable', async (req, res, next) => {
+  try {
+    const response = await axios.post(process.env.API_URL + '/signup', {
+      email: req.body.email,
+      password: req.body.password,
+      amount: Number(req.body.amount),
+      period: req.body.period,
+      payFee: req.body.payFee === 'true',
+      completeUrl: process.env.AUDIENCE_URL + '/join-cable/complete'
+    })
+    res.redirect(response.data.redirectUrl);
+  } catch (error) {
+    console.log(errir);
+    next();
+  }
 })
 
 export default {
-    path: '/api',
-    handler: app
+  handler: app
 }
