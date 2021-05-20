@@ -18,7 +18,7 @@
         </p>
       </div>
     </header>
-    <form :action="formURL" method="post">
+    <form action="" method="post">
       <section class="account-details">
         <header class="header header--flex">
           <h5 class="header__title">Your account</h5>
