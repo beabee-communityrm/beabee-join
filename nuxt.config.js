@@ -20,7 +20,8 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   modules: ['@nuxt/http',
-            'nuxt-buefy',],
+            //'nuxt-buefy',
+          ],
   http: {serverTimeout: 5000},
   serverMiddleware: [
     '~/server-middleware/rest.js',

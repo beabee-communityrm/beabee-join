@@ -23,7 +23,7 @@
         <header class="header header--flex">
           <h5 class="header__title">Your account</h5>
           <p class="header__actions">
-            <button class="button button__text button--small" type="button"><i class="fa fa-pencil button__icon" aria-hidden="true"></i> Edit</button>
+            <button class="button button__text button--small button--light" type="button"><i class="fa fa-pencil button__icon" aria-hidden="true"></i> Edit</button>
           </p>
         </header>
         <p class="review-field">
@@ -39,7 +39,7 @@
         <header class="header header--flex">
           <h5 class="header__title">Address</h5>
           <p class="header__actions">
-            <button class="button button__text button--small" type="button"><i class="fa fa-pencil button__icon" aria-hidden="true"></i> Edit</button>
+            <button class="button button__text button--small button--light" type="button"><i class="fa fa-pencil button__icon" aria-hidden="true"></i> Edit</button>
           </p>
         </header>
         <div>
@@ -60,7 +60,7 @@
         </div>
       </section><!-- /.address-data -->
       <section class="consent-notices">
-        <header>
+        <header class="header">
           <p>
             Can we send you occasional mail? Sometimes we send our members special
             printed editions and other exclusive materials. You can change your mind later.

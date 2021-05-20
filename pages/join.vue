@@ -163,9 +163,6 @@
           and <a href="">Privacy Policy</a>.</small>
         </p>
       </section>
-      <p class="text-center"><small>By proceeding, you are accepting the <a href="">Terms of Service</a>
-        and <a href="">Privacy Policy</a>.</small>
-      </p>
     </form>
     <footer id="footer">
       <p>
