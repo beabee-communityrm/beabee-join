@@ -24,7 +24,7 @@
         </li>
       </ul>
     </nav>
-    <form action="/send" method="post">
+    <form @submit.prevent="submit">
       <section id="amount">
         <p class="set-amount">
             <span class="placeholder-currency">€</span>
@@ -144,6 +144,19 @@ export default {
     }
   },
   methods: {
+    submit: function() {
+      this.$router.push('/account-setup')
+      /*
+      axios.post(this.formURL, {
+          amount: this.amount,
+          regularity: this.regularity
+      })
+      .then(res => {
+        this.$router.push('/account-setup')
+      })
+      .catch(err => { console.log(err) })
+      */
+    },
     updateActivePayment: function() {
       // collapsible cards - payment methods
       var selectedPayments = document.getElementsByName('payment');
