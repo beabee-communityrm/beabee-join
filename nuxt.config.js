@@ -1,5 +1,10 @@
 export default {
   css: [
+    // CSS file in the project
+    '~/assets/css/ress.min.css',
+    '~/assets/css/fonts.css',
+    '~/assets/css/fork-awesome.min.css',
+    '~/assets/css/main.css',
   ],
   head: {
     title: 'Beabee',
@@ -16,7 +21,9 @@ export default {
   },
   modules: ['@nuxt/http'],
   http: {serverTimeout: 5000},
-  serverMiddleware: [],
+  serverMiddleware: [
+    '~/server-middleware/rest.js',
+  ],
   target: 'server',
   build: { // https://github.com/nuxt/nuxt.js/issues/9224#issuecomment-830577523
     babel: {

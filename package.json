@@ -19,6 +19,8 @@
   "homepage": "https://github.com/beabee-communityrm/beabee-frontend#readme",
   "dependencies": {
     "@nuxt/http": "^0.6.4",
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
     "nuxt": "^2.15.6"
   }
 }
