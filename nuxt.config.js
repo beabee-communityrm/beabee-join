@@ -19,8 +19,13 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  modules: ['@nuxt/http',
-            'nuxt-buefy',],
+  plugins: [
+    '~/plugins/submitForm'
+  ],
+  modules: [
+    '@nuxt/http',
+    'nuxt-buefy',
+  ],
   http: {serverTimeout: 5000},
   serverMiddleware: [
     '~/server-middleware/rest.js',

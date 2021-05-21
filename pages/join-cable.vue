@@ -18,7 +18,7 @@
         All members become co-owners of the Bristol Cable, with exclusive opportunities to have a say while supporting quality journalism and our innovative model.
       </p>
     </header>
-    <form method="POST" @submit.prevent="submitForm">
+    <form method="POST" @submit.prevent="$submitForm">
       <nav>
         <ul>
           <li>
@@ -125,17 +125,12 @@
 </template>
 
 <script>
-import { submitForm } from '~/lib/utils'
-
 export default {
   data: function() {
     return {
       amount: 20,
       period: 'monthly'
     }
-  },
-  methods: {
-    submitForm
   },
   computed: {
     fee: function () {

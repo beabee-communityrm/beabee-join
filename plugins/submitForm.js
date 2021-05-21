@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-export async function submitForm(formEl) {
+async function submitForm(evt) {
+  const formEl = evt.target;
+
   try {
     const response = await axios.post(formEl.action, new FormData(formEl), {
       headers: {
@@ -18,3 +20,7 @@ export async function submitForm(formEl) {
     console.log(err);
   }
 }
+
+export default (context, inject) => {
+  inject('submitForm', submitForm);
+};

@@ -20,7 +20,7 @@ app.get('/join-cable/complete', wrapAsync(async (req, res) => {
     res.redirect('/account-setup');
   } catch (error) {
     if (error.response.data.code === 'duplicate-email') {
-      // TODO: handle this
+      // TODO: handle duplicate emails
     } else {
       throw error;
     }
