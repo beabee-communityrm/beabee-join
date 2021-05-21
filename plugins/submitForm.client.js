@@ -12,7 +12,7 @@ async function submitForm(evt) {
 
     if (response.data.redirectUrl) {
       // External URL?
-      if (/(https?:)?\/\//.test(response.data.redirectUrl)) {
+      if (/^(https?:)?\/\//.test(response.data.redirectUrl)) {
         window.location.href = response.data.redirectUrl;
       } else {
         $nuxt.$router.push(response.data.redirectUrl);
