@@ -18,7 +18,7 @@
         All members become co-owners of the Bristol Cable, with exclusive opportunities to have a say while supporting quality journalism and our innovative model.
       </p>
     </header>
-    <form method="POST">
+    <form method="POST" @submit.prevent="onSubmit">
       <nav>
         <ul>
           <li>
@@ -38,7 +38,7 @@
         <p class="set-amount">
             <span class="placeholder-currency">€</span>
             <span class="placeholder-regularity">{{ regularityVerbose }}</span>
-            <input class="input" type="number" id="custom-amount" name="amount" v-model="amount"
+            <input class="input" type="number" id="custom-amount" name="amount" v-model.number="amount"
                   autofocus min="3" step="1">
            <!--
            https://stackoverflow.com/questions/45396280/customizing-increment-arrows-on-input-of-type-number-using-css
@@ -94,7 +94,7 @@
         </header>
         <div>
           <p class="checkbox">
-            <input type="checkbox" id="service-fees" name="payFee" value="true" v-model="payFee">
+            <input type="checkbox" id="service-fees" name="payFee" value="true" checked>
             <label for="service-fees">
                Our payment processor charges us per transaction, which means we
                receive less from monthly contributions. Are you happy to absorb
@@ -125,13 +125,23 @@
 </template>
 
 <script>
+import { submitForm } from '~/lib/utils'
 
 export default {
   data: function() {
     return {
       amount: 20,
-      period: 'monthly',
-      payFee: true
+      period: 'monthly'
+    }
+  },
+  methods: {
+    async onSubmit(evt) {
+      try {
+        const response = await submitForm(evt.target);
+        window.location.href = response.data.redirectUrl;
+      } catch (err) {
+        console.log(err);
+      }
     }
   },
   computed: {

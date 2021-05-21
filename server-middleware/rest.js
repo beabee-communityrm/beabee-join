@@ -1,41 +1,31 @@
 import express from 'express'
-import axios from 'axios';
+import multer from 'multer';
+
+import { signUp, completeSignUp } from './lib/api';
+import { wrapAsync, wrapAsyncForm } from './lib/utils';
 
 const app = express()
 
 app.use(express.urlencoded({ extended: true }))
+app.use(multer().none());
 
-app.get('/join-cable/complete', async (req, res, next) => {
+app.post('/join-cable', wrapAsyncForm(async (req, res) => {
+  const redirectUrl = await signUp(req.body, process.env.AUDIENCE_URL + '/join-cable/complete');
+  res.redirect(redirectUrl);
+}));
+
+app.get('/join-cable/complete', wrapAsync(async (req, res) => {
   try {
-    await axios.post(process.env.API_URL + '/signup/complete', {
-      redirectFlowId: req.query.redirect_flow_id
-    });
+    await completeSignUp(req.query.redirect_flow_id)
     res.redirect('/account-setup');
   } catch (error) {
-    console.log(error.response.data);
     if (error.response.data.code === 'duplicate-email') {
       // TODO: handle this
+    } else {
+      throw error;
     }
-    next();
   }
-});
-
-app.post('/join-cable', async (req, res, next) => {
-  try {
-    const response = await axios.post(process.env.API_URL + '/signup', {
-      email: req.body.email,
-      password: req.body.password,
-      amount: Number(req.body.amount),
-      period: req.body.period,
-      payFee: req.body.payFee === 'true',
-      completeUrl: process.env.AUDIENCE_URL + '/join-cable/complete'
-    })
-    res.redirect(response.data.redirectUrl);
-  } catch (error) {
-    console.log(errir);
-    next();
-  }
-})
+}));
 
 export default {
   handler: app
