@@ -20,7 +20,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   plugins: [
-    '~/plugins/submitForm'
+    '~/plugins/submitForm.client'
   ],
   modules: [
     '@nuxt/http',
