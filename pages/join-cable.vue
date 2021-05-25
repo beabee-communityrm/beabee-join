@@ -67,6 +67,7 @@
           </p>
         </div>
       </section><!-- /#amount -->
+
       <section id="account-data" class="block">
         <header>
           <h5>Member account</h5>
