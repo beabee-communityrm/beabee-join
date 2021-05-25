@@ -22,12 +22,12 @@
       <nav>
         <ul>
           <li>
-            <input class="period-input" type="radio" id="period-monthly" name="period" value="monthly" v-model="period">
+            <input class="period-input" type="radio" id="period-monthly" name="period" value="monthly" v-model="period" v-on:click="amount = 1">
             <label for="period-monthly" class="button button__text button--small" v-bind:class="{ active: period == 'monthly' }">
               Monthly
             </label>
           </li><li>
-            <input class="period-input" type="radio" id="period-annually" name="period" value="annually" v-model="period">
+            <input class="period-input" type="radio" id="period-annually" name="period" value="annually" v-model="period" v-on:click="amount = 12">
             <label for="period-annually" class="button button__text button--small" type="button" v-bind:class="{ active: period == 'annually' }">
               Annually
             </label>
