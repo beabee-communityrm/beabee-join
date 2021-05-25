@@ -6,9 +6,9 @@
 </style>
 
 <template>
-  <div id="signup" class="form-wrapper">
-    <header class="main-header block">
-      <hgroup>
+  <div id="signup" class="container is-max-desktop my-4">
+    <header class="main-header block pt-6">
+      <hgroup class="mb-3">
         <h1>
           <img src="~assets/img/newspaper-logo.svg" alt="The Newspaper">
         </h1>
@@ -76,7 +76,7 @@
       </section><!-- /#amount -->
 
       <section id="account-data" class="block">
-        <header>
+        <header class="mb-3">
           <h5>Member account</h5>
           <p><small>Are you a member already? <a href="">Log in</a></small></p>
         </header>
@@ -98,7 +98,7 @@
       </section><!-- /#account-data -->
 
       <section id="payment" class="block">
-        <header>
+        <header class="mb-3">
           <h5>Payment method</h5>
         </header>
         <fieldset>
@@ -175,7 +175,7 @@
         </p>
       </section>
     </form>
-    <footer id="footer" class="block">
+    <footer id="footer" class="block pb-6  mt-4">
       <p>
         By becoming a supporting member, you'll be able to cook perfect carbonara, fly at a height of 2 meters and help fix the problems in modern journalism!
       </p>

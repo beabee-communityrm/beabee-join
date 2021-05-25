@@ -1,13 +1,13 @@
 <template>
-  <div class="form-wrapper">
-    <header class="main-header main-header--dark-bg">
-      <hgroup>
+  <div id="signup" class="container is-max-desktop my-4">
+    <header class="main-header main-header--dark-bg block pt-6">
+      <hgroup class="mb-3">
         <h1 class="logo">
           <img src="~assets/img/newspaper-logo.svg" alt="The Newspaper name">
         </h1>
         <h2>Welcome Johanna!</h2>
       </hgroup>
-      <div class="intro">
+      <div class="intro pb-4">
         <p>
           You are now a member of THE NEWSPAPER NAME community.
           Thank you for supporting our work!
@@ -19,11 +19,11 @@
       </div>
     </header>
     <form action="" method="post">
-      <section class="account-details">
-        <header class="header header--flex">
+      <section class="account-details block">
+        <header class="mb-3 header header--flex">
           <h5 class="header__title">Your account</h5>
           <p class="header__actions">
-            <button class="button button__text button--small" type="button"><i class="fa fa-pencil button__icon" aria-hidden="true"></i> Edit</button>
+            <button class="button is-small" type="button"><i class="fa fa-pencil button__icon" aria-hidden="true"></i> Edit</button>
           </p>
         </header>
         <p class="review-field">
@@ -35,11 +35,11 @@
           <span class="label review-field__value">••••••••••••••••</span>
         </p>
       </section><!-- /.account-details -->
-      <section class="address-data">
-        <header class="header header--flex">
+      <section class="address-data block">
+        <header class="mb-3 header header--flex">
           <h5 class="header__title">Address</h5>
           <p class="header__actions">
-            <button class="button button__text button--small" type="button"><i class="fa fa-pencil button__icon" aria-hidden="true"></i> Edit</button>
+            <button class="button is-small" type="button"><i class="fa fa-pencil button__icon" aria-hidden="true"></i> Edit</button>
           </p>
         </header>
         <div>
@@ -59,8 +59,8 @@
           </div>
         </div>
       </section><!-- /.address-data -->
-      <section class="consent-notices">
-        <header>
+      <section class="consent-notices block">
+        <header class="mb-3">
           <p>
             Can we send you occasional mail? Sometimes we send our members special
             printed editions and other exclusive materials. You can change your mind later.
@@ -80,12 +80,10 @@
           </p>
         </div>
       </section><!-- /.consent-notices -->
-      <footer>
-        <section>
-          <p>
-            <input class="button button--fullwidth" type="submit" value="Save">
-          </p>
-        </section>
+      <footer class="block pb-6 mt-4">
+        <p>
+          <input class="button is-dark is-fullwidth" type="submit" value="Save">
+        </p>
       </footer>
     </form>
   </div>

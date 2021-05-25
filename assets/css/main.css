@@ -196,17 +196,34 @@ label,
 .stacked-button-group {
   display: flex;
   justify-content: flex-start;
-  border-radius: 3px;
-  border: 1px solid rgba(var(--b-darkblue-rgb), 0.2);
 }
 
-.stacked-button-group p {
+.stacked-button-group p:first-child .button {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.stacked-button-group p:last-child .button {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.stacked-button-group p:not(:first-child):not(:last-child) .button {
+  border-radius: 0;
+}
+
+.stacked-button-group p:not(:last-child) {
+    margin-bottom: -1px;
+}
+
+/*
+
+.field.has-addons .control:not(:first-child):not(:last-child) .button, .field.has-addons .control:not(:first-child):not(:last-child) .input, .field.has-addons .control:not(:first-child):not(:last-child) .select select {
+
+border-radius: 3px;
+border: 1px solid rgba(var(--b-darkblue-rgb), 0.2);
   border-top: 1px solid rgba(var(--b-darkblue-rgb), 0.2);
-}
 
-.stacked-button-group p:first-child {
-  border-top: 0;
-}
 
 .stacked-button-group p .button {
   border: 0;
@@ -222,7 +239,7 @@ label,
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
 }
-
+  */
 input[type="number"],
 button.number {
     font-family: var(--number-font);
@@ -286,37 +303,15 @@ button.number {
 /* Signup form layout
 */
 
-.form-wrapper {
-  width: 32em;
-  margin: 1em auto;
+#signup {
+  max-width: 32em;
   background-color: #fff;
   border-radius: 3px;
   box-shadow: 0 0 15px rgba(var(--b-darkblue-rgb), 0.5);
 }
 
-@media screen and (max-width: 700px) { /* small screens only */
-
-  .form-wrapper {
-    width: 100%;
-    margin: 0.5em auto;
-  }
-
-}
-
-.block {
+#signup .block {
   padding: 0 2em;
-}
-
-.block:not(:last-child) {
-  margin-bottom: 1.5rem;
-}
-
-.block header {
-  margin-bottom: 0.75rem;
-}
-
-.main-header {
-  padding-top: 2em;
 }
 
 .main-header hgroup {
@@ -324,7 +319,6 @@ button.number {
   grid-gap: 1em;
   grid-template-columns: 60px 1fr;
   align-items: center;
-  margin-bottom: 0.75rem;
 }
 
 .main-header hgroup h1 {
@@ -346,16 +340,11 @@ button.number {
 
 nav.block .button.active {
   color: #fff;
-  background-color: var(--b-cable-maincolor);
-  border-color: var(--b-cable-maincolor);
+  background-color: var(--b-maingreen);
+  border-color: var(--b-maingreen);
 }
 
 nav.block .button.active:hover {
-}
-
-#footer {
-  padding-top: 2em;
-  padding-bottom: 2em;
 }
 
 #amount {
@@ -436,7 +425,7 @@ nav.block .button.active:hover {
 }
 
 #amount p.set-amount .amount-controls .button:hover {
-color: rgba(var(--b-maingreen-rgb), 1);
+  color: rgba(var(--b-maingreen-rgb), 1);
 }
 
 #amount p.set-amount .amount-controls .button:first-child {
@@ -456,10 +445,6 @@ color: rgba(var(--b-maingreen-rgb), 1);
 #amount div.other-amounts .button {
   width: 100%;
   height: 100%;
-}
-
-#amount div.other-amounts .button:hover {
-  background-color: rgba(var(--b-maingreen-rgb), 0.2);
 }
 
 #account-data header h5 {
