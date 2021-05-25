@@ -1,3 +1,10 @@
+<style scoped>
+  .period-input {
+    position: absolute;
+    opacity: 0;
+  }
+</style>
+
 <template>
   <div id="signup" class="form-wrapper">
     <header class="main-header block">
