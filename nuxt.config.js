@@ -1,11 +1,4 @@
 export default {
-  css: [
-    // CSS file in the project
-    '~/assets/css/ress.min.css',
-    '~/assets/css/fonts.css',
-    '~/assets/css/fork-awesome.min.css',
-    '~/assets/css/main.css',
-  ],
   head: {
     title: 'Beabee',
     meta: [
@@ -25,6 +18,12 @@ export default {
   modules: [
     '@nuxt/http',
     'nuxt-buefy',
+  ],
+  css: [
+    '~/assets/css/fonts.css',
+    '~/assets/css/fork-awesome.min.css',
+    // '~/assets/css/config.scss',
+    '~/assets/css/main.css',
   ],
   http: {serverTimeout: 5000},
   serverMiddleware: [

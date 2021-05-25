@@ -175,10 +175,6 @@ label,
   background-color: transparent;
 }
 
-.button__icon {
-  padding: 0.25rem;
-}
-
 .button.is-small {
   font-size: 0.85rem;
   height: 2em;

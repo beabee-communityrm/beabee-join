@@ -23,7 +23,10 @@
         <header class="mb-3 header header--flex">
           <h5 class="header__title">Your account</h5>
           <p class="header__actions">
-            <button class="button is-small" type="button"><i class="fa fa-pencil button__icon" aria-hidden="true"></i> Edit</button>
+            <button class="button is-small" type="button">
+              <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+              <span>Edit</span>
+            </button>
           </p>
         </header>
         <p class="review-field">
@@ -39,7 +42,10 @@
         <header class="mb-3 header header--flex">
           <h5 class="header__title">Address</h5>
           <p class="header__actions">
-            <button class="button is-small" type="button"><i class="fa fa-pencil button__icon" aria-hidden="true"></i> Edit</button>
+            <button class="button is-small" type="button">
+              <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+              <span>Edit</span>
+            </button>
           </p>
         </header>
         <div>
