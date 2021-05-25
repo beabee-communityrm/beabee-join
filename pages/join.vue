@@ -104,7 +104,8 @@
         <fieldset>
           <div class="card">
             <p class="card-header radio">
-              <input type="radio" id="payment-card" name="payment" value="card">
+              <input type="radio" id="payment-card" name="payment" value="credit-debit-card"
+                v-on:click="updateActivePayment()">
               <label for="payment-card">
                 <i class="fa fa-credit-card" aria-hidden="true"></i>
                 Credit/Debit Card
@@ -123,9 +124,11 @@
               </p>
             </div>
           </div><!-- /.card -->
+
           <div class="card">
             <p class="card-header radio">
-              <input type="radio" id="payment-debit" name="payment" value="payment-debit">
+              <input type="radio" id="payment-debit" name="payment" value="direct-debit"
+                v-on:click="updateActivePayment()">
               <label for="payment-debit">
                 <i class="fa fa-calendar" aria-hidden="true"></i>
                 Direct debit
@@ -146,7 +149,7 @@
           </div> <!-- /.card -->
           <div class="card">
             <p class="card-header radio">
-              <input type="radio" id="payment-paypal" name="payment" value="payment-paypal"
+              <input type="radio" id="payment-paypal" name="payment" value="paypal"
                 v-on:click="updateActivePayment()">
               <label for="payment-paypal">
                 <i class="fa fa-paypal" aria-hidden="true"></i>
@@ -188,7 +191,7 @@ export default {
   data: function() {
     return {
       amount: 20,
-      period: 'monthly'
+      period: 'monthly',
     }
   },
   computed: {
@@ -212,6 +215,19 @@ export default {
         period = ' ' + this.period;
       }
       return 'Contribute €' + this.amount + period + ' via GoCardless'
+    }
+  },
+  methods: {
+    updateActivePayment: function() {
+      // collapsible cards - payment methods
+      var selectedPayments = document.getElementsByName('payment');
+      for (var selectedPayment of selectedPayments) {
+        if(selectedPayment.checked == true) {
+          selectedPayment.parentElement.parentElement.classList.add('active');
+        } else {
+          selectedPayment.parentElement.parentElement.classList.remove('active');
+        }
+      }
     }
   }
 }
