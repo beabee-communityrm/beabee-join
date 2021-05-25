@@ -7,7 +7,7 @@
 
 <template>
   <div id="signup" class="form-wrapper">
-    <header class="main-header">
+    <header class="main-header block">
       <hgroup>
         <h1>
           <img src="~assets/img/cable-logo.svg" alt="The Cable">
@@ -19,22 +19,23 @@
       </p>
     </header>
     <form method="POST" @submit.prevent="$submitForm">
-      <nav>
-        <ul>
-          <li>
+      <nav class="block">
+        <div class="field is-grouped">
+          <p class="control is-expanded">
             <input class="period-input" type="radio" id="period-monthly" name="period" value="monthly" v-model="period">
-            <label for="period-monthly" class="button button__text button--small" v-bind:class="{ active: period == 'monthly' }">
+            <label for="period-monthly" class="button" v-bind:class="{ active: period == 'monthly' }">
               Monthly
             </label>
-          </li><li>
+          </p>
+          <p class="control is-expanded">
             <input class="period-input" type="radio" id="period-annually" name="period" value="annually" v-model="period">
-            <label for="period-annually" class="button button__text button--small" type="button" v-bind:class="{ active: period == 'annually' }">
+            <label for="period-annually" class="button" type="button" v-bind:class="{ active: period == 'annually' }">
               Annually
             </label>
-          </li>
-        </ul>
+          </p>
+        </div>
       </nav>
-      <section id="amount">
+      <section id="amount" class="block">
         <p class="set-amount">
             <span class="placeholder-currency">€</span>
             <span class="placeholder-regularity">{{ regularityVerbose }}</span>
@@ -50,23 +51,23 @@
         </p>
         <div class="other-amounts stacked-button-group">
           <p>
-            <button class="button hollow number" type="button" v-on:click="amount = 3">
+            <button class="button number" type="button" v-on:click="amount = 3">
               £3
             </button>
           </p>
           <p>
-            <button class="button hollow number" type="button" v-on:click="amount = 5">
+            <button class="button number" type="button" v-on:click="amount = 5">
               £5
             </button>
           </p>
           <p>
-            <button class="button hollow number" type="button" v-on:click="amount = 10">
+            <button class="button number" type="button" v-on:click="amount = 10">
               £10
             </button>
           </p>
         </div>
       </section><!-- /#amount -->
-      <section id="account-data">
+      <section id="account-data" class="block">
         <header>
           <h5>Member account</h5>
           <p><small>Are you a member already? <a href="">Log in here</a>.</small></p>
@@ -81,14 +82,10 @@
             <input class="input" type="password" id="pass" name="password"
              minlength="8" required>
           </p>
-          <p class="checkbox">
-            <input type="checkbox" id="no-account" name="no-account">
-            <label for="no-account">I don't want to create a member account.</label>
-          </p>
         </fieldset>
       </section><!-- /#account-data -->
 
-      <section id="payment">
+      <section id="payment" class="block">
         <header>
           <h5>Payment method</h5>
         </header>
@@ -106,14 +103,14 @@
           </p>
         </div>
       </section><!-- /#payment -->
-      <section>
-        <p><input class="button button--fullwidth" type="submit" :value="submitText"></p>
+      <section class="block">
+        <p><input class="button is-dark is-fullwidth" type="submit" :value="submitText"></p>
         <p class="text-center"><small>By proceeding, you are accepting the <a href="">Terms of Service</a>
           and <a href="">Privacy Policy</a>.</small>
         </p>
       </section>
     </form>
-    <footer id="footer">
+    <footer id="footer" class="block">
       <p>
         When you join the Cable, you support a new kind of newspaper for Bristol.
       </p>

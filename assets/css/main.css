@@ -99,10 +99,11 @@ label,
 .button,
 .input {
   color: var(--b-darkblue);
+  background-color: #fff;
   font-size: 1rem;
   line-height: 1.5;
   height: 2.5em;
-  border: 1px solid transparent;
+  border: 1px solid rgba(var(--b-darkblue-rgb), 0.2);
   border-radius: 3px;
   box-shadow: none;
   display: inline-flex;
@@ -118,9 +119,7 @@ label,
 }
 
 .button {
-  color: #fff;
   font-weight: 700;
-  background-color: rgba(var(--b-darkblue-rgb), 0.7);
   justify-content: center;
   padding: calc(0.5em - 1px) 1em;
   text-align: center;
@@ -129,7 +128,8 @@ label,
 }
 
 .button:hover {
-  background-color: rgba(var(--b-darkblue-rgb), 1);
+  color: rgba(var(--b-darkblue-rgb), 1);
+  border-color: rgba(var(--b-darkblue-rgb), 0.5);
 }
 
 .button:focus {}
@@ -137,33 +137,33 @@ label,
 .button:focus:not(:active) {}
 
 .button:active {
-}
-
-.button.hollow {
-  color: rgba(var(--b-darkblue-rgb), 0.7);
-  background-color: transparent;
-  border-color: rgba(var(--b-darkblue-rgb), 0.2);
-}
-
-.button.hollow:hover {
   color: rgba(var(--b-darkblue-rgb), 1);
-  border-color: rgba(var(--b-darkblue-rgb), 0.5);
+  border-color: rgba(var(--b-darkblue-rgb), 1);
 }
 
-.button.hollow.active {
+.button.is-dark {
+  color: #fff;
+  background-color: rgba(var(--b-darkblue-rgb), 0.7);
+}
+
+.button.is-dark:hover {
+  background-color: rgba(var(--b-darkblue-rgb), 1);
+}
+
+.button.active {
   color: rgba(var(--b-darkblue-rgb), 1);
   font-weight: 700;
   background-color: rgba(var(--b-maingreen-rgb), 0.1);
   border-color: rgba(var(--b-maingreen-rgb), 1);
 }
 
-.button__text {
+.button.is-text {
   color: rgba(var(--b-darkblue-rgb), 0.4);
   border-radius: 0;
   background-color: transparent;
 }
 
-.button__text:hover {
+.button.is-text:hover {
   background-color: transparent;
 }
 
@@ -171,14 +171,18 @@ label,
   padding: 0.25rem;
 }
 
-.button--small {
+.button.is-small {
   font-size: 0.85rem;
   height: 2em;
 }
 
-.button--fullwidth {
+.button.is-fullwidth {
   width: 100%;
   margin-bottom: 0.5rem;
+}
+
+.control.is-expanded .button {
+  width: 100%;
 }
 
 .stacked-button-group {
@@ -196,17 +200,17 @@ label,
   border-top: 0;
 }
 
-.stacked-button-group p .button.hollow {
+.stacked-button-group p .button {
   border: 0;
   border-radius: 0;
 }
 
-.stacked-button-group p:first-child .button.hollow {
+.stacked-button-group p:first-child .button {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
 }
 
-.stacked-button-group p:last-child .button.hollow {
+.stacked-button-group p:last-child .button {
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
 }
@@ -223,7 +227,6 @@ button.number {
 }
 
 .input {
-  border: 1px solid rgba(var(--b-darkblue-rgb), 0.2);
   box-shadow: inset 0 .0625em .125em var(--b-lightgray);
   max-width: 100%;
   width: 100%;
@@ -272,14 +275,6 @@ button.number {
   margin-left: 0.5em;
 }
 
-form section {
-  padding: 1rem 2rem;
-}
-
-form section header {
-  padding-bottom: 0.5em;
-}
-
 /* Signup form layout
 */
 
@@ -300,8 +295,20 @@ form section header {
 
 }
 
+.block {
+  padding: 0 2em;
+}
+
+.block:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.block header {
+  padding-bottom: 0.5em;
+}
+
 .main-header {
-  padding: 2rem 2rem 1rem;
+  padding-top: 2em;
 }
 
 .main-header hgroup {
@@ -309,7 +316,7 @@ form section header {
   grid-gap: 1em;
   grid-template-columns: 60px 1fr;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .main-header hgroup h1 {
@@ -328,13 +335,6 @@ form section header {
   color: #fff;
   background-color: var(--b-maingreen);
 }
-#footer {
-  padding: 1rem 2rem 2rem;
-}
-
-nav {
-  padding:0 2rem;
-}
 
 nav ul {
   display: flex;
@@ -346,7 +346,7 @@ nav li {
   flex-grow: 1;
 }
 
-nav li .button__text {
+nav li .button.is-text {
   width: 100%;
   border: 0;
   border-bottom: 1px solid rgba(var(--b-darkblue-rgb), 0.2);
@@ -356,15 +356,20 @@ nav li .button__text {
   justify-content: flex-start;
 }
 
-nav li .button__text:hover {
+nav li .button.is-text:hover {
   color: var(--b-maingreen);
   border-bottom-color: rgba(var(--b-maingreen-rgb), 0.6);
 }
 
-nav li .button__text.active {
+nav li .button.is-text.active {
   color: var(--b-maingreen);
   font-weight: 700;
   border-bottom: 3px solid var(--b-maingreen);
+}
+
+#footer {
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
 
 #amount {
@@ -415,8 +420,7 @@ nav li .button__text.active {
 }
 
 #amount p.set-amount .placeholder-currency {
-  width: 2rem;/*
-  padding-top: 1.5rem;*/
+  width: 2rem;
 }
 
 #amount p.set-amount .placeholder-regularity {
@@ -467,7 +471,7 @@ color: rgba(var(--b-maingreen-rgb), 1);
   height: 100%;
 }
 
-#amount div.other-amounts .button.hollow:hover {
+#amount div.other-amounts .button:hover {
   background-color: rgba(var(--b-maingreen-rgb), 0.2);
 }
 

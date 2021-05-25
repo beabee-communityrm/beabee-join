@@ -1,6 +1,6 @@
 <template>
   <div id="signup" class="form-wrapper">
-    <header class="main-header">
+    <header class="main-header block">
       <hgroup>
         <h1>
           <img src="~assets/img/newspaper-logo.svg" alt="The Newspaper">
@@ -11,18 +11,18 @@
         Join 2,500 people building a new kind of newspaper!
       </p>
     </header>
-    <nav>
+    <nav class="block">
       <ul>
         <li>
-          <button class="button button__text button--small" type="button" v-on:click="regularity = 'single'" v-bind:class="{ active: regularity == 'single' }">
+          <button class="button is-text is-small" type="button" v-on:click="regularity = 'single'" v-bind:class="{ active: regularity == 'single' }">
             One time
           </button>
         </li><li>
-          <button class="button button__text button--small" type="button" v-on:click="regularity = 'monthly'" v-bind:class="{ active: regularity == 'monthly' }">
+          <button class="button is-text is-small" type="button" v-on:click="regularity = 'monthly'" v-bind:class="{ active: regularity == 'monthly' }">
             Monthly
           </button>
         </li><li>
-          <button class="button button__text button--small" type="button" v-on:click="regularity = 'yearly'" v-bind:class="{ active: regularity == 'yearly' }">
+          <button class="button is-text is-small" type="button" v-on:click="regularity = 'yearly'" v-bind:class="{ active: regularity == 'yearly' }">
             Annually
           </button>
         </li>
@@ -30,7 +30,7 @@
     </nav>
 
     <form @submit.prevent="submit">
-      <section id="amount">
+      <section id="amount" class="block">
         <p class="set-amount">
             <span class="placeholder-currency">€</span>
             <span class="placeholder-regularity">{{ regularityVerbose }}</span>
@@ -62,7 +62,7 @@
           </p>
         </div>
       </section><!-- /#amount -->
-      <section id="account-data">
+      <section id="account-data" class="block">
         <header>
           <h5>Member account</h5>
           <p><small>Are you a member already? <a href="">Log in</a></small></p>
@@ -84,7 +84,7 @@
         </fieldset>
       </section><!-- /#account-data -->
 
-      <section id="payment">
+      <section id="payment" class="block">
         <header>
           <h5>Payment method</h5>
         </header>
@@ -157,8 +157,8 @@
           </div> <!-- /.card -->
         </fieldset>
       </section><!-- /#payment -->
-      <section>
-        <p><input class="button button--fullwidth" type="submit" :value="submitText"></p>
+      <section class="block">
+        <p><input class="button is-fullwidth" type="submit" :value="submitText"></p>
         <p class="text-center"><small>By proceeding, you are accepting the <a href="">Terms of Service</a>
           and <a href="">Privacy Policy</a>.</small>
         </p>
@@ -167,7 +167,7 @@
         and <a href="">Privacy Policy</a>.</small>
       </p>
     </form>
-    <footer id="footer">
+    <footer id="footer" class="block">
       <p>
         By becoming a supporting member, you'll be able to cook perfect carbonara, fly at a height of 2 meters and help fix the problems in modern journalism!
       </p>
