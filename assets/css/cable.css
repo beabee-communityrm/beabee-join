@@ -56,9 +56,13 @@ label,
   border-color: rgba(var(--b-cable-maincolor-rgb), 0.5);
 }
 
-.button.is-active,
+.button:focus {
+  border-color: rgba(var(--b-cable-maincolor-rgb), 0.5);
+}
+
+.button.active,
 .button:active {
-  color: rgba(var(--b-cable-textcolor-rgb), 1);
+  color: rgba(var(--b-cable-maincolor-rgb), 1);
   background-color: rgba(var(--b-cable-maincolor-rgb), 0.1);
   border-color: rgba(var(--b-cable-maincolor-rgb), 1);
 }
@@ -109,19 +113,13 @@ label,
   box-shadow: 0 0 15px rgba(var(--b-cable-textcolor-rgb), 0.5);
 }
 
-nav li .button.is-text {
-  color: rgba(var(--b-cable-textcolor-rgb), 0.6);
-  border-color: rgba(var(--b-cable-textcolor-rgb), 0.2);
-}
-
-nav li .button.is-text:hover {
-  color: var(--b-cable-maincolor);
-  border-bottom-color: rgba(var(--b-cable-maincolor-rgb), 0.6);
-}
-
-nav li .button.is-text.active {
-  color: var(--b-cable-maincolor);
+nav.block .button.active {
+  color: #fff;
+  background-color: var(--b-cable-maincolor);
   border-color: var(--b-cable-maincolor);
+}
+
+nav.block .button.active:hover {
 }
 
 #amount p.set-amount {

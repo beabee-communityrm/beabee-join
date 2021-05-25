@@ -46,17 +46,17 @@
         </p>
         <div class="other-amounts stacked-button-group">
           <p>
-            <button class="button hollow number" type="button" v-on:click="amount = 5">
+            <button class="button number" type="button" v-on:click="amount = 5">
               €5
             </button>
           </p>
           <p>
-            <button class="button hollow number" type="button" v-on:click="amount = 12">
+            <button class="button number" type="button" v-on:click="amount = 12">
               €12
             </button>
           </p>
           <p>
-            <button class="button hollow number" type="button" v-on:click="amount = 25">
+            <button class="button number" type="button" v-on:click="amount = 25">
               €25
             </button>
           </p>
@@ -158,14 +158,11 @@
         </fieldset>
       </section><!-- /#payment -->
       <section class="block">
-        <p><input class="button is-fullwidth" type="submit" :value="submitText"></p>
+        <p><input class="button is-dark is-fullwidth" type="submit" :value="submitText"></p>
         <p class="text-center"><small>By proceeding, you are accepting the <a href="">Terms of Service</a>
           and <a href="">Privacy Policy</a>.</small>
         </p>
       </section>
-      <p class="text-center"><small>By proceeding, you are accepting the <a href="">Terms of Service</a>
-        and <a href="">Privacy Policy</a>.</small>
-      </p>
     </form>
     <footer id="footer" class="block">
       <p>

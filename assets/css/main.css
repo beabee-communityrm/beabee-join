@@ -77,6 +77,9 @@ label,
   font-weight: 700;
 }
 
+.card {
+  color: var(--b-darkblue);
+}
 
 /* General form elements
   Labels
@@ -132,9 +135,14 @@ label,
   border-color: rgba(var(--b-darkblue-rgb), 0.5);
 }
 
-.button:focus {}
+.button:focus {
+  box-shadow: none;
+  border-color: rgba(var(--b-darkblue-rgb), 0.5);
+}
 
-.button:focus:not(:active) {}
+.button:focus:not(:active) {
+  box-shadow: none;
+}
 
 .button:active {
   color: rgba(var(--b-darkblue-rgb), 1);
@@ -304,7 +312,7 @@ button.number {
 }
 
 .block header {
-  padding-bottom: 0.5em;
+  margin-bottom: 0.75rem;
 }
 
 .main-header {
@@ -417,6 +425,7 @@ nav li .button.is-text.active {
   align-items: flex-end;
   justify-content: flex-end;
   padding-bottom: 2rem;
+  z-index: 300;
 }
 
 #amount p.set-amount .placeholder-currency {
@@ -486,6 +495,8 @@ color: rgba(var(--b-maingreen-rgb), 1);
 #payment div.card {
   padding: 0.75rem 0.5rem;
   border-bottom: 1px solid rgba(var(--b-darkblue-rgb), 0.4);
+  box-shadow: none;
+  border-radius: 0;
 }
 
 #payment div.card.active {
@@ -515,6 +526,7 @@ color: rgba(var(--b-maingreen-rgb), 1);
 
 #payment div.card p.card-header {
   margin-bottom: 0;
+  box-shadow: none;
 }
 
 #payment div.card div.collapsible-card p {
