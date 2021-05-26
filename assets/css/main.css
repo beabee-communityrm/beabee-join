@@ -87,15 +87,9 @@ label,
   Inputs: text, radio, checkbox
 */
 
-fieldset {
-  border: 0;
-}
-
 label,
 .label {
   color: var(--b-darkblue);
-  display: block;
-  padding-bottom: 0.5em;
 }
 
 
@@ -103,22 +97,7 @@ label,
 .input {
   color: var(--b-darkblue);
   background-color: #fff;
-  font-size: 1rem;
-  line-height: 1.5;
-  height: 2.5em;
   border: 1px solid rgba(var(--b-darkblue-rgb), 0.2);
-  border-radius: 3px;
-  box-shadow: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .button {
@@ -181,63 +160,83 @@ label,
 }
 
 .button.is-fullwidth {
-  width: 100%;
-  margin-bottom: 0.5rem;
 }
 
 .control.is-expanded .button {
   width: 100%;
 }
 
-.stacked-button-group {
-  display: flex;
-  justify-content: flex-start;
+.field.is-stacked {
 }
 
-.stacked-button-group p:first-child .button {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+.field.is-stacked .control .button:not([disabled]).is-hovered, .field.is-stacked .control .button:not([disabled]):hover, .field.is-stacked .control .input:not([disabled]).is-hovered, .field.is-stacked .control .input:not([disabled]):hover, .field.is-stacked .control .select select:not([disabled]).is-hovered, .field.is-stacked .control .select select:not([disabled]):hover {
+    z-index: 2;
 }
 
-.stacked-button-group p:last-child .button {
+.field.is-stacked .control:first-child .button {
+ border-bottom-right-radius: 0;
+ border-bottom-left-radius: 0;
+}
+
+.field.is-stacked .control:last-child .button {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
 
-.stacked-button-group p:not(:first-child):not(:last-child) .button {
+.field.is-stacked .control:not(:first-child):not(:last-child) .button {
   border-radius: 0;
 }
 
-.stacked-button-group p:not(:last-child) {
+.field.is-stacked .control:not(:last-child) {
     margin-bottom: -1px;
 }
 
-/*
-
-.field.has-addons .control:not(:first-child):not(:last-child) .button, .field.has-addons .control:not(:first-child):not(:last-child) .input, .field.has-addons .control:not(:first-child):not(:last-child) .select select {
-
-border-radius: 3px;
-border: 1px solid rgba(var(--b-darkblue-rgb), 0.2);
-  border-top: 1px solid rgba(var(--b-darkblue-rgb), 0.2);
-
-
-.stacked-button-group p .button {
-  border: 0;
-  border-radius: 0;
+.field.is-stacked .control .button:not([disabled]).is-active:hover, .field.is-stacked .control .button:not([disabled]).is-focused:hover, .field.is-stacked .control .button:not([disabled]):active:hover, .field.is-stacked .control .button:not([disabled]):focus:hover, .field.is-stacked .control .input:not([disabled]).is-active:hover, .field.is-stacked .control .input:not([disabled]).is-focused:hover, .field.is-stacked .control .input:not([disabled]):active:hover, .field.is-stacked .control .input:not([disabled]):focus:hover, .field.is-stacked .control .select select:not([disabled]).is-active:hover, .field.is-stacked .control .select select:not([disabled]).is-focused:hover, .field.is-stacked .control .select select:not([disabled]):active:hover, .field.is-stacked .control .select select:not([disabled]):focus:hover {
+    z-index: 4;
 }
 
-.stacked-button-group p:first-child .button {
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
+.field.is-stacked .control .button:not([disabled]).is-active, .field.is-stacked .control .button:not([disabled]).is-focused, .field.is-stacked .control .button:not([disabled]):active, .field.is-stacked .control .button:not([disabled]):focus, .field.is-stacked .control .input:not([disabled]).is-active, .field.is-stacked .control .input:not([disabled]).is-focused, .field.is-stacked .control .input:not([disabled]):active, .field.is-stacked .control .input:not([disabled]):focus, .field.is-stacked .control .select select:not([disabled]).is-active, .field.is-stacked .control .select select:not([disabled]).is-focused, .field.is-stacked .control .select select:not([disabled]):active, .field.is-stacked .control .select select:not([disabled]):focus {
+    z-index: 3;
 }
 
-.stacked-button-group p:last-child .button {
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
+@media screen and (max-width: 768px) { /* $tablet breakpoint */
+
+  .field.is-stacked {
+    display: flex;
+  }
+
+  .field.is-stacked .control {
+    flex-grow: 1;
+  }
+
+  .field.is-stacked .control:first-child .button {
+   border-bottom-right-radius: 0;
+   border-top-right-radius: 0;
+   border-bottom-left-radius: 2px;
+   border-top-left-radius: 2px;
+  }
+
+  .field.is-stacked .control:last-child .button {
+   border-bottom-left-radius: 0;
+   border-top-left-radius: 0;
+   border-bottom-right-radius: 2px;
+   border-top-right-radius: 2px;
+  }
+
+  .field.is-stacked .control:not(:last-child) {
+      margin-bottom: 0;
+      margin-right: -1px;
+  }
+
 }
-  */
+
+.button.wrap-text {
+  white-space: normal;
+  height: auto;
+}
+
 input[type="number"],
-button.number {
+#amount .button {
     font-family: var(--number-font);
     font-weight: 700;
     letter-spacing: -1px;
@@ -300,14 +299,8 @@ button.number {
 */
 
 #signup {
-  max-width: 32em;
-  background-color: #fff;
   border-radius: 3px;
   box-shadow: 0 0 15px rgba(var(--b-darkblue-rgb), 0.5);
-}
-
-#signup .block {
-  padding: 0 2em;
 }
 
 .main-header hgroup {
@@ -343,11 +336,11 @@ nav.block .button.active {
 nav.block .button.active:hover {
 }
 
-#amount {
+#amount {/*
   display: grid;
   grid-gap: 1.5em;
   grid-template-columns: 0.7fr 0.3fr;
-  align-items: stretch;
+  align-items: stretch;*/
 }
 
 #amount p.set-amount {
@@ -363,10 +356,10 @@ nav.block .button.active:hover {
   -moz-appearance: textfield;
   appearance: textfield;
 
-  font-size: 5rem;
+  font-size: 4.25rem;
   line-height: 1;
   font-weight: 300;
-  letter-spacing: -0.5rem;
+  letter-spacing: -0.35rem;
   width: 100%;
   height: 100%;
   padding: 0.5rem 3rem 0.5rem 2rem;

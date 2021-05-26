@@ -22,7 +22,7 @@ export default {
   css: [
     '~/assets/css/fonts.css',
     '~/assets/css/fork-awesome.min.css',
-    // '~/assets/css/config.scss',
+    '~/assets/css/config.scss',
     '~/assets/css/main.css',
   ],
   http: {serverTimeout: 5000},

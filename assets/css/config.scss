@@ -18,13 +18,17 @@ $title-color: $darkblue;
 $link: $maingreen;
 
 // Update Bulma's variables
-$radius: 2px;
+
+$radius: 3px;
 $input-color: $darkblue;
 $input-shadow: none;
 $button-color: $white;
 $button-hover-color: $white;
 $button-background-color: $maingreen;
 $button-border-color: transparent;
+$button-focus-color: $maingreen;
+$button-focus-box-shadow-size: 0;
+$button-focus-box-shadow-color: none;
 $button-ghost-hover-decoration: none;
 $label-color: $darkblue;
 $card-shadow: 0;

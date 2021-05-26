@@ -57,6 +57,7 @@ label,
 }
 
 .button:focus {
+  color: rgba(var(--b-cable-maincolor-rgb), 1);
   border-color: rgba(var(--b-cable-maincolor-rgb), 0.5);
 }
 
