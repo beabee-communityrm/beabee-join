@@ -54,14 +54,6 @@ h4 { font-size: 1.5rem; }
 h5 { font-size: 1.25rem; }
 h6 { font-size: 1rem; }
 
-h1:not(:last-child),
-h2:not(:last-child),
-h3:not(:last-child),
-h4:not(:last-child),
-h5:not(:last-child) {
-  margin-bottom: 1rem;
-}
-
 p.highlight {
   font-size: 115%;
   font-weight: 300;
@@ -156,7 +148,6 @@ label,
 
 .button.is-small {
   font-size: 0.85rem;
-  height: 2em;
 }
 
 .button.is-fullwidth {
@@ -515,10 +506,17 @@ nav.block .button.active:hover {
 /* Account setup
 */
 
+.header {
+  margin-bottom: 1rem;
+}
+
 .header--flex {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
+}
+
+.header__title {
 }
 
 .header__actions {
@@ -530,6 +528,10 @@ nav.block .button.active:hover {
   grid-template-columns: minmax(100px, 0.25fr) 1fr;
   align-items: baseline;
   margin-bottom: 0;
+}
+
+.review-field__label {
+  color: rgba(var(--b-darkblue-rgb), 0.7);
 }
 
 .review-field__value {
