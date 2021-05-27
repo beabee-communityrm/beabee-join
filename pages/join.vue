@@ -193,6 +193,7 @@
 
 <script>
 export default {
+  layout: 'splash',
   data: function() {
     return {
       amount: 20,
