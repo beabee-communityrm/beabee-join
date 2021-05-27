@@ -1,11 +1,4 @@
 export default {
-  css: [
-    // CSS file in the project
-    '~/assets/css/ress.min.css',
-    '~/assets/css/fonts.css',
-    '~/assets/css/fork-awesome.min.css',
-    '~/assets/css/main.css',
-  ],
   head: {
     title: 'Beabee',
     meta: [
@@ -19,9 +12,19 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  modules: ['@nuxt/http',
-            //'nuxt-buefy',
-          ],
+  plugins: [
+    '~/plugins/submitForm.client'
+  ],
+  modules: [
+    '@nuxt/http',
+    'nuxt-buefy',
+  ],
+  css: [
+    '~/assets/css/fonts.css',
+    '~/assets/css/fork-awesome.min.css',
+    '~/assets/css/config.scss',
+    '~/assets/css/main.css',
+  ],
   http: {serverTimeout: 5000},
   serverMiddleware: [
     '~/server-middleware/rest.js',
@@ -33,6 +36,7 @@ export default {
     },
   },
   env: {
-    apiUrl: process.env.API_URL
+    AUDIENCE_URL: process.env.AUDIENCE_URL,
+    API_URL: process.env.API_URL
   }
 }

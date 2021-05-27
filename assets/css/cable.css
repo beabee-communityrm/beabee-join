@@ -30,6 +30,15 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
+
+label,
+.label,
+.is-small,
+.small {
+  font-size: 0.975rem;
+}
+
+
 label,
 .button,
 .button__text,
@@ -38,36 +47,42 @@ label,
 }
 
 .button {
-  color: #fff;
-  background-color: rgba(var(--b-cable-maincolor-rgb), 0.7);
-}
-
-.button:hover {
-  background-color: rgba(var(--b-cable-maincolor-rgb), 1);
-}
-
-.button.hollow {
   color: rgba(var(--b-cable-maincolor-rgb), 0.7);
   border-color: rgba(var(--b-cable-maincolor-rgb), 0.2);
 }
 
-.button.hollow:hover {
+.button:hover {
   color: rgba(var(--b-cable-maincolor-rgb), 1);
   border-color: rgba(var(--b-cable-maincolor-rgb), 0.5);
 }
 
-.button.hollow.active {
-  color: rgba(var(--b-cable-textcolor-rgb), 1);
+.button:focus {
+  color: rgba(var(--b-cable-maincolor-rgb), 1);
+  border-color: rgba(var(--b-cable-maincolor-rgb), 0.5);
+}
+
+.button.active,
+.button:active {
+  color: rgba(var(--b-cable-maincolor-rgb), 1);
   background-color: rgba(var(--b-cable-maincolor-rgb), 0.1);
   border-color: rgba(var(--b-cable-maincolor-rgb), 1);
 }
 
-.button__text {
+.button.is-dark {
+  color: #fff;
+  background-color: rgba(var(--b-cable-maincolor-rgb), 0.7);
+}
+
+.button.is-dark:hover {
+  background-color: rgba(var(--b-cable-maincolor-rgb), 1);
+}
+
+.button.is-text {
   color: rgba(var(--b-cable-textcolor-rgb), 0.4);
   background-color: transparent;
 }
 
-.button__text:hover {
+.button.is-text:hover {
   background-color: transparent;
 }
 
@@ -99,19 +114,13 @@ label,
   box-shadow: 0 0 15px rgba(var(--b-cable-textcolor-rgb), 0.5);
 }
 
-nav li .button__text {
-  color: rgba(var(--b-cable-textcolor-rgb), 0.6);
-  border-color: rgba(var(--b-cable-textcolor-rgb), 0.2);
-}
-
-nav li .button__text:hover {
-  color: var(--b-cable-maincolor);
-  border-bottom-color: rgba(var(--b-cable-maincolor-rgb), 0.6);
-}
-
-nav li .button__text.active {
-  color: var(--b-cable-maincolor);
+nav.block .button.active {
+  color: #fff;
+  background-color: var(--b-cable-maincolor);
   border-color: var(--b-cable-maincolor);
+}
+
+nav.block .button.active:hover {
 }
 
 #amount p.set-amount {
@@ -133,20 +142,8 @@ nav li .button__text.active {
   border-left-color: rgba(var(--b-cable-textcolor-rgb), 0.4);
 }
 
-#amount p.set-amount .amount-controls .button {
-  color: rgba(var(--b-cable-textcolor-rgb), 0.5);
-}
-
-#amount p.set-amount .amount-controls .button:hover {
-  color: rgba(var(--b-cable-maincolor-rgb), 1);
-}
-
 #amount p.set-amount .amount-controls .button:first-child {
   border-bottom-color: rgba(var(--b-cable-textcolor-rgb), 0.4);
-}
-
-#amount div.other-amounts .button.hollow:hover {
-  background-color: rgba(var(--b-cable-maincolor-rgb), 0.2);
 }
 
 #payment div.card {

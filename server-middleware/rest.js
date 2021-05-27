@@ -1,27 +1,40 @@
-import express from 'express'
-const axios = require('axios')
+import cookierParser from 'cookie-parser';
+import express from 'express';
+import multer from 'multer';
 
-var app = express()
+import Api from './lib/api';
+import { wrapAsync, wrapAsyncForm } from './lib/utils';
+
+const app = express()
+
+app.use(cookierParser());
 app.use(express.urlencoded({ extended: true }))
+app.use(multer().none());
 
-app.post('/send', (req, res) => {
-  var amount = req.body.amount
-  console.log(req.body)
+app.use((req, res, next) => {
+  req.api = new Api(req.cookies.token);
+  next();
+});
 
-  axios.post('https://ptsv2.com/t/xyxzu-1620661181/post', {
-    amount: amount,
-  })
-  .then(function (response) {
-    console.log(response.data);
-    res.sendStatus(200)
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
+app.post('/join-cable', wrapAsyncForm(async (req, res) => {
+  const data = await req.api.signUp(req.body, process.env.AUDIENCE_URL + '/join-cable/complete');
+  res.redirect(data.redirectUrl);
+}));
 
-})
+app.get('/join-cable/complete', wrapAsync(async (req, res) => {
+  try {
+    const data = await req.api.completeSignUp(req.query.redirect_flow_id)
+    res.cookie('token', data.jwt);
+    res.redirect('/account-setup');
+  } catch (error) {
+    if (error.response.data.code === 'duplicate-email') {
+      // TODO: handle duplicate emails
+    } else {
+      throw error;
+    }
+  }
+}));
 
 export default {
-    path: '/api',
-    handler: app
+  handler: app
 }
