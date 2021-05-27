@@ -17,7 +17,7 @@
         <div class="column is-4 pt-0">
           <p class="control is-expanded">
             <label class="button is-primary is-outlined is-fullwidth" v-bind:class="{ 'is-focused': period == 'single' }">
-              <input class="join-period-input" type="radio" name="period" value="single" v-model="period">
+              <input class="join-period-input" type="radio" name="period" value="single" v-model="period" v-on:change="amount = amounts[0]">
               One time
             </label>
           </p>
@@ -25,7 +25,7 @@
         <div class="column is-4 pt-0">
           <p class="control is-expanded">
             <label class="button is-primary is-outlined is-fullwidth" v-bind:class="{ 'is-focused': period == 'monthly' }">
-              <input class="join-period-input" type="radio" name="period" value="monthly" v-model="period">
+              <input class="join-period-input" type="radio" name="period" value="monthly" v-model="period" v-on:change="amount = amounts[0]">
               Monthly
             </label>
           </p>
@@ -33,7 +33,7 @@
         <div class="column is-4 pt-0">
           <p class="control is-expanded">
             <label class="button is-primary is-outlined is-fullwidth" v-bind:class="{ 'is-focused': period == 'annually' }">
-              <input class="join-period-input" type="radio" name="period" value="annually" v-model="period">
+              <input class="join-period-input" type="radio" name="period" value="annually" v-model="period" v-on:change="amount = amounts[0]">
               Annually
             </label>
           </p>
@@ -46,25 +46,25 @@
             <label class="join-amount is-gapless">
               <span class="join-amount__text">€</span>
               <div class="join-amount__input">
-                <input type="number" name="amount" v-model.number="amount" autofocus min="3" step="1">
+                <input type="number" name="amount" v-model.number="amount" :min="minAmount" step="1">
               </div>
               <span class="join-amount__text">{{ periodVerbose }}</span>
               <div class="join-amount__buttons">
                 <button v-on:click="amount += 1" class="button is-outlined" type="button">▲</button>
-                <button v-on:click="amount -= 1" class="button is-outlined" type="button">▼</button>
+                <button v-on:click="amount -= 1" class="button is-outlined" type="button" :disabled="amount <= minAmount">▼</button>
               </div>
             </label>
           </div>
           <div class="column">
             <div class="button-stack">
-              <button class="button is-primary is-outlined is-fullwidth" type="button" v-on:click="amount = 3">
-                €3
+              <button class="button is-primary is-outlined is-fullwidth" type="button" v-on:click="amount = amounts[0]">
+                €{{ amounts[0] }}
               </button>
-              <button class="button is-primary is-outlined is-fullwidth" type="button" v-on:click="amount = 5">
-                €5
+              <button class="button is-primary is-outlined is-fullwidth" type="button" v-on:click="amount = amounts[1]">
+                €{{ amounts[1] }}
               </button>
-              <button class="button is-primary is-outlined is-fullwidth" type="button" v-on:click="amount = 10">
-                €10
+              <button class="button is-primary is-outlined is-fullwidth" type="button" v-on:click="amount = amounts[2]">
+                €{{ amounts[2] }}
               </button>
             </div>
           </div>
@@ -194,6 +194,12 @@ export default {
   computed: {
     fee: function () {
       return this.amount ? (this.amount + 20) + 'p' : '?'
+    },
+    amounts: function () {
+      return this.period === 'monthly' ? [3, 5, 10] : [36, 60, 120];
+    },
+    minAmount: function () {
+      return this.period === 'monthly' ? 1 : 12;
     },
     periodVerbose: function() {
       switch (this.period) {
