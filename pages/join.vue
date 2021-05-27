@@ -17,7 +17,7 @@
         <div class="column is-4 pt-0">
           <p class="control is-expanded">
             <label class="button is-primary is-outlined is-fullwidth" v-bind:class="{ 'is-focused': period == 'single' }">
-              <input class="join-period-input" type="radio" name="period" value="single" v-model="period" v-on:change="amount = amounts[0]">
+              <input class="join-period-input" type="radio" name="period" value="single" v-model="period" v-on:change="amount = presetAmounts[0]">
               One time
             </label>
           </p>
@@ -25,7 +25,7 @@
         <div class="column is-4 pt-0">
           <p class="control is-expanded">
             <label class="button is-primary is-outlined is-fullwidth" v-bind:class="{ 'is-focused': period == 'monthly' }">
-              <input class="join-period-input" type="radio" name="period" value="monthly" v-model="period" v-on:change="amount = amounts[0]">
+              <input class="join-period-input" type="radio" name="period" value="monthly" v-model="period" v-on:change="amount = presetAmounts[0]">
               Monthly
             </label>
           </p>
@@ -33,7 +33,7 @@
         <div class="column is-4 pt-0">
           <p class="control is-expanded">
             <label class="button is-primary is-outlined is-fullwidth" v-bind:class="{ 'is-focused': period == 'annually' }">
-              <input class="join-period-input" type="radio" name="period" value="annually" v-model="period" v-on:change="amount = amounts[0]">
+              <input class="join-period-input" type="radio" name="period" value="annually" v-model="period" v-on:change="amount = presetAmounts[0]">
               Annually
             </label>
           </p>
@@ -57,14 +57,12 @@
           </div>
           <div class="column">
             <div class="button-stack">
-              <button class="button is-primary is-outlined is-fullwidth" type="button" v-on:click="amount = amounts[0]">
-                €{{ amounts[0] }}
-              </button>
-              <button class="button is-primary is-outlined is-fullwidth" type="button" v-on:click="amount = amounts[1]">
-                €{{ amounts[1] }}
-              </button>
-              <button class="button is-primary is-outlined is-fullwidth" type="button" v-on:click="amount = amounts[2]">
-                €{{ amounts[2] }}
+              <button
+                class="button is-primary is-outlined is-fullwidth" type="button"
+                v-for="presetAmount in presetAmounts" :key="presetAmount"
+                v-on:click="amount = presetAmount"
+               >
+                €{{ presetAmount }}
               </button>
             </div>
           </div>
@@ -195,7 +193,7 @@ export default {
     fee: function () {
       return this.amount ? (this.amount + 20) + 'p' : '?'
     },
-    amounts: function () {
+    presetAmounts: function () {
       return this.period === 'monthly' ? [3, 5, 10] : [36, 60, 120];
     },
     minAmount: function () {
