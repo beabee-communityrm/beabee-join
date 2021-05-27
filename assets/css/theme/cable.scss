@@ -1,3 +1,5 @@
+@charset "utf-8";
+@import "~bulma/sass/utilities/_all";
 
 @font-face {
     font-family: 'HK Grotesk';
@@ -19,3 +21,37 @@
     font-weight: 600;
     font-style: normal;
 }
+
+// Update Bulma's global variables
+
+$family-primary: "HK Grotesk", Roboto, Helvetica, Arial, sans-serif;
+$family-secondary: $family-primary;
+$title-family: "Rubik", Roboto, Helvetica, Arial, sans-serif;
+
+$primary: #048ba8;
+$secondary: #024d5d;
+$text: #333;
+//$title-color: $text;
+$link: $primary;
+
+// Update Bulma's variables
+
+$radius: 3px;
+$input-color: $secondary;
+$input-shadow: none;
+$button-color: $white;
+$button-hover-color: $white;
+$button-background-color: $primary;
+$button-border-color: transparent;
+$button-focus-color: $primary;
+$button-focus-box-shadow-size: 0;
+$button-focus-box-shadow-color: none;
+$button-ghost-hover-decoration: none;
+$label-color: $secondary;
+$card-shadow: 0;
+$card-radius: $radius;
+$card-header-shadow: 0;
+
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
