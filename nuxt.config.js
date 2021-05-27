@@ -16,12 +16,11 @@ export default {
     '~/plugins/submitForm.client'
   ],
   modules: [
-    'nuxt-buefy',
+    ['nuxt-buefy', {css: false}],
   ],
   css: [
     '~/assets/css/fork-awesome.min',
     `~/assets/css/theme/${process.env.THEME}`,
-    '~/assets/css/main',
   ],
   http: {serverTimeout: 5000},
   serverMiddleware: [
