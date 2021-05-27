@@ -20,7 +20,7 @@ export default {
   ],
   css: [
     '~/assets/css/fork-awesome.min',
-    `~/assets/css/theme/${process.env.THEME}`,
+    '~/assets/css/main.scss',
   ],
   http: {serverTimeout: 5000},
   serverMiddleware: [
@@ -31,9 +31,13 @@ export default {
     babel: {
       plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]],
     },
+    loaders: {
+      scss: {
+        additionalData: `@import "~/assets/css/theme/${process.env.THEME}";`
+      }
+    }
   },
   env: {
-    THEME: process.env.THEME,
     AUDIENCE_URL: process.env.AUDIENCE_URL,
     API_URL: process.env.API_URL
   }

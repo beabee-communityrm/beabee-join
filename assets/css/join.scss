@@ -1,3 +1,15 @@
+body {
+  background: $join-page-bg;
+  background-attachment: fixed;
+  background-size: cover;
+  padding: 1rem 0;
+}
+
+.join-container {
+  margin: 0 auto;
+  max-width: 32rem;
+}
+
 .join-header {
   display: grid;
   grid-gap: 1rem;
@@ -8,4 +20,68 @@
 .join-period-input {
   position: absolute;
   opacity: 0;
+}
+
+.join-amount {
+  display: flex;
+  height: 100%;
+  border: 1px solid $primary;
+  border-radius: $radius;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 1rem;
+
+  &:focus-within {
+    // TODO: should use Bulma vars
+    box-shadow: 0 0 0 0.125em rgba($link, 0.25);
+  }
+}
+
+.join-amount__text {
+  align-self: center;
+}
+
+.join-amount__input {
+  display: flex;
+  align-items: center;
+  flex: 1 1 0;
+  padding: 0 0.5rem;
+
+  & > input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    color: $primary;
+    font-size: 5rem;
+    font-weight: bold;
+
+    -moz-appearance: textfield;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      margin: 0;
+      -webkit-appearance: none;
+    }
+  }
+}
+
+.join-amount__buttons {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 2rem;
+  color: $grey;
+  margin-left: 1rem;
+
+  border-left: 1px solid $grey-light;
+
+  & > .button {
+    height: 50%;
+    border-radius: 0;
+    border: 0;
+    &:first-child {
+      border-bottom: 1px solid $grey-light;
+    }
+    &:hover {
+      background-color: $grey-lightest;
+    }
+  }
 }
