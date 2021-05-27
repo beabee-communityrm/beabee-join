@@ -95,84 +95,78 @@
       </section><!-- /#account-data -->
 
       <section id="payment" class="block">
-        <h5 class="title is-5">Payment method</h5>
+        <h5 class="title is-5 mb-3">Payment method</h5>
         <fieldset>
-          <div class="card">
-            <p class="card-header radio">
-              <input type="radio" id="payment-card" name="payment" value="credit-debit-card">
-              <label for="payment-card">
-                <i class="fa fa-credit-card" aria-hidden="true"></i>
-                Credit/Debit Card
-              </label>
-            </p>
-            <div class="collapsible-card">
-              <p><small>You will be taken to GoCardless to confirm your payment details, after
-                which you will be returned here to complete the process.</small>
-              </p>
-              <p class="checkbox">
-                <input type="checkbox" id="service-fees" name="service-fees">
-                <label for="service-fees"> Agree to pay 2.23€ for processing fees.
-                  This is an expense we incur for payment processing, and we would be thankful
-                  for your generosity in covering it.
-                </label>
+          <div class="mb-2">
+            <label class="radio">
+              <input type="radio" name="payment" value="credit-card" v-model="payment">
+              <i class="fa fa-credit-card" aria-hidden="true"></i>
+              Credit/Debit Card
+            </label>
+            <div class="mb-4" v-show="payment === 'credit-card'">
+              <p>
+                <small>
+                  You will be taken to GoCardless to confirm your payment
+                  details, after which you will be returned here to complete the
+                  process.
+                </small>
               </p>
             </div>
-          </div><!-- /.card -->
+          </div>
 
-          <div class="card">
-            <p class="card-header radio">
-              <input type="radio" id="payment-debit" name="payment" value="direct-debit"
-                v-on:click="updateActivePayment()">
-              <label for="payment-debit">
-                <i class="fa fa-calendar" aria-hidden="true"></i>
-                Direct debit
-              </label>
-            </p>
-            <div class="collapsible-card">
+          <div class="mb-2">
+            <label class="radio">
+              <input type="radio" name="payment" value="direct-debit" v-model="payment">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              Direct debit
+            </label>
+            <div class="mb-4" v-show="payment === 'direct-debit'">
               <p><small>You will be taken to GoCardless to confirm your payment details, after
                 which you will be returned here to complete the process.</small>
               </p>
-              <p class="checkbox">
-                <input type="checkbox" id="service-fees" name="service-fees">
-                <label for="service-fees"> Agree to pay 2.23€ for processing fees.
-                  This is an expense we incur for payment processing, and we would be thankful
-                  for your generosity in covering it.
-                </label>
-              </p>
             </div>
-          </div> <!-- /.card -->
-          <div class="card">
-            <p class="card-header radio">
-              <input type="radio" id="payment-paypal" name="payment" value="paypal"
-                v-on:click="updateActivePayment()">
-              <label for="payment-paypal">
-                <i class="fa fa-paypal" aria-hidden="true"></i>
-                Paypal
-              </label>
-            </p>
-            <div class="collapsible-card">
-              <p class="checkbox">
-                <input type="checkbox" id="service-fees" name="service-fees">
-                <label for="service-fees"> Agree to pay 2.23€ for processing fees.
-                  This is an expense we incur for payment processing, and we would be thankful
-                  for your generosity in covering it.
-                </label>
-              </p>
+          </div>
+
+          <div class="mb-2">
+            <label class="radio">
+              <input type="radio" name="payment" value="paypal" v-model="payment">
+              <i class="fa fa-paypal" aria-hidden="true"></i>
+              Paypal
+            </label>
+            <div class="mb-4" v-show="payment === 'paypal'">
               <p><i class="fa fa-lock" aria-hidden="true"></i> <small>You will be taken to GoCardless to confirm your payment details, after
                 which you will be returned here to complete the process.</small>
               </p>
             </div>
-          </div> <!-- /.card -->
+          </div>
         </fieldset>
       </section><!-- /#payment -->
+
       <section class="block">
+        <p class="mb-4">
+          <label class="checkbox">
+            <input type="checkbox" name="payFee" checked>
+            Our payment processor charges us per transaction, which means we
+            receive less from monthly contributions. Are you happy to absorb the
+            {{ fee }} transaction fee? Alternatively you could pay annually.
+          </label>
+        </p>
+        <p>
+          <i class="fa fa-lock" aria-hidden="true"></i>
+          Your payment will be processed securely with GoCardless under the
+          Direct Debit Guarantee scheme.
+        </p>
+      </section>
+
+      <section class="block" v-show="period === 'monthly'">
         <p>
           <button class="button wrap-text is-fullwidth is-primary">
             {{ submitText }}
           </button>
         </p>
-        <p class="text-center mt-4"><small>By proceeding, you are accepting the <a href="">Terms of Service</a>
-          and <a href="">Privacy Policy</a>.</small>
+        <p class="has-text-centered is-size-7 mt-4">
+          By proceeding, you are accepting the <a href="">Terms of Service</a>
+          and <a href="">Privacy Policy</a>.
         </p>
       </section>
     </form>
@@ -186,7 +180,7 @@ export default {
     return {
       amount: 20,
       period: 'monthly',
-      payFee: true
+      payment: 'direct-debit'
     }
   },
   computed: {

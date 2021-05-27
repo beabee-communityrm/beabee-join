@@ -1,5 +1,4 @@
 @charset "utf-8";
-@import "~bulma/sass/utilities/_all";
 
 @font-face {
     font-family: "Open Sans";
@@ -99,6 +98,8 @@
 
 // Beabee colors
 
+$join-page-bg: none;
+
 $darkblue: #262453;
 $warmyellow: #f5cc5b;
 $maingreen: #43a796;
@@ -106,31 +107,23 @@ $orange: #eda63b;
 
 // Update Bulma's global variables
 $family-primary: "Open Sans", Roboto, Helvetica, Arial, sans-serif;
-$familysecondary: "Rounded Mplus", Roboto, Helvetica, Arial, sans-serif;
+$family-secondary: "Rounded Mplus", Roboto, Helvetica, Arial, sans-serif;
 
 $primary: $maingreen;
+$secondary: $darkblue;
 $text: $darkblue;
 $text-strong: $darkblue;
 $link: $maingreen;
 
-// Update Bulma's variables
-
 $radius: 3px;
-$input-color: $darkblue;
+
+// Update Bulma's component variables
+
+$input-color: $secondary;
 $input-shadow: none;
-$button-color: $white;
-$button-hover-color: $white;
-$button-background-color: $primary;
-$button-border-color: transparent;
-$button-focus-color: $primary;
 $button-focus-box-shadow-size: 0;
 $button-focus-box-shadow-color: none;
 $button-ghost-hover-decoration: none;
-$label-color: $darkblue;
-$card-shadow: 0;
-$card-radius: $radius;
-$card-header-shadow: 0;
+$label-color: $secondary;
 
-// Import Bulma and Buefy styles
-@import "~bulma";
-@import "~buefy/src/scss/buefy";
+@import "~bulma/sass/utilities/_all";

@@ -4,6 +4,24 @@
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
 
+input[type=radio] {
+    vertical-align: center;
+}
+
+.button {
+    font-weight: bold;
+}
+
+.checkbox {
+    display: inline-flex;
+    align-items: flex-start;
+
+    & > input {
+        margin-top: 0.1rem;
+        margin-right: 0.4rem;
+    }
+}
+
 .button-stack {
     display: flex;
     flex-direction: column;
