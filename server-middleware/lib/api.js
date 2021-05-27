@@ -1,22 +1,29 @@
 import axios from 'axios';
 
-const api = axios.create({
-  baseURL: process.env.API_URL
-});
+export default class Api {
+  constructor(token) {
+    this.api = axios.create({
+      baseURL: process.env.API_URL,
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    });
+  }
 
-export async function signUp(data, completeUrl) {
-  const response = await api.post('/signup', {
-    email: data.email,
-    password: data.password,
-    amount: Number(data.amount),
-    period: data.period,
-    payFee: data.payFee === 'true',
-    completeUrl
-  })
+  async signUp(data, completeUrl) {
+    const response = await this.api.post('/signup', {
+      email: data.email,
+      password: data.password,
+      amount: Number(data.amount),
+      period: data.period,
+      payFee: data.payFee === 'true',
+      completeUrl
+    })
+    return response.data;
+  }
 
-  return response.data.redirectUrl;
-}
-
-export async function completeSignUp(redirectFlowId) {
-  await api.post('/signup/complete', {redirectFlowId});
+  async completeSignUp(redirectFlowId) {
+    const response = await this.api.post('/signup/complete', {redirectFlowId});
+    return response.data;
+  }
 }

@@ -1,22 +1,30 @@
-import express from 'express'
+import cookierParser from 'cookie-parser';
+import express from 'express';
 import multer from 'multer';
 
-import { signUp, completeSignUp } from './lib/api';
+import Api from './lib/api';
 import { wrapAsync, wrapAsyncForm } from './lib/utils';
 
 const app = express()
 
+app.use(cookierParser());
 app.use(express.urlencoded({ extended: true }))
 app.use(multer().none());
 
+app.use((req, res, next) => {
+  req.api = new Api(req.cookies.token);
+  next();
+});
+
 app.post('/join-cable', wrapAsyncForm(async (req, res) => {
-  const redirectUrl = await signUp(req.body, process.env.AUDIENCE_URL + '/join-cable/complete');
-  res.redirect(redirectUrl);
+  const data = await req.api.signUp(req.body, process.env.AUDIENCE_URL + '/join-cable/complete');
+  res.redirect(data.redirectUrl);
 }));
 
 app.get('/join-cable/complete', wrapAsync(async (req, res) => {
   try {
-    await completeSignUp(req.query.redirect_flow_id)
+    const data = await req.api.completeSignUp(req.query.redirect_flow_id)
+    res.cookie('token', data.jwt);
     res.redirect('/account-setup');
   } catch (error) {
     if (error.response.data.code === 'duplicate-email') {

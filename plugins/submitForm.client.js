@@ -5,6 +5,7 @@ async function submitForm(evt) {
 
   try {
     const response = await axios.post(formEl.action, new FormData(formEl), {
+      withCredentials: true,
       headers: {
         'X-Requested-With': 'XMLHttpRequest'
       }
