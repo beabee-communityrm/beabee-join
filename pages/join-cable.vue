@@ -161,8 +161,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  @import '~assets/css/cable-fonts.css';
-  @import '~assets/css/cable.css';
-</style>

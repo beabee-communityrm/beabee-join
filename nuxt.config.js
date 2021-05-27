@@ -20,9 +20,8 @@ export default {
     'nuxt-buefy',
   ],
   css: [
-    '~/assets/css/fonts.css',
     '~/assets/css/fork-awesome.min.css',
-    '~/assets/css/config.scss',
+    `~/assets/css/theme/${process.env.THEME}.scss`,
     '~/assets/css/main.css',
   ],
   http: {serverTimeout: 5000},
@@ -36,6 +35,7 @@ export default {
     },
   },
   env: {
+    THEME: process.env.THEME,
     AUDIENCE_URL: process.env.AUDIENCE_URL,
     API_URL: process.env.API_URL
   }
