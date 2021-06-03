@@ -10,7 +10,7 @@
       "presetAmounts": [3, 5, 10]
     },
     {
-      "label": "Yearly",
+      "label": "Annually",
       "name": "annually",
       "presetAmounts": [36, 60, 120]
     }
