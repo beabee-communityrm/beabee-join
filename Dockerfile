@@ -15,6 +15,8 @@ EXPOSE 8080
 ENV HOST=0.0.0.0
 ENV PORT=8080
 
+ENV THEME=cable
+
 RUN npx nuxt build
 
 CMD [ "node", "./node_modules/.bin/nuxt", "start" ]
