@@ -24,6 +24,9 @@ export default class Api {
 
   async completeSignUp(redirectFlowId) {
     const response = await this.api.post('/signup/complete', {redirectFlowId});
-    return response.data;
+    return {
+      cookie: response.headers['set-cookie'],
+      jwt: response.data.jwt
+    };
   }
 }

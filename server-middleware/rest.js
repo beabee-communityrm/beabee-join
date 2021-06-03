@@ -23,10 +23,13 @@ app.post('/join', wrapAsyncForm(async (req, res) => {
 
 app.get('/join/complete', wrapAsync(async (req, res) => {
   try {
-    const data = await req.api.completeSignUp(req.query.redirect_flow_id)
-    res.cookie('token', data.jwt);
-    res.redirect('/account-setup');
+    const {cookie, jwt} = await req.api.completeSignUp(req.query.redirect_flow_id)
+    res.set({'set-cookie': cookie});
+    res.cookie('token', jwt);
+
+    res.redirect('/profile/complete');
   } catch (error) {
+    console.log(error);
     if (error.response.data.code === 'duplicate-email') {
       // TODO: handle duplicate emails
     } else {
