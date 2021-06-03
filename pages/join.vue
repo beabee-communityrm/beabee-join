@@ -147,7 +147,7 @@
       <section class="block">
         <p>
           <button class="button wrap-text is-fullwidth is-primary">
-            Contribute <span class="hidden-nojs">{{ submitText }}</span>
+            <span>Contribute <span class="hidden-nojs">{{ submitText }}</span></span>
           </button>
         </p>
         <p class="has-text-centered is-size-7 mt-4">
