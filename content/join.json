@@ -5,11 +5,6 @@
   "currency": "£",
   "periods": [
     {
-      "label": "One time",
-      "name": "single",
-      "presetAmounts": [20, 40, 60]
-    },
-    {
       "label": "Monthly",
       "name": "monthly",
       "presetAmounts": [3, 5, 10]
