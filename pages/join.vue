@@ -25,7 +25,7 @@
       </nav>
 
       <section id="amount" class="block">
-        <div class="columns">
+        <div class="columns join-amount-container">
           <div class="column is-8">
             <label class="join-amount is-gapless">
               <span class="join-amount__text">{{ content.currency }}</span>

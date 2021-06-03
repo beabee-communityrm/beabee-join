@@ -1,7 +1,7 @@
 @import "~bulma/sass/utilities/all";
 
 body {
-  @media (min-width: $tablet) {
+  @include tablet {
     background: var(--join-page-bg);
     background-attachment: fixed;
     background-size: cover;
@@ -33,6 +33,13 @@ body {
 .join-period-input:checked + .join-period-button {
   background-color: var(--c-primary);
   color: white;
+}
+
+.join-amount-container {
+  @include mobile {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
 
 .join-amount {
