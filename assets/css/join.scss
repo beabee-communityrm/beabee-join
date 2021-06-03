@@ -65,13 +65,21 @@ body {
   align-items: center;
   flex: 1 1 0;
   padding: 0 0.5rem;
+  font-size: 5rem;
+
+  @include mobile {
+    &.is-large {
+      font-size: 3rem;
+    }
+  }
 
   & > input {
     width: 100%;
     border: 0;
     outline: 0;
     color: var(--primary-color);
-    font-size: 5rem;
+    font-size: inherit;
+    line-height: 6.6rem;
     font-weight: bold;
 
     -moz-appearance: textfield;

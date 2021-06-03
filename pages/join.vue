@@ -29,7 +29,7 @@
           <div class="column is-8">
             <label class="join-amount is-gapless">
               <span class="join-amount__text">{{ content.currency }}</span>
-              <div class="join-amount__input">
+              <div class="join-amount__input" :class="{'is-large': amount >= 100}">
                 <input type="number" name="amount" v-model.number="amount" :min="minAmount" step="1">
               </div>
               <span class="join-amount__text hidden-nojs">{{ periodVerbose }}</span>
