@@ -1,6 +1,9 @@
 export default {
   head: {
     title: 'Beabee',
+    bodyAttrs: {
+      class: 'no-js'
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -16,14 +19,13 @@ export default {
     '~/plugins/submitForm.client'
   ],
   modules: [
-    '@nuxt/http',
-    'nuxt-buefy',
+    ['nuxt-buefy', {css: false}],
+    '@nuxt/content'
   ],
   css: [
-    '~/assets/css/fonts.css',
-    '~/assets/css/fork-awesome.min.css',
-    '~/assets/css/config.scss',
-    '~/assets/css/main.css',
+    '~/assets/css/fork-awesome.min',
+    `~/assets/css/theme/${process.env.THEME}`,
+    '~/assets/css/main.scss',
   ],
   http: {serverTimeout: 5000},
   serverMiddleware: [
@@ -33,7 +35,7 @@ export default {
   build: { // https://github.com/nuxt/nuxt.js/issues/9224#issuecomment-830577523
     babel: {
       plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]],
-    },
+    }
   },
   env: {
     AUDIENCE_URL: process.env.AUDIENCE_URL,

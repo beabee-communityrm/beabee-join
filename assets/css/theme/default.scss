@@ -1,0 +1,127 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("~assets/fonts/main/OpenSans-ExtraBoldItalic.woff2") format("woff2"),
+     url("~assets/fonts/main/OpenSans-ExtraBoldItalic.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("~assets/fonts/main/OpenSans-LightItalic.woff2") format("woff2"),
+     url("~assets/fonts/main/OpenSans-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("~assets/fonts/main/OpenSans-Regular.woff2") format("woff2"),
+     url("~assets/fonts/main/OpenSans-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("~assets/fonts/main/OpenSans-ExtraBold.woff2") format("woff2"),
+     url("~assets/fonts/main/OpenSans-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("~assets/fonts/main/OpenSans-BoldItalic.woff2") format("woff2"),
+     url("~assets/fonts/main/OpenSans-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("~assets/fonts/main/OpenSans-Italic.woff2") format("woff2"),
+     url("~assets/fonts/main/OpenSans-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("~assets/fonts/main/OpenSans-SemiBold.woff2") format("woff2"),
+     url("~assets/fonts/main/OpenSans-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("~assets/fonts/main/OpenSans-Bold.woff2") format("woff2"),
+     url("~assets/fonts/main/OpenSans-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("~assets/fonts/main/OpenSans-Light.woff2") format("woff2"),
+     url("~assets/fonts/main/OpenSans-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("~assets/fonts/main/OpenSans-SemiBoldItalic.woff2") format("woff2"),
+     url("~assets/fonts/main/OpenSans-SemiBoldItalic.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Rounded Mplus";
+  src: url("~assets/fonts/main/RoundedMplus1c-Medium.woff2") format("woff2"),
+    url("~assets/fonts/main/RoundedMplus1c-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Rounded Mplus";
+  src: url("~assets/fonts/main/RoundedMplus1c-Bold.woff2") format("woff2"),
+    url("~assets/fonts/main/RoundedMplus1c-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+// Beabee colors
+
+$darkblue: #262453;
+$warmyellow: #f5cc5b;
+$maingreen: #43a796;
+$orange: #eda63b;
+
+// Update Bulma's global variables
+$family-primary: "Open Sans", Roboto, Helvetica, Arial, sans-serif;
+$family-secondary: "Rounded Mplus", Roboto, Helvetica, Arial, sans-serif;
+
+$primary: $maingreen;
+$secondary: $darkblue;
+$text: $darkblue;
+$text-strong: $darkblue;
+$link: $maingreen;
+
+$radius: 3px;
+
+// Update Bulma's component variables
+
+$input-color: $secondary;
+$input-shadow: none;
+$button-focus-box-shadow-size: 0;
+$button-focus-box-shadow-color: none;
+$button-ghost-hover-decoration: none;
+$label-color: $secondary;
+
+@import "base";

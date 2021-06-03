@@ -1,0 +1,117 @@
+@import "~bulma/sass/utilities/all";
+
+body {
+  @include tablet {
+    background: var(--join-page-bg);
+    background-attachment: fixed;
+    background-size: cover;
+    padding: 1rem 0;
+  }
+}
+
+.join-container {
+  margin: 0 auto;
+  max-width: 32rem;
+}
+
+.join-header {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 60px 1fr;
+  align-items: center;
+}
+
+.join-subtitle {
+  font-size: 1.15rem;
+}
+
+.join-period-input {
+  position: absolute;
+  opacity: 0;
+}
+
+.join-period-input:checked + .join-period-button {
+  background-color: var(--c-primary);
+  color: white;
+}
+
+.join-amount-container {
+  @include mobile {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.join-amount {
+  display: flex;
+  height: 100%;
+  border: 1px solid var(--c-primary);
+  border-radius: var(--radius);
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 1rem;
+
+  &:focus-within {
+    box-shadow: var(--input-focus-box-shadow-size) var(--input-focus-box-shadow-color);
+  }
+}
+
+.join-amount__text {
+  font-weight: bold;
+  align-self: center;
+  color: var(--c-grey);
+  margin-bottom: -2.5rem;
+}
+
+.join-amount__input {
+  display: flex;
+  align-items: center;
+  flex: 1 1 0;
+  padding: 0 0.5rem;
+  font-size: 5rem;
+
+  @include mobile {
+    &.is-large {
+      font-size: 3rem;
+    }
+  }
+
+  & > input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    color: var(--c-primary);
+    font-size: inherit;
+    line-height: 6.6rem;
+    font-weight: bold;
+
+    -moz-appearance: textfield;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      margin: 0;
+      -webkit-appearance: none;
+    }
+  }
+}
+
+.join-amount__buttons {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 2rem;
+  color: var(--c-grey);
+  margin-left: 1rem;
+
+  border-left: 1px solid var(--c-grey-light);
+
+  & > .button {
+    height: 50%;
+    border-radius: 0;
+    border: 0;
+    &:first-child {
+      border-bottom: 1px solid var(--c-grey-light);
+    }
+    &:hover {
+      background-color: var(--c-grey-lightest);
+    }
+  }
+}

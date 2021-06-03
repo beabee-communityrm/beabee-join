@@ -1,0 +1,23 @@
+{
+  "name": "The Bristol Cable",
+  "title": "Join 2,600 people building a new kind of newspaper",
+  "subtitle": "<p>All members become co-owners of the Bristol Cable, with exclusive opportunities to have a say while supporting quality journalism and our innovative model.</p>",
+  "currency": "£",
+  "periods": [
+    {
+      "label": "Monthly",
+      "name": "monthly",
+      "presetAmounts": [3, 5, 10]
+    },
+    {
+      "label": "Annually",
+      "name": "annually",
+      "presetAmounts": [36, 60, 120]
+    }
+  ],
+  "initialPeriod": "monthly",
+  "initialAmount": 5,
+  "termsLink": "https://thebristolcable.org/terms",
+  "privacyLink": "https://thebristolcable.org/privacy"
+}
+

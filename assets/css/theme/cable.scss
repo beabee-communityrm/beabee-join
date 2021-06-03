@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'HK Grotesk';
+  src: url('~assets/fonts/cable/HKGrotesk-Bold.woff2') format('woff2'), url('~assets/fonts/cable/HKGrotesk-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  src: url('~assets/fonts/cable/HKGrotesk-Regular.woff2') format('woff2'), url('~assets/fonts/cable/HKGrotesk-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('~assets/fonts/cable/Rubik-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+// Update Bulma's global variables
+
+$family-primary: "HK Grotesk", Roboto, Helvetica, Arial, sans-serif;
+$family-secondary: $family-primary;
+
+$primary: #048ba8;
+$secondary: #024d5d;
+$red: #ce3d3d;
+$text: #333;
+$text-strong: $text;
+$link: $primary;
+$radius: 3px;
+
+// Update Bulma's component variables
+
+$input-color: $text;
+$input-shadow: none;
+$help-size: 0.9rem;
+$button-focus-box-shadow-size: 0;
+$button-focus-box-shadow-color: none;
+$button-ghost-hover-decoration: none;
+$label-color: $text;
+$title-family: "Rubik", Roboto, Helvetica, Arial, sans-serif;
+
+@import "base";
+
+:root {
+  --join-page-bg: url(~/assets/img/cable-bg.jpg);
+  --input-danger-background-color: #fbefef;
+}
