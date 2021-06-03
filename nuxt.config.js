@@ -20,6 +20,7 @@ export default {
   ],
   css: [
     '~/assets/css/fork-awesome.min',
+    `~/assets/css/theme/${process.env.THEME}`,
     '~/assets/css/main.scss',
   ],
   http: {serverTimeout: 5000},
@@ -30,11 +31,6 @@ export default {
   build: { // https://github.com/nuxt/nuxt.js/issues/9224#issuecomment-830577523
     babel: {
       plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]],
-    },
-    loaders: {
-      scss: {
-        additionalData: `@import "~/assets/css/theme/${process.env.THEME}";`
-      }
     }
   },
   env: {
