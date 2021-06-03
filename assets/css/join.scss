@@ -1,8 +1,12 @@
+@import "~bulma/sass/utilities/all";
+
 body {
-  background: var(--join-page-bg);
-  background-attachment: fixed;
-  background-size: cover;
-  padding: 1rem 0;
+  @media (min-width: $tablet) {
+    background: var(--join-page-bg);
+    background-attachment: fixed;
+    background-size: cover;
+    padding: 1rem 0;
+  }
 }
 
 .join-container {
