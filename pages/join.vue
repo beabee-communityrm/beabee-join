@@ -40,7 +40,7 @@
             </label>
           </div>
           <div class="column hidden-nojs">
-            <div class="button-stack">
+            <div class="join-amount-presets">
               <button
                 class="button is-primary is-outlined is-fullwidth" type="button"
                 v-for="presetAmount in presetAmounts" :key="presetAmount"
