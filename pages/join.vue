@@ -152,8 +152,8 @@
           </button>
         </p>
         <p class="has-text-centered is-size-7 mt-4">
-          By proceeding, you are accepting the <a href="">Terms of Service</a>
-          and <a href="">Privacy Policy</a>.
+          By proceeding, you are accepting the <a :href="content.termsLink">Terms of Service</a>
+          and <a :href="content.privacyLink">Privacy Policy</a>.
         </p>
       </section>
     </form>

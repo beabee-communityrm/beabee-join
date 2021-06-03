@@ -16,6 +16,8 @@
     }
   ],
   "initialPeriod": "monthly",
-  "initialAmount": 5
+  "initialAmount": 5,
+  "termsLink": "https://thebristolcable.org/terms",
+  "privacyLink": "https://thebristolcable.org/privacy"
 }
 
