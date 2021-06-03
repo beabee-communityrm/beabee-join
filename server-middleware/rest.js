@@ -16,12 +16,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post('/join-cable', wrapAsyncForm(async (req, res) => {
-  const data = await req.api.signUp(req.body, process.env.AUDIENCE_URL + '/join-cable/complete');
+app.post('/join', wrapAsyncForm(async (req, res) => {
+  const data = await req.api.signUp(req.body, process.env.AUDIENCE_URL + '/join/complete');
   res.redirect(data.redirectUrl);
 }));
 
-app.get('/join-cable/complete', wrapAsync(async (req, res) => {
+app.get('/join/complete', wrapAsync(async (req, res) => {
   try {
     const data = await req.api.completeSignUp(req.query.redirect_flow_id)
     res.cookie('token', data.jwt);
