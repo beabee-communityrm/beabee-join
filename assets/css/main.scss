@@ -13,16 +13,6 @@ input[type=radio] {
     font-weight: bold;
 }
 
-.checkbox {
-    display: inline-flex;
-    align-items: flex-start;
-
-    & > input {
-        margin-top: 0.1rem;
-        margin-right: 0.4rem;
-    }
-}
-
 .button-stack {
     display: flex;
     flex-direction: column;
@@ -36,4 +26,18 @@ input[type=radio] {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
     }
+}
+
+.checkbox {
+    display: inline-flex;
+    align-items: flex-start;
+
+    & > input {
+        margin-top: 0.1rem;
+        margin-right: 0.4rem;
+    }
+}
+
+.input.is-danger {
+    background-color: var(--input-danger-background-color);
 }

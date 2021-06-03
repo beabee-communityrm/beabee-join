@@ -26,6 +26,7 @@ $family-secondary: $family-primary;
 
 $primary: #048ba8;
 $secondary: #024d5d;
+$red: #ce3d3d;
 $text: #333;
 $text-strong: $text;
 $link: $primary;
@@ -33,7 +34,7 @@ $radius: 3px;
 
 // Update Bulma's component variables
 
-$input-color: $secondary;
+$input-color: $text;
 $input-shadow: none;
 $button-focus-box-shadow-size: 0;
 $button-focus-box-shadow-color: none;
@@ -45,4 +46,5 @@ $title-family: "Rubik", Roboto, Helvetica, Arial, sans-serif;
 
 :root {
   --join-page-bg: url(~/assets/img/cable-bg.jpg);
+  --input-danger-background-color: #fbefef;
 }

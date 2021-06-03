@@ -10,7 +10,7 @@
       <div class="content join-subtitle" v-html="content.subtitle"></div>
     </header>
 
-    <form method="POST" @submit.prevent="$submitForm">
+    <form method="POST" @submit.prevent="checkAndSubmit" :novalidate="hasLoaded">
       <nav class="block columns is-mobile is-variable is-1">
         <div class="column pt-0" v-for="(p) in content.periods" :key="p.name">
           <p class="control is-expanded">
@@ -60,19 +60,46 @@
         <fieldset>
           <div class="field">
             <label class="label" for="email">Email</label>
-            <div class="control has-icons-left">
-              <input class="input" type="email" name="email" id="email" required>
+            <div class="control has-icons-left" :class="{'has-icons-right': !!errors.email}">
+              <input
+                class="input" type="email" name="email" id="email" required
+                v-model="email" :class="{'is-danger': !!errors.email}"
+              >
               <span class="icon is-small is-left">
                 <i class="fa fa-envelope"></i>
               </span>
+              <span class="icon is-small is-right" v-show="!!errors.email">
+                <i class="fa fa-exclamation-triangle"></i>
+              </span>
             </div>
+            <p class="help is-danger" v-show="!!errors.email">
+              {{ errors.email }}
+            </p>
           </div>
           <div class="field">
             <label class="label" for="password">Password</label>
-            <div class="control has-icons-left">
-              <input class="input" type="password" id="password" name="password" minlength="8" required>
+            <div class="control has-icons-left" :class="{'has-icons-right': !!errors.password}">
+              <input
+                class="input" type="password" id="password" name="password" minlength="8" required
+                v-model="password"  :class="{'is-danger': !!errors.password}"
+               >
               <span class="icon is-small is-left">
                 <i class="fa fa-key"></i>
+              </span>
+              <span class="icon is-small is-right" v-show="!!errors.password">
+                <i class="fa fa-exclamation-triangle"></i>
+              </span>
+            </div>
+            <p class="help is-danger" v-show="!!errors.password">
+              {{ errors.password }}
+            </p>
+            <div class="help is-flex is-align-items-center">
+              <span class="icon mr-1">
+                <i class="fa fa-info-circle"></i>
+              </span>
+              <span>
+                Set a secure password: 8+ characters and at least one number,
+                one uppercase and one lowercase letter
               </span>
             </div>
           </div>
@@ -145,9 +172,13 @@
         </div>
       </section><!-- /#payment -->
 
+      <div class="notification is-danger" v-show="hasErrors">
+        Something is missing, please check the fields above
+      </div>
+
       <section class="block">
         <p>
-          <button class="button wrap-text is-fullwidth is-primary">
+          <button class="button wrap-text is-fullwidth is-primary" :class="{'is-loading': isSubmitting}">
             <span>Contribute <span class="hidden-nojs">{{ submitText }}</span></span>
           </button>
         </p>
@@ -173,8 +204,13 @@ export default {
   },
   data: function() {
     return {
-      payment: 'direct-debit'
-    }
+      email: '',
+      password: '',
+      payment: 'direct-debit',
+      errors: [],
+      isSubmitting: false,
+      hasLoaded: false
+    };
   },
   computed: {
     fee: function () {
@@ -197,6 +233,37 @@ export default {
     submitText: function() {
       const period = this.period === 'single' ? '' : ' ' + this.period;
       return `${this.content.currency}${this.amount}${period}`;
+    },
+    hasErrors: function () {
+      return Object.values(this.errors).some(e => !!e);
+    }
+  },
+  mounted: function () {
+    this.hasLoaded = true;
+  },
+  methods: {
+    checkEmail() {
+      const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      this.errors.email = re.test(this.email) ? undefined : 'Invalid email address';
+    },
+    checkPassword() {
+      const isValid = this.password.length >= 8 && /[A-Z]/.test(this.password) && /[a-z]/.test(this.password) &&
+        /0-9/.test(this.password);
+      this.errors.password = isValid ? undefined : 'Password does not meet requirements';
+    },
+    async checkAndSubmit(evt) {
+      this.checkPassword();
+      this.checkEmail();
+
+      if (!this.hasErrors) {
+        this.isSubmitting = true;
+        try {
+          await this.$submitForm(evt);
+        } catch (errors) {
+          this.errors = errors;
+        }
+        this.isSubmitting = false;
+      }
     }
   }
 }
