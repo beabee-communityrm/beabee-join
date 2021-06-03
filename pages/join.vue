@@ -45,6 +45,7 @@
                 class="button is-primary is-outlined is-fullwidth" type="button"
                 v-for="presetAmount in presetAmounts" :key="presetAmount"
                 v-on:click="amount = presetAmount"
+                :class="{'is-focused': amount === presetAmount}"
                >
                 {{ content.currency }}{{ presetAmount }}
               </button>
