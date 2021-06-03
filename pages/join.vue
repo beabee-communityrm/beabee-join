@@ -4,37 +4,19 @@
   <div class="join-container box px-5 has-background-white">
     <header class="block">
       <div class="join-header mb-4">
-        <img src="~assets/img/newspaper-logo.svg" alt="The Newspaper">
-        <h1 class="title is-4">Join The Newspaper and it will feel great</h1>
+        <img src="~assets/img/newspaper-logo.svg" :alt="content.name">
+        <h1 class="title is-4">{{ content.title }}</h1>
       </div>
-      <p class="is-size-5">
-        Join 2,500 people building a new kind of newspaper!
-      </p>
+      <div class="content join-subtitle" v-html="content.subtitle"></div>
     </header>
 
     <form method="POST" @submit.prevent="$submitForm">
-      <nav class="block columns is-variable is-1">
-        <div class="column is-4 pt-0">
+      <nav class="block columns is-mobile is-variable is-1">
+        <div class="column pt-0" v-for="(p) in content.periods" :key="p.name">
           <p class="control is-expanded">
-            <label class="button is-primary is-outlined is-fullwidth" v-bind:class="{ 'is-focused': period == 'single' }">
-              <input class="join-period-input" type="radio" name="period" value="single" v-model="period" v-on:change="amount = presetAmounts[0]">
-              One time
-            </label>
-          </p>
-        </div>
-        <div class="column is-4 pt-0">
-          <p class="control is-expanded">
-            <label class="button is-primary is-outlined is-fullwidth" v-bind:class="{ 'is-focused': period == 'monthly' }">
-              <input class="join-period-input" type="radio" name="period" value="monthly" v-model="period" v-on:change="amount = presetAmounts[0]">
-              Monthly
-            </label>
-          </p>
-        </div>
-        <div class="column is-4 pt-0">
-          <p class="control is-expanded">
-            <label class="button is-primary is-outlined is-fullwidth" v-bind:class="{ 'is-focused': period == 'annually' }">
-              <input class="join-period-input" type="radio" name="period" value="annually" v-model="period" v-on:change="amount = presetAmounts[0]">
-              Annually
+            <label class="button is-primary is-outlined is-fullwidth" v-bind:class="{ 'is-focused': period === p.name }">
+              <input class="join-period-input" type="radio" name="period" :value="p.name" v-model="period" v-on:change="amount = p.presetAmounts[0]">
+              {{ p.label }}
             </label>
           </p>
         </div>
@@ -44,7 +26,7 @@
         <div class="columns">
           <div class="column is-8">
             <label class="join-amount is-gapless">
-              <span class="join-amount__text">€</span>
+              <span class="join-amount__text">{{ content.currency }}</span>
               <div class="join-amount__input">
                 <input type="number" name="amount" v-model.number="amount" :min="minAmount" step="1">
               </div>
@@ -62,7 +44,7 @@
                 v-for="presetAmount in presetAmounts" :key="presetAmount"
                 v-on:click="amount = presetAmount"
                >
-                €{{ presetAmount }}
+                {{ content.currency }}{{ presetAmount }}
               </button>
             </div>
           </div>
@@ -94,9 +76,9 @@
         </fieldset>
       </section><!-- /#account-data -->
 
-      <section id="payment" class="block">
+      <section id="payment" class="block" v-show="period !== 'annually'">
         <h5 class="title is-5 mb-3">Payment method</h5>
-        <fieldset>
+        <!--<fieldset>
           <div class="mb-2">
             <label class="radio">
               <input type="radio" name="payment" value="credit-card" v-model="payment">
@@ -139,26 +121,25 @@
               </p>
             </div>
           </div>
-        </fieldset>
+        </fieldset>-->
+        <div v-show="period !== 'annually'">
+          <p class="mb-4">
+            <label class="checkbox">
+              <input type="checkbox" name="payFee" checked>
+              Our payment processor charges us per transaction, which means we
+              receive less from monthly contributions. Are you happy to absorb the
+              {{ fee }} transaction fee? Alternatively you could pay annually.
+            </label>
+          </p>
+          <p>
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            Your payment will be processed securely with GoCardless under the
+            Direct Debit Guarantee scheme.
+          </p>
+        </div>
       </section><!-- /#payment -->
 
       <section class="block">
-        <p class="mb-4">
-          <label class="checkbox">
-            <input type="checkbox" name="payFee" checked>
-            Our payment processor charges us per transaction, which means we
-            receive less from monthly contributions. Are you happy to absorb the
-            {{ fee }} transaction fee? Alternatively you could pay annually.
-          </label>
-        </p>
-        <p>
-          <i class="fa fa-lock" aria-hidden="true"></i>
-          Your payment will be processed securely with GoCardless under the
-          Direct Debit Guarantee scheme.
-        </p>
-      </section>
-
-      <section class="block" v-show="period === 'monthly'">
         <p>
           <button class="button wrap-text is-fullwidth is-primary">
             {{ submitText }}
@@ -176,6 +157,12 @@
 <script>
 export default {
   layout: 'splash',
+  async asyncData(context) {
+    const content = await context.$content('join').fetch();
+    return {
+      content
+    };
+  },
   data: function() {
     return {
       amount: 20,
@@ -188,7 +175,7 @@ export default {
       return this.amount ? (this.amount + 20) + 'p' : '?'
     },
     presetAmounts: function () {
-      return this.period === 'monthly' ? [3, 5, 10] : [36, 60, 120];
+      return this.content.periods.find(p => p.name === this.period).presetAmounts;
     },
     minAmount: function () {
       return this.period === 'monthly' ? 1 : 12;
@@ -202,7 +189,7 @@ export default {
     },
     submitText: function() {
       const period = this.period === 'single' ? '' : ' ' + this.period;
-      return 'Contribute €' + this.amount + period + ' via GoCardless'
+      return `Contribute ${this.content.currency}${this.amount}${period} via GoCardless`;
     }
   }
 }

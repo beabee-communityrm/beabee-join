@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/beabee-communityrm/beabee-frontend#readme",
   "dependencies": {
+    "@nuxt/content": "^1.14.0",
     "axios": "^0.21.1",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",

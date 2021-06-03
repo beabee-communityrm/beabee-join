@@ -17,6 +17,7 @@ export default {
   ],
   modules: [
     ['nuxt-buefy', {css: false}],
+    '@nuxt/content'
   ],
   css: [
     '~/assets/css/fork-awesome.min',
