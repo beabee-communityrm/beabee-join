@@ -10,7 +10,7 @@
       <div class="content join-subtitle" v-html="content.subtitle"></div>
     </header>
 
-    <form method="POST" @submit.prevent="checkAndSubmit" :novalidate="hasLoaded">
+    <form method="POST" @submit.prevent="checkAndSubmit" :novalidate="hasMounted">
       <nav class="block columns is-mobile is-variable is-1">
         <div class="column pt-0" v-for="(p) in content.periods" :key="p.name">
           <p class="control is-expanded">
@@ -172,7 +172,7 @@
         </div>
       </section><!-- /#payment -->
 
-      <div class="notification is-danger" v-show="hasErrors">
+      <div class="notification p-3 is-danger" v-show="hasErrors">
         Something is missing, please check the fields above
       </div>
 
@@ -207,9 +207,12 @@ export default {
       email: '',
       password: '',
       payment: 'direct-debit',
-      errors: [],
+      errors: {
+        email: null,
+        password: null
+      },
       isSubmitting: false,
-      hasLoaded: false
+      hasMounted: false
     };
   },
   computed: {
@@ -239,17 +242,17 @@ export default {
     }
   },
   mounted: function () {
-    this.hasLoaded = true;
+    this.hasMounted = true;
   },
   methods: {
     checkEmail() {
       const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-      this.errors.email = re.test(this.email) ? undefined : 'Invalid email address';
+      this.errors.email = re.test(this.email) ? null : 'Invalid email address';
     },
     checkPassword() {
       const isValid = this.password.length >= 8 && /[A-Z]/.test(this.password) && /[a-z]/.test(this.password) &&
-        /0-9/.test(this.password);
-      this.errors.password = isValid ? undefined : 'Password does not meet requirements';
+        /[0-9]/.test(this.password);
+      this.errors.password = isValid ? null : 'Password does not meet requirements';
     },
     async checkAndSubmit(evt) {
       this.checkPassword();
