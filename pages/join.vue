@@ -14,9 +14,11 @@
       <nav class="block columns is-mobile is-variable is-1">
         <div class="column pt-0" v-for="(p) in content.periods" :key="p.name">
           <p class="control is-expanded">
-            <label class="button is-primary is-outlined is-fullwidth" v-bind:class="{ 'is-focused': period === p.name }">
+            <label v-bind:class="{ 'is-focused': period === p.name }">
               <input class="join-period-input" type="radio" name="period" :value="p.name" v-model="period" v-on:change="amount = p.presetAmounts[0]">
-              {{ p.label }}
+              <span class="join-period-button button is-primary is-outlined is-fullwidth">
+                {{ p.label }}
+              </span>
             </label>
           </p>
         </div>
@@ -30,14 +32,14 @@
               <div class="join-amount__input">
                 <input type="number" name="amount" v-model.number="amount" :min="minAmount" step="1">
               </div>
-              <span class="join-amount__text">{{ periodVerbose }}</span>
-              <div class="join-amount__buttons">
+              <span class="join-amount__text hidden-nojs">{{ periodVerbose }}</span>
+              <div class="join-amount__buttons hidden-nojs">
                 <button v-on:click="amount += 1" class="button is-outlined" type="button">▲</button>
                 <button v-on:click="amount -= 1" class="button is-outlined" type="button" :disabled="amount <= minAmount">▼</button>
               </div>
             </label>
           </div>
-          <div class="column">
+          <div class="column hidden-nojs">
             <div class="button-stack">
               <button
                 class="button is-primary is-outlined is-fullwidth" type="button"
@@ -126,9 +128,12 @@
           <p class="mb-4">
             <label class="checkbox">
               <input type="checkbox" name="payFee" checked>
-              Our payment processor charges us per transaction, which means we
-              receive less from monthly contributions. Are you happy to absorb the
-              {{ fee }} transaction fee? Alternatively you could pay annually.
+              <span>
+                Our payment processor charges us per transaction, which means we
+                receive less from monthly contributions. Are you happy to absorb
+                the <span class="hidden-nojs">{{ fee }}</span> transaction fee?
+                Alternatively you could pay annually.
+              </span>
             </label>
           </p>
           <p>
@@ -142,7 +147,7 @@
       <section class="block">
         <p>
           <button class="button wrap-text is-fullwidth is-primary">
-            {{ submitText }}
+            Contribute <span class="hidden-nojs">{{ submitText }}</span>
           </button>
         </p>
         <p class="has-text-centered is-size-7 mt-4">
@@ -160,13 +165,13 @@ export default {
   async asyncData(context) {
     const content = await context.$content('join').fetch();
     return {
-      content
+      content,
+      amount: content.initialAmount,
+      period: content.initialPeriod
     };
   },
   data: function() {
     return {
-      amount: 20,
-      period: 'monthly',
       payment: 'direct-debit'
     }
   },
@@ -175,7 +180,8 @@ export default {
       return this.amount ? (this.amount + 20) + 'p' : '?'
     },
     presetAmounts: function () {
-      return this.content.periods.find(p => p.name === this.period).presetAmounts;
+      const period = this.content.periods.find(p => p.name === this.period);
+      return period && period.presetAmounts;
     },
     minAmount: function () {
       return this.period === 'monthly' ? 1 : 12;
@@ -189,7 +195,7 @@ export default {
     },
     submitText: function() {
       const period = this.period === 'single' ? '' : ' ' + this.period;
-      return `Contribute ${this.content.currency}${this.amount}${period} via GoCardless`;
+      return `${this.content.currency}${this.amount}${period}`;
     }
   }
 }

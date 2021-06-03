@@ -19,6 +19,8 @@
       "name": "annually",
       "presetAmounts": [36, 60, 120]
     }
-  ]
+  ],
+  "initialPeriod": "monthly",
+  "initialAmount": 5
 }
 

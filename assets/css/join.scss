@@ -30,6 +30,11 @@ body {
   opacity: 0;
 }
 
+.join-period-input:checked + .join-period-button {
+  background-color: var(--c-primary);
+  color: white;
+}
+
 .join-amount {
   display: flex;
   height: 100%;

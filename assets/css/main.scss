@@ -1,5 +1,10 @@
 @charset "utf-8";
 
+body.has-js .hidden-js,
+body.no-js .hidden-nojs {
+    display: none !important;
+}
+
 input[type=radio] {
     vertical-align: center;
 }
