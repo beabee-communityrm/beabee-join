@@ -63,7 +63,7 @@
             <div class="control has-icons-left" :class="{'has-icons-right': !!errors.email}">
               <input
                 class="input" type="email" name="email" id="email" required
-                v-model="email" :class="{'is-danger': !!errors.email}"
+                v-model="email" :class="{'is-danger': !!errors.email}" @blur="checkEmail"
               >
               <span class="icon is-small is-left">
                 <i class="fa fa-envelope"></i>
@@ -81,7 +81,7 @@
             <div class="control has-icons-left" :class="{'has-icons-right': !!errors.password}">
               <input
                 class="input" type="password" id="password" name="password" minlength="8" required
-                v-model="password"  :class="{'is-danger': !!errors.password}"
+                v-model="password"  :class="{'is-danger': !!errors.password}" @blur="checkPassword"
                >
               <span class="icon is-small is-left">
                 <i class="fa fa-key"></i>
@@ -178,7 +178,10 @@
 
       <section class="block">
         <p>
-          <button class="button wrap-text is-fullwidth is-primary" :class="{'is-loading': isSubmitting}">
+          <button
+            class="button wrap-text is-fullwidth is-primary"
+            :class="{'is-loading': isSubmitting}" :disabled="hasMounted && !canSubmit"
+           >
             <span>Contribute <span class="hidden-nojs">{{ submitText }}</span></span>
           </button>
         </p>
@@ -232,6 +235,9 @@ export default {
         case 'annually': return '/ year';
         default: return '';
       }
+    },
+    canSubmit: function () {
+      return this.email && this.password && !this.hasErrors;
     },
     submitText: function() {
       const period = this.period === 'single' ? '' : ' ' + this.period;
