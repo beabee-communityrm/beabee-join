@@ -24,7 +24,11 @@ app.post('/join', wrapAsyncForm(async (req, res) => {
 app.get('/join/complete', wrapAsync(async (req, res) => {
   try {
     const {cookie, jwt} = await req.api.completeSignUp(req.query.redirect_flow_id)
-    res.set({'set-cookie': cookie});
+    const match = cookie.match(/session=([^;]+);/)
+    res.cookie('session', decodeURIComponent(match[1]), {
+      maxAge: 267840000,
+      httpOnly: true
+    });
     res.cookie('token', jwt);
 
     res.redirect('/profile/complete');
