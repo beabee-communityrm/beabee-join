@@ -125,3 +125,7 @@ $button-ghost-hover-decoration: none;
 $label-color: $secondary;
 
 @import "base";
+
+:root {
+  --join-page-bg: #{$grey-lighter};
+}

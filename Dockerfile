@@ -15,7 +15,7 @@ EXPOSE 8080
 ENV HOST=0.0.0.0
 ENV PORT=8080
 
-ENV THEME=cable
+ENV THEME=default
 
 RUN npx nuxt build
 
