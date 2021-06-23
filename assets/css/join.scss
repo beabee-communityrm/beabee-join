@@ -127,6 +127,10 @@ body {
     &:hover {
       background-color: rgba(var(--c-primary-rgb), 0.1);
     }
+    &.is-active {
+      background-color: var(--c-primary);
+      color: white;
+    }
   }
 
   @include mobile {

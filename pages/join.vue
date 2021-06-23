@@ -45,6 +45,7 @@
                 class="button" type="button"
                 v-for="presetAmount in presetAmounts" :key="presetAmount"
                 v-on:click="amount = presetAmount"
+                :class="{'is-active': amount === presetAmount}"
                >
                 {{ content.currency }}{{ presetAmount }}
               </button>
