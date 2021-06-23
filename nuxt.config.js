@@ -1,6 +1,8 @@
+import meta from './content/meta.json';
+
 export default {
   head: {
-    title: 'Beabee',
+    title: meta.title,
     bodyAttrs: {
       class: 'no-js'
     },
@@ -10,7 +12,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'my website description'
+        content: meta.description
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
@@ -19,13 +21,13 @@ export default {
     '~/plugins/submitForm.client'
   ],
   modules: [
-    ['nuxt-buefy', {css: false}],
-    '@nuxt/content'
+    '~/modules/content',
+    ['nuxt-buefy', {css: false}]
   ],
   css: [
     '~/assets/css/fork-awesome.min',
     `~/assets/css/theme/${process.env.THEME}`,
-    '~/assets/css/main.scss',
+    '~/assets/css/main',
   ],
   http: {serverTimeout: 5000},
   serverMiddleware: [
