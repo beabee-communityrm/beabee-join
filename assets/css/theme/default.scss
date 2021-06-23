@@ -96,33 +96,22 @@
   font-style: normal;
 }
 
-// Beabee colors
-
 $darkblue: #262453;
 $warmyellow: #f5cc5b;
 $maingreen: #43a796;
 $orange: #eda63b;
 
-// Update Bulma's global variables
 $family-primary: "Open Sans", Roboto, Helvetica, Arial, sans-serif;
 $family-secondary: "Rounded Mplus", Roboto, Helvetica, Arial, sans-serif;
 
+$red: red;
+$black: #333;
 $primary: $maingreen;
 $secondary: $darkblue;
-$text: $darkblue;
-$text-strong: $darkblue;
-$link: $maingreen;
 
-$radius: 3px;
-
-// Update Bulma's component variables
-
-$input-color: $secondary;
-$input-shadow: none;
-$button-focus-box-shadow-size: 0;
-$button-focus-box-shadow-color: none;
-$button-ghost-hover-decoration: none;
-$label-color: $secondary;
+$text: $secondary;
+$text-strong: $secondary;
+$link: $primary;
 
 @import "base";
 
