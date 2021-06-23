@@ -1,6 +1,6 @@
 {
-  "name": "Bürgerportal Bergisch Gladbach",
-  "title": "Join 2,600 people building a new kind of newspaper",
+  "name": "beabee",
+  "title": "Join the beabee dev newsroom",
   "subtitle": "<p>Members get exclusive opportunities to have a say while supporting quality journalism and our innovative model.</p>",
   "currency": "€",
   "periods": [
@@ -17,7 +17,7 @@
   ],
   "initialPeriod": "monthly",
   "initialAmount": 5,
-  "termsLink": "https://thebristolcable.org/terms",
-  "privacyLink": "https://thebristolcable.org/privacy"
+  "termsLink": "https://example.com/terms",
+  "privacyLink": "https://example.com/privacy"
 }
 
