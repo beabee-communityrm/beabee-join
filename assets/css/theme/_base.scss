@@ -1,6 +1,31 @@
+$radius: 3px !default;
+
+$red-lighter: change-color($red, $lightness: 95%) !default;
+$grey-lightest: #efefef !default;
+$danger-lighter: $red-lighter !default;
+
+$label-color: $text !default;
+$input-color: $text !default;
+$input-border-color: $primary !default;
+$input-hover-border-color: $primary !default;
+$input-shadow: none !default;
+$button-focus-box-shadow-size: 0 !default;
+$button-focus-box-shadow-color: none !default;
+$button-ghost-hover-decoration: none !default;
+$help-size: 0.9rem;
+
+$custom-colors: (
+  "danger-lighter": ($danger-lighter, $black),
+  "grey-lightest": ($grey-lightest, $black)
+);
+
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
+
+@function to-rgb($color) {
+  @return red($color), green($color), blue($color);
+}
 
 // Export SCSS vars to CSS for theming
 :root {
@@ -12,8 +37,19 @@
 
   @each $name, $pair in $colors {
     --c-#{$name}: #{nth($pair, 1)};
+    --c-#{$name}-rgb: #{to-rgb(nth($pair, 1))};
   }
   @each $name, $color in $shades {
     --c-#{$name}: #{$color};
+    --c-#{$name}-rgb: #{to-rgb($color)};
+  }
+}
+
+.button {
+  @each $name, $pair in $colors {
+    &.is-#{$name}.is-outlined:hover {
+      color: nth($pair, 1);
+      background-color: transparentize(nth($pair, 1), 0.9);
+    }
   }
 }

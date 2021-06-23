@@ -19,33 +19,24 @@
   font-style: normal;
 }
 
-// Update Bulma's global variables
-
 $family-primary: "HK Grotesk", Roboto, Helvetica, Arial, sans-serif;
 $family-secondary: $family-primary;
+$body-line-height: 1.3;
 
+$red: #ce3d3d;
+$red-lighter: #fbefef;
+$black: #333;
 $primary: #048ba8;
 $secondary: #024d5d;
-$red: #ce3d3d;
-$text: #333;
-$text-strong: $text;
+
+$text: $black;
+$text-strong: $black;
 $link: $primary;
-$radius: 3px;
 
-// Update Bulma's component variables
-
-$input-color: $text;
-$input-shadow: none;
-$help-size: 0.9rem;
-$button-focus-box-shadow-size: 0;
-$button-focus-box-shadow-color: none;
-$button-ghost-hover-decoration: none;
-$label-color: $text;
 $title-family: "Rubik", Roboto, Helvetica, Arial, sans-serif;
 
 @import "base";
 
 :root {
   --join-page-bg: url(~/assets/img/cable-bg.jpg);
-  --input-danger-background-color: #fbefef;
 }

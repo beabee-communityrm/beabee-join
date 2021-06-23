@@ -1,6 +1,8 @@
 @import "~bulma/sass/utilities/all";
 
 body {
+  background-color: var(--c-grey-lightest);
+
   @include tablet {
     background: var(--join-page-bg);
     background-attachment: fixed;
@@ -30,7 +32,7 @@ body {
   opacity: 0;
 }
 
-.join-period-input:checked + .join-period-button {
+.join-period-input:checked + .button.is-primary.is-outlined {
   background-color: var(--c-primary);
   color: white;
 }
@@ -111,13 +113,21 @@ body {
       border-bottom: 1px solid var(--c-grey-light);
     }
     &:hover {
-      background-color: var(--c-grey-lightest);
+      color: var(--c-primary);
     }
   }
 }
 
 .join-amount-presets {
   display: flex;
+
+  & > .button {
+    border: 1px solid var(--c-primary);
+    color: var(--c-primary);
+    &:hover {
+      background-color: rgba(var(--c-primary-rgb), 0.1);
+    }
+  }
 
   @include mobile {
     & > .button:not(:first-child) {
@@ -143,4 +153,24 @@ body {
       border-bottom-right-radius: 0;
     }
   }
+}
+
+.join-errors {
+  display: flex;
+  margin-bottom: 1rem;
+  color: var(--c-danger);
+  font-weight: bold;
+  background-color: var(--c-danger-lighter);
+  border-radius: var(--radius);
+}
+
+.join-errors__icon {
+  flex: 0 0 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--c-danger);
+  color: var(--c-danger-lighter);
+  border-top-left-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
 }

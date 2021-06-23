@@ -16,7 +16,7 @@
           <p class="control is-expanded">
             <label v-bind:class="{ 'is-focused': period === p.name }">
               <input class="join-period-input" type="radio" name="period" :value="p.name" v-model="period" v-on:change="amount = p.presetAmounts[0]">
-              <span class="join-period-button button is-primary is-outlined is-fullwidth">
+              <span class="button is-primary is-outlined is-fullwidth">
                 {{ p.label }}
               </span>
             </label>
@@ -42,10 +42,9 @@
           <div class="column hidden-nojs">
             <div class="join-amount-presets">
               <button
-                class="button is-primary is-outlined is-fullwidth" type="button"
+                class="button" type="button"
                 v-for="presetAmount in presetAmounts" :key="presetAmount"
                 v-on:click="amount = presetAmount"
-                :class="{'is-focused': amount === presetAmount}"
                >
                 {{ content.currency }}{{ presetAmount }}
               </button>
@@ -60,17 +59,11 @@
         <fieldset>
           <div class="field">
             <label class="label" for="email">Email</label>
-            <div class="control has-icons-left" :class="{'has-icons-right': !!errors.email}">
+            <div class="control">
               <input
                 class="input" type="email" name="email" id="email" required
                 v-model="email" :class="{'is-danger': !!errors.email}" @blur="checkEmail"
               >
-              <span class="icon is-small is-left">
-                <i class="fa fa-envelope"></i>
-              </span>
-              <span class="icon is-small is-right" v-show="!!errors.email">
-                <i class="fa fa-exclamation-triangle"></i>
-              </span>
             </div>
             <p class="help is-danger" v-show="!!errors.email">
               {{ errors.email }}
@@ -78,22 +71,16 @@
           </div>
           <div class="field">
             <label class="label" for="password">Password</label>
-            <div class="control has-icons-left" :class="{'has-icons-right': !!errors.password}">
+            <div class="control">
               <input
                 class="input" type="password" id="password" name="password" minlength="8" required
                 v-model="password"  :class="{'is-danger': !!errors.password}" @blur="checkPassword"
                >
-              <span class="icon is-small is-left">
-                <i class="fa fa-key"></i>
-              </span>
-              <span class="icon is-small is-right" v-show="!!errors.password">
-                <i class="fa fa-exclamation-triangle"></i>
-              </span>
             </div>
             <p class="help is-danger" v-show="!!errors.password">
               {{ errors.password }}
             </p>
-            <div class="help is-flex is-align-items-center">
+            <div class="help is-flex is-align-items-baseline">
               <span class="icon mr-1">
                 <i class="fa fa-info-circle"></i>
               </span>
@@ -172,8 +159,13 @@
         </div>
       </section><!-- /#payment -->
 
-      <div class="notification p-3 is-danger" v-show="hasErrors">
-        Something is missing, please check the fields above
+      <div class="join-errors" v-show="hasErrors">
+        <div class="join-errors__icon">
+          <i class="fa fa-exclamation" aria-hidden="true"></i>
+        </div>
+        <p class="p-3">
+          Something is missing, please check the fields above
+        </p>
       </div>
 
       <section class="block">
