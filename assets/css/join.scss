@@ -1,6 +1,7 @@
 @import "~bulma/sass/utilities/all";
 
-body {
+.join-wrapper {
+  min-height: 100vh;
   background-color: var(--c-grey-lightest);
 
   @include tablet {
@@ -124,6 +125,8 @@ body {
   & > .button {
     border: 1px solid var(--c-primary);
     color: var(--c-primary);
+    flex: 1 1 auto;
+
     &:hover {
       background-color: rgba(var(--c-primary-rgb), 0.1);
     }
