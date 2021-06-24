@@ -21,7 +21,7 @@ export function wrapAsyncForm(handler) {
 
     wrapAsync(handler)(req, res, (error) => {
       if (error && isXhr) {
-        res.status(401).send(error.toJSON());
+        res.status(500).send(error.toJSON());
       } else {
         next(error);
       }

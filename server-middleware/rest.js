@@ -17,8 +17,16 @@ app.use((req, res, next) => {
 });
 
 app.post('/join', wrapAsyncForm(async (req, res) => {
-  const data = await req.api.signUp(req.body, process.env.AUDIENCE_URL + '/join/complete');
-  res.redirect(data.redirectUrl);
+  try {
+    const data = await req.api.signUp(req.body, process.env.AUDIENCE_URL + '/join/complete');
+    res.redirect(data.redirectUrl);
+  } catch (error) {
+    if (error.response && error.response.status === 401) {
+      res.status(401).send(error.response.data);
+    } else {
+      throw error;
+    }
+  }
 }));
 
 app.get('/join/complete', wrapAsync(async (req, res) => {
@@ -33,12 +41,16 @@ app.get('/join/complete', wrapAsync(async (req, res) => {
 
     res.redirect('/profile/complete');
   } catch (error) {
-    console.log(error);
-    if (error.response.data.code === 'duplicate-email') {
-      // TODO: handle duplicate emails
-    } else {
-      throw error;
+    if (error.response && error.response.status === 401) {
+      switch (error.response.data.code) {
+        case 'duplicate-email':
+          return res.redirect('/join/duplicate-email');
+        case 'restart-membership':
+          return res.redirect('/join/restart-membership');
+      }
     }
+
+    throw error;
   }
 }));
 
