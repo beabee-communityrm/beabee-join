@@ -45,11 +45,36 @@ $custom-colors: (
   }
 }
 
+body.has-js .hidden-js,
+body.no-js .hidden-nojs {
+  display: none !important;
+}
+
+input[type=radio] {
+  vertical-align: center;
+}
+
 .button {
+  font-weight: bold;
+
   @each $name, $pair in $colors {
     &.is-#{$name}.is-outlined:hover {
       color: nth($pair, 1);
       background-color: transparentize(nth($pair, 1), 0.9);
     }
   }
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+
+  & > input {
+    margin-top: 0.1rem;
+    margin-right: 0.4rem;
+  }
+}
+
+.input.is-danger {
+  background-color: $danger-lighter;
 }

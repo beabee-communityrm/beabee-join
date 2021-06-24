@@ -27,8 +27,7 @@ export default {
   ],
   css: [
     '~/assets/css/fork-awesome.min',
-    `~/assets/css/theme/${process.env.THEME}`,
-    '~/assets/css/main',
+    `~/assets/css/theme/${process.env.THEME}`
   ],
   http: {serverTimeout: 5000},
   serverMiddleware: [
