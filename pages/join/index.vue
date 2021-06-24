@@ -189,7 +189,6 @@
 
 <script>
 export default {
-  layout: 'splash',
   async asyncData(context) {
     const content = await context.$content('join');
     return {
