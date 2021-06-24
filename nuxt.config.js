@@ -1,6 +1,7 @@
 import meta from './content/meta.json';
 
 export default {
+  components: true,
   head: {
     title: meta.title,
     bodyAttrs: {
