@@ -1,6 +1,7 @@
 @import "~bulma/sass/utilities/all";
 
-body {
+.join-wrapper {
+  min-height: 100vh;
   background-color: var(--c-grey-lightest);
 
   @include tablet {
