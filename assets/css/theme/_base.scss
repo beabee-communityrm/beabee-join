@@ -12,6 +12,7 @@ $input-shadow: none !default;
 $button-focus-box-shadow-size: 0 !default;
 $button-focus-box-shadow-color: none !default;
 $button-ghost-hover-decoration: none !default;
+$box-shadow: 0 0 1em 0.125em transparentize($black, 0.6);
 $help-size: 0.9rem;
 
 $custom-colors: (
