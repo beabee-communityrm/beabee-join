@@ -260,12 +260,12 @@ export default {
 
       if (!this.hasErrors) {
         this.isSubmitting = true;
-        try {
-          await this.$submitForm(evt);
-        } catch (errors) {
+        const [errors] = await this.$submitForm(evt);
+
+        if (errors) {
           this.errors = errors;
+          this.isSubmitting = false;
         }
-        this.isSubmitting = false;
       }
     }
   }

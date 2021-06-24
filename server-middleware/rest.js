@@ -21,8 +21,8 @@ app.post('/join', wrapAsyncForm(async (req, res) => {
     const data = await req.api.signUp(req.body, process.env.AUDIENCE_URL + '/join/complete');
     res.redirect(data.redirectUrl);
   } catch (error) {
-    if (error.response && error.response.status === 401) {
-      res.status(401).send(error.response.data);
+    if (error.response && error.response.status === 400) {
+      res.status(400).send(error.response.data);
     } else {
       throw error;
     }
@@ -45,7 +45,7 @@ app.get('/join/complete', wrapAsync(async (req, res) => {
 
     res.redirect('/profile/complete');
   } catch (error) {
-    if (error.response && error.response.status === 401) {
+    if (error.response && error.response.status === 400) {
       switch (error.response.data.code) {
         case 'duplicate-email':
           return res.redirect('/join/duplicate-email');

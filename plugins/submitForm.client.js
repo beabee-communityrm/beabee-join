@@ -19,10 +19,17 @@ async function submitForm(evt) {
         $nuxt.$router.push(response.data.redirectUrl);
       }
     }
-    return response;
-  } catch (err) {
-    // TODO: Form error handling
-    console.log(err);
+    return [null, response];
+  } catch (error) {
+    if (error.response && error.response.status === 400) {
+      const errors = {};
+      for (const error of error.response.data.errors) {
+        errors[error.property] = 'Invalid value';
+      }
+      return [errors];
+    } else {
+      throw error;
+    }
   }
 }
 
