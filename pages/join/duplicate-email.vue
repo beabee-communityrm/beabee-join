@@ -1,6 +1,6 @@
 <template>
-  <ErrorBox title="Duplicate email address">
-    <p class="is-size-5 mb-5">
+  <NoticeBox title="Duplicate email address">
+    <p class="mb-5">
       This email address is already registered, you can <a
       href="/login">login</a> to proceeed.
     </p> 
@@ -9,7 +9,7 @@
         Back to join page
       </NuxtLink>
     </p>
-  </ErrorBox>
+  </NoticeBox>
 </template>
 
 <script>

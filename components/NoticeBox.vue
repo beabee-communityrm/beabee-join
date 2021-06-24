@@ -22,7 +22,7 @@
 </style>
 
 <template>
-  <div class="error-box box has-background-white">
+  <div class="error-box box has-background-white is-size-5">
     <h1 class="title error-box-title mb-5">{{ title }}</h1>
     <slot></slot>
   </div>
