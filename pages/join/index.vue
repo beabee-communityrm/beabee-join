@@ -79,17 +79,12 @@
         <section id="payment" class="block" v-show="period !== 'annually'">
           <h5 class="title is-5 mb-3">Payment method</h5>
           <div v-show="period !== 'annually'">
-            <p class="mb-4">
-              <label class="checkbox">
-                <input type="checkbox" name="payFee" checked>
-                <span>
-                  Our payment processor charges us per transaction, which means we
-                  receive less from monthly contributions. Are you happy to absorb
-                  the <span class="hidden-nojs">{{ fee }}</span> transaction fee?
-                  Alternatively you could pay annually.
-                </span>
-              </label>
-            </p>
+            <Checkbox v-model="payFee" name="payFee" checked>
+              Our payment processor charges us per transaction, which means we
+              receive less from monthly contributions. Are you happy to absorb
+              the <span class="hidden-nojs">{{ fee }}</span> transaction fee?
+              Alternatively you could pay annually.
+            </Checkbox>
             <p>
               <i class="fa fa-lock" aria-hidden="true"></i>
               Your payment will be processed securely with GoCardless under the
@@ -126,6 +121,7 @@ export default {
     return {
       email: '',
       password: '',
+      payFee: true,
       errors: {
         email: null,
         password: null

@@ -11,7 +11,7 @@
         :id="id || name"
         :value="value"
         @input="$emit('input', $event.target.value)"
-        @blur="blur"
+        @blur="blur || undefined"
       >
     </div>
     <p class="help is-danger" v-show="!!error">

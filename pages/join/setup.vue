@@ -32,6 +32,11 @@
               :blur="checkRequired('lastname', 'Last name')"
               :error="errors.lastname"
             />
+          </fieldset>
+        </section>
+        <section class="block">
+          <h5 class="title is-5 mb-3">Delivery address</h5>
+          <fieldset>
             <Input name="addressLine1" label="Address line 1" v-model="addressLine1" />
             <Input name="addressLine2" label="Address line 2" v-model="addressLine2" />
             <div class="columns">
@@ -43,6 +48,12 @@
               </div>
             </div>
           </fieldset>
+        </section>
+        <section class="block">
+          <h5 class="title is-5 mb-3">Newsletters</h5>
+          <Checkbox name="newsletterStatus" checked>
+            Do you want to receive member emails?
+          </Checkbox>
         </section>
       </template>
       <template #submit>
@@ -72,6 +83,7 @@ export default {
     };
   },
   data: () => ({
+    newsletterStatus: true,
     errors: {
       email: null,
       firstname: null,
