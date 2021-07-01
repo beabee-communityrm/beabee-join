@@ -23,7 +23,7 @@
       :hasErrors="hasErrors"
       v-on:errors="errors = $event"
     >
-      <template v-slot:inputs>
+      <template #inputs>
         <nav class="block columns is-mobile is-variable is-1">
           <div class="column pt-0" v-for="(p) in content.periods" :key="p.name">
             <p class="control is-expanded">
@@ -99,7 +99,7 @@
         </section><!-- /#payment -->
       </template>
 
-      <template v-slot:submit>
+      <template #submit>
         <span>Contribute <span class="hidden-nojs">{{ submitText }}</span></span>
       </template>
     </Form>
