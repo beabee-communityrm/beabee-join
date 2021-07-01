@@ -54,6 +54,10 @@ app.get('/join/complete', wrapAsync(async (req, res) => {
   }
 }));
 
+app.post('/join/setup', wrapAsyncForm(async (req, res) => {
+  res.redirect('/profile');
+}));
+
 app.get('/_api/*', wrapAsync(async (req, res) => {
   const response = await req.api.instance.get('/' + req.params[0]);
   res.send(response.data);
