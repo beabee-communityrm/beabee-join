@@ -83,50 +83,6 @@
 
         <section id="payment" class="block" v-show="period !== 'annually'">
           <h5 class="title is-5 mb-3">Payment method</h5>
-          <!--<fieldset>
-            <div class="mb-2">
-              <label class="radio">
-                <input type="radio" name="payment" value="credit-card" v-model="payment">
-                <i class="fa fa-credit-card" aria-hidden="true"></i>
-                Credit/Debit Card
-              </label>
-              <div class="mb-4" v-show="payment === 'credit-card'">
-                <p>
-                  <small>
-                    You will be taken to GoCardless to confirm your payment
-                    details, after which you will be returned here to complete the
-                    process.
-                  </small>
-                </p>
-              </div>
-            </div>
-
-            <div class="mb-2">
-              <label class="radio">
-                <input type="radio" name="payment" value="direct-debit" v-model="payment">
-                <i class="fa fa-calendar" aria-hidden="true"></i>
-                Direct debit
-              </label>
-              <div class="mb-4" v-show="payment === 'direct-debit'">
-                <p><small>You will be taken to GoCardless to confirm your payment details, after
-                  which you will be returned here to complete the process.</small>
-                </p>
-              </div>
-            </div>
-
-            <div class="mb-2">
-              <label class="radio">
-                <input type="radio" name="payment" value="paypal" v-model="payment">
-                <i class="fa fa-paypal" aria-hidden="true"></i>
-                Paypal
-              </label>
-              <div class="mb-4" v-show="payment === 'paypal'">
-                <p><i class="fa fa-lock" aria-hidden="true"></i> <small>You will be taken to GoCardless to confirm your payment details, after
-                  which you will be returned here to complete the process.</small>
-                </p>
-              </div>
-            </div>
-          </fieldset>-->
           <div v-show="period !== 'annually'">
             <p class="mb-4">
               <label class="checkbox">
