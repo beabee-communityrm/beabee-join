@@ -1,6 +1,4 @@
 <style lang="scss">
-  @import "~bulma/sass/utilities/all";
-
   .join-subtitle {
     font-size: 1.15rem;
   }
