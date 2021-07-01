@@ -21,7 +21,7 @@
 </style>
 
 <template>
-  <form :method="method" @submit.prevent="checkAndSubmit" :novalidate="hasMounted">
+  <form @submit.prevent="checkAndSubmit" :novalidate="hasMounted">
     <slot name="inputs"></slot>
 
     <div class="form-errors" v-show="hasErrors">
@@ -48,11 +48,11 @@
 
 <script>
 export default {
-  props: ['method', 'canSubmit', 'checkForm', 'hasErrors'],
-  data: {
+  props: ['canSubmit', 'checkForm', 'hasErrors'],
+  data: () => ({
     isSubmitting: false,
     hasMounted: false
-  },
+  }),
   mounted() {
     this.hasMounted = true;
   },
