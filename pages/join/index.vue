@@ -25,6 +25,7 @@
     <Form
       method="POST"
       :checkForm="checkForm"
+      :canSubmit="canSubmit"
       :hasErrors="hasErrors"
       v-on:errors="errors = $event"
     >
@@ -48,7 +49,7 @@
             :currency="content.currency"
             :minAmount="minAmount"
             :presetAmounts="presetAmounts"
-            :period="periodVerbose"
+            :period="periodForAmount"
           />
         </section><!-- /#amount -->
 
@@ -148,19 +149,19 @@ export default {
     minAmount: function () {
       return this.period === 'monthly' ? 1 : 12;
     },
-    periodVerbose: function() {
+    periodForAmount: function() {
       switch (this.period) {
         case 'monthly': return '/ month';
         case 'annually': return '/ year';
         default: return '';
       }
     },
-    canSubmit: function () {
-      return this.email && this.password && !this.hasErrors;
-    },
     submitText: function() {
       const period = this.period === 'single' ? '' : ' ' + this.period;
       return `${this.content.currency}${this.amount}${period}`;
+    },
+    canSubmit: function () {
+      return this.email && this.password;
     },
     hasErrors: function () {
       return Object.values(this.errors).some(e => !!e);

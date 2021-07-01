@@ -37,7 +37,7 @@
       <p>
         <button
           class="button wrap-text is-fullwidth is-primary"
-          :class="{'is-loading': isSubmitting}" :disabled="hasMounted && !canSubmit"
+          :class="{'is-loading': isSubmitting}" :disabled="hasMounted && (!canSubmit || hasErrors)"
         >
           <slot name="submit"></slot>
         </button>
@@ -48,11 +48,10 @@
 
 <script>
 export default {
-  props: ['method', 'checkForm', 'hasErrors'],
+  props: ['method', 'canSubmit', 'checkForm', 'hasErrors'],
   data: {
     isSubmitting: false,
-    hasMounted: false,
-    canSubmit: true // TODO
+    hasMounted: false
   },
   mounted() {
     this.hasMounted = true;
