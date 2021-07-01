@@ -22,7 +22,12 @@
       <p class="join-subtitle">{{ content.subtitle }}</p>
     </JoinHeader>
 
-    <Form method="POST" :checkForm="checkAndSubmit">
+    <Form
+      method="POST"
+      :checkForm="checkForm"
+      :hasErrors="hasErrors"
+      v-on:errors="errors = $event"
+    >
       <template v-slot:inputs>
         <nav class="block columns is-mobile is-variable is-1">
           <div class="column pt-0" v-for="(p) in content.periods" :key="p.name">
@@ -170,13 +175,10 @@ export default {
     return {
       email: '',
       password: '',
-      payment: 'direct-debit',
       errors: {
         email: null,
         password: null
-      },
-      isSubmitting: false,
-      hasMounted: false
+      }
     };
   },
   computed: {
@@ -218,19 +220,9 @@ export default {
         /[0-9]/.test(this.password);
       this.errors.password = isValid ? null : 'Password does not meet requirements';
     },
-    async checkAndSubmit(evt) {
+    checkForm() {
       this.checkPassword();
       this.checkEmail();
-
-      if (!this.hasErrors) {
-        this.isSubmitting = true;
-        const [errors] = await this.$submitForm(evt);
-
-        if (errors) {
-          this.errors = errors;
-          this.isSubmitting = false;
-        }
-      }
     }
   }
 }

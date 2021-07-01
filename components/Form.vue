@@ -48,22 +48,28 @@
 
 <script>
 export default {
-  props: ['method', 'checkForm'],
+  props: ['method', 'checkForm', 'hasErrors'],
   data: {
     isSubmitting: false,
-    hasMounted: false
+    hasMounted: false,
+    canSubmit: true // TODO
   },
   mounted() {
     this.hasMounted = true;
   },
   methods: {
     async checkAndSubmit(evt) {
-      if (this.checkForm()) {
+      this.checkForm();
+
+      if (!this.hasErrors) {
         this.isSubmitting = true;
         const [errors] = await this.$submitForm(evt);
+        if (errors) {
+          this.$emit('errors', errors);
+        }
         this.isSubmitting = false;
       }
-    }
+    },
   }
 };
 </script>

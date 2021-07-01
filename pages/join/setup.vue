@@ -56,11 +56,6 @@ export default {
       content
     }
   },
-  data() {
-    return {
-      isSubmitting: false
-    };
-  },
   methods: {
     async checkForm() {
       return true;
