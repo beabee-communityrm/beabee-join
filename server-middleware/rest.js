@@ -39,7 +39,7 @@ app.get('/join/complete', wrapAsync(async (req, res) => {
       httpOnly: true
     });
 
-    res.redirect('/profile/complete');
+    res.redirect('/join/setup');
   } catch (error) {
     if (error.response && error.response.status === 400) {
       switch (error.response.data.code) {
