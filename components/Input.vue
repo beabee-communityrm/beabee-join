@@ -5,13 +5,12 @@
     <div class="control">
       <input
         class="input"
+        v-bind="$attrs"
         :class="{'is-danger': !!error}"
-        :type="type"
         :name="name"
         :id="id || name"
-        :required="required"
         :value="value"
-        @input="updateValue($event.target.value)"
+        @input="$emit('input', $event.target.value)"
         @blur="blur"
       >
     </div>
@@ -24,20 +23,14 @@
 
 <script>
 export default {
+  inheritAttrs: false,
   props: {
     id: {type: String},
     name: {type: String, required: true},
     label: {type: String, required: true},
     value: {type: String, required: true},
-    type: {type: String, default: 'text'},
-    required: {type: Boolean, default: false},
     blur: {type: Function},
     error: {type: String}
-  },
-  methods: {
-    updateValue(value) {
-      this.$emit('input', value);
-    }
   }
 }
 </script>
