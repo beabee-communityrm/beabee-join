@@ -1,9 +1,31 @@
+<style lang="scss">
+  .form-errors {
+    display: flex;
+    margin-bottom: 1rem;
+    color: var(--c-danger);
+    font-weight: bold;
+    background-color: var(--c-danger-lighter);
+    border-radius: var(--radius);
+  }
+
+  .form-errors__icon {
+    flex: 0 0 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--c-danger);
+    color: var(--c-danger-lighter);
+    border-top-left-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+  }
+</style>
+
 <template>
   <form :method="method" @submit.prevent="checkAndSubmit" :novalidate="hasMounted">
     <slot name="inputs"></slot>
 
-    <div class="join-errors" v-show="hasErrors">
-      <div class="join-errors__icon">
+    <div class="form-errors" v-show="hasErrors">
+      <div class="form-errors__icon">
         <i class="fa fa-exclamation" aria-hidden="true"></i>
       </div>
       <p class="p-3">
