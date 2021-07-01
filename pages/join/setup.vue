@@ -8,7 +8,7 @@
       <template v-slot:inputs>
         <section class="block">
           <fieldset>
-            <Input name="email" label="Email" v-model="email" required />
+            <Input name="email" type="email" label="Email" v-model="email" required />
             <Input name="firstname" label="First name" v-model="firstname" required />
             <Input name="lastname" label="Last name" v-model="lastname" required />
             <Input name="addressLine1" label="Address line 1" v-model="address.line1" />
