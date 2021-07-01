@@ -156,6 +156,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   props: ['currency', 'period', 'minAmount', 'presetAmounts', 'value'],

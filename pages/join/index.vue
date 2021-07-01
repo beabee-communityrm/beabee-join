@@ -1,8 +1,4 @@
 <style lang="scss">
-  .join-subtitle {
-    font-size: 1.15rem;
-  }
-
   .join-period-input {
     position: absolute;
     opacity: 0;
@@ -17,7 +13,7 @@
 <template>
   <div>
     <JoinHeader :name="content.name" :title="content.title">
-      <p class="join-subtitle">{{ content.subtitle }}</p>
+      <p class="is-size-5">{{ content.subtitle }}</p>
     </JoinHeader>
 
     <Form

@@ -1,8 +1,10 @@
+$size-5: 1.15rem !default;
 $radius: 3px !default;
 
 $red-lighter: change-color($red, $lightness: 95%) !default;
 $grey-lightest: #efefef !default;
 $danger-lighter: $red-lighter !default;
+
 
 $label-color: $text !default;
 $input-color: $text !default;
