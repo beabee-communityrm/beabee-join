@@ -50,7 +50,7 @@ app.get('/join/complete', wrapAsync(async (req, res) => {
       }
     }
 
-    throw error;
+    res.redirect('/join/failed');
   }
 }));
 
