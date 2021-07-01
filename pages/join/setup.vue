@@ -3,7 +3,7 @@
     <JoinHeader :title="'Welcome ' + firstname">
       <p class="is-size-5">{{ content.welcome }}</p>
     </JoinHeader>
-    <p class="block">Please confirm your details</p>
+    <p class="block">Please confirm your details...</p>
     <Form
       method="POST"
       :checkForm="checkForm"
@@ -57,7 +57,7 @@
         </section>
       </template>
       <template #submit>
-        Save
+        All good! Continue
       </template>
     </form>
   </div>
@@ -68,7 +68,6 @@ export default {
   layout: 'join',
   async asyncData({$axios, $content}) {
     const member = await $axios.$get('/_api/member/me');
-    console.log(member);
     const content = await $content('join');
 
     return {
