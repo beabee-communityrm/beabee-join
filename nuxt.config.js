@@ -23,8 +23,12 @@ export default {
   ],
   modules: [
     '~/modules/content',
+    '@nuxtjs/axios',
     ['nuxt-buefy', {css: false}]
   ],
+  axios: {
+    baseURL: process.env.AUDIENCE_URL
+  },
   css: [
     '~/assets/css/fork-awesome.min',
     `~/assets/css/theme/${process.env.THEME}`
@@ -40,7 +44,6 @@ export default {
     }
   },
   env: {
-    AUDIENCE_URL: process.env.AUDIENCE_URL,
-    API_URL: process.env.API_URL
+    AUDIENCE_URL: process.env.AUDIENCE_URL
   }
 }
