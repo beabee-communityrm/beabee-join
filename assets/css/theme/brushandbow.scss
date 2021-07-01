@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "Open Sans";
+  src: url("~assets/fonts/main/OpenSans-Regular.woff2") format("woff2"),
+     url("~assets/fonts/main/OpenSans-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("~assets/fonts/main/OpenSans-Bold.woff2") format("woff2"),
+     url("~assets/fonts/main/OpenSans-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+$family-primary: "Open Sans", Helvetica, Arial, sans-serif;
+$family-secondary: $family-primary;
+$body-line-height: 1.3;
+
+$red: #ce3d3d;
+$red-lighter: #fbefef;
+$black: #333;
+$primary: #fe9f00;
+$secondary: #636260;
+
+$text: $black;
+$text-strong: $black;
+$link: $primary;
+
+@import "base";
+
+:root {
+  --join-page-bg: none;
+}
+
