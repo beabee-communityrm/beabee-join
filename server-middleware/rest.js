@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(multer().none());
 
 app.use((req, res, next) => {
-  req.api = new Api(req.cookies.token);
+  req.api = new Api(req.cookies.session);
   next();
 });
 
@@ -31,14 +31,10 @@ app.post('/join', wrapAsyncForm(async (req, res) => {
 
 app.get('/join/complete', wrapAsync(async (req, res) => {
   try {
-    const {cookie, jwt} = await req.api.completeSignUp(req.query.redirect_flow_id)
+    const {cookie} = await req.api.completeSignUp(req.query.redirect_flow_id)
     const match = cookie.match(/session=([^;]+);/)
 
     res.cookie('session', decodeURIComponent(match[1]), {
-      maxAge: 267840000,
-      httpOnly: true
-    });
-    res.cookie('token', jwt, {
       maxAge: 267840000,
       httpOnly: true
     });
@@ -56,6 +52,11 @@ app.get('/join/complete', wrapAsync(async (req, res) => {
 
     throw error;
   }
+}));
+
+app.get('/_api/*', wrapAsync(async (req, res) => {
+  const response = await req.api.instance.get('/' + req.params[0]);
+  res.send(response.data);
 }));
 
 export default {

@@ -1,17 +1,17 @@
 import axios from 'axios';
 
 export default class Api {
-  constructor(token) {
-    this.api = axios.create({
-      baseURL: process.env.API_URL,
+  constructor(session) {
+    this.instance = axios.create({
+      baseURL: process.env.SERVER_API_URL,
       headers: {
-        'Authorization': 'Bearer ' + token
+        'Cookie': 'session=' + session
       }
     });
   }
 
   async signUp(data, completeUrl) {
-    const response = await this.api.post('/signup', {
+    const response = await this.instance.post('/signup', {
       email: data.email,
       password: data.password,
       amount: Number(data.amount),
@@ -23,10 +23,14 @@ export default class Api {
   }
 
   async completeSignUp(redirectFlowId) {
-    const response = await this.api.post('/signup/complete', {redirectFlowId});
+    const response = await this.instance.post('/signup/complete', {redirectFlowId});
     return {
       cookie: response.headers['set-cookie'].find(s => s.startsWith('session')),
-      jwt: response.data.jwt
     };
+  }
+
+  async getMember(id) {
+    const response = await this.instance.get('/member/' + id);
+    return response.data;
   }
 }
