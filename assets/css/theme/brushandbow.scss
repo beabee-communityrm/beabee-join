@@ -20,7 +20,7 @@ $body-line-height: 1.3;
 
 $red: #ce3d3d;
 $red-lighter: #fbefef;
-$black: #333;
+$black: #636260;
 $primary: #fe9f00;
 $secondary: #636260;
 
@@ -31,6 +31,6 @@ $link: $primary;
 @import "base";
 
 :root {
-  --join-page-bg: none;
+  --join-page-bg: url(https://brushandbow.com/wp-content/uploads/2019/10/world-map-background_.gif) center;
 }
 
