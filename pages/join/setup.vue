@@ -35,7 +35,7 @@
           </fieldset>
         </section>
         <section class="block">
-          <h5 class="title is-5 mb-3">Delivery address</h5>
+          <h5 class="title is-5 mt-6 mb-3">Delivery address</h5>
           <fieldset>
             <Input name="addressLine1" label="Address line 1" v-model="addressLine1" />
             <Input name="addressLine2" label="Address line 2" v-model="addressLine2" />

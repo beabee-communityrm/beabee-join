@@ -80,3 +80,11 @@ input[type=radio] {
 .input.is-danger {
   background-color: $danger-lighter;
 }
+
+.label:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.field:not(:last-child) {
+  margin-bottom: 1.25rem;
+}
