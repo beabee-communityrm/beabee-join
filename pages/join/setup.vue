@@ -1,9 +1,8 @@
 <template>
   <div>
-    <JoinHeader :title="'Welcome ' + firstname">
+    <JoinHeader :title="'Welcome ' + firstname" subtitle="Please confirm your details...">
       <p class="is-size-5">{{ content.welcome }}</p>
     </JoinHeader>
-    <p class="block">Please confirm your details...</p>
     <Form
       method="POST"
       :checkForm="checkForm"
