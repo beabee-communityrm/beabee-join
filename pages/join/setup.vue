@@ -36,14 +36,14 @@
         </section>
         <section class="block" v-if="content.showDeliveryAddress">
           <fieldset>
-            <Input name="addressLine1" label="Address line 1" v-model="addressLine1" />
-            <Input name="addressLine2" label="Address line 2" v-model="addressLine2" />
+            <Input name="deliveryAddress[line1]" label="Address line 1" v-model="deliveryAddress.line1" />
+            <Input name="deliveryAddress[line2]" label="Address line 2" v-model="deliveryAddress.line2" />
             <div class="columns">
               <div class="column">
-                <Input name="city" label="City/town" v-model="addressCity" />
+                <Input name="deliveryAddress[city]" label="City/town" v-model="deliveryAddress.city" />
               </div>
               <div class="column">
-                <Input name="postcode" label="Postcode" v-model="addressPostcode" />
+                <Input name="deliveryAddress[postcode]" label="Postcode" v-model="deliveryAddress.postcode" />
               </div>
             </div>
           </fieldset>
@@ -51,7 +51,7 @@
         <section class="block" v-if="content.showDeliveryAddress">
           <p class="is-size-5 mb-1">Can we send you occasional mail?</p>
           <p class="mb-1 has-text-lighter">{{ content.mail }}</p>
-          <Checkbox name="newsletterStatus" checked>
+          <Checkbox name="deliveryOptIn" :checked="deliveryOptIn">
             <b>Yes, you can send me occasional mail</b>
           </Checkbox>
         </section>
@@ -81,10 +81,8 @@ export default {
       email: member.email,
       firstname: member.firstname,
       lastname: member.lastname,
-      addressLine1: 'Line 1',
-      addressLine2: 'Line 2',
-      addressCity: 'City',
-      addressPostcode: 'Postcode',
+      deliveryAddress: member.deliveryAddress || {},
+      deliveryOptIn: member.deliveryOptIn,
       content
     };
   },
@@ -93,11 +91,7 @@ export default {
     errors: {
       email: null,
       firstname: null,
-      lastname: null,
-      addressLine1: null,
-      addressLine2: null,
-      addressCity: null,
-      addressPostcode: null,
+      lastname: null
     }
   }),
   computed: {
