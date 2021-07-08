@@ -34,8 +34,7 @@
             />
           </fieldset>
         </section>
-        <section class="block">
-          <h5 class="title is-5 mt-6 mb-3">Delivery address</h5>
+        <section class="block" v-if="content.showDeliveryAddress">
           <fieldset>
             <Input name="addressLine1" label="Address line 1" v-model="addressLine1" />
             <Input name="addressLine2" label="Address line 2" v-model="addressLine2" />
@@ -49,10 +48,18 @@
             </div>
           </fieldset>
         </section>
-        <section class="block">
-          <h5 class="title is-5 mb-3">Newsletters</h5>
+        <section class="block" v-if="content.showDeliveryAddress">
+          <p class="is-size-5 mb-1">Can we send you occasional mail?</p>
+          <p class="mb-1 has-text-lighter">{{ content.mail }}</p>
           <Checkbox name="newsletterStatus" checked>
-            Do you want to receive member emails?
+            <b>Yes, you can send me occasional mail</b>
+          </Checkbox>
+        </section>
+        <section class="block">
+          <p class="is-size-5 mb-1">Keep up to do with our newsletter</p>
+          <p class="mb-1 has-text-lighter">{{ content.newsletter }}</p>
+          <Checkbox name="newsletterStatus" checked>
+            <b>Yes, I want to receive newsletters</b>
           </Checkbox>
         </section>
       </template>
@@ -68,7 +75,7 @@ export default {
   layout: 'join',
   async asyncData({$axios, $content}) {
     const member = await $axios.$get('/_api/member/me');
-    const content = await $content('join');
+    const content = await $content('join/setup');
 
     return {
       email: member.email,
