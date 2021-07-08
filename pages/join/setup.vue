@@ -10,6 +10,7 @@
       :canSubmit="canSubmit"
       :hasErrors="hasErrors"
       v-on:errors="errors = $event"
+      submitButtonType="is-success"
     >
       <template #inputs>
         <section class="block">
@@ -102,7 +103,7 @@ export default {
   }),
   computed: {
     canSubmit() {
-      return this.email && this.firstname && this.lastname;
+      return !!(this.email && this.firstname && this.lastname);
     },
     hasErrors() {
       return Object.values(this.errors).some(e => !!e);
