@@ -1,7 +1,13 @@
 <template>
   <p class="mb-4">
     <label class="checkbox">
-      <input v-bind="$attrs" :checked="value || undefined" type="checkbox" @input="$emit('input', $event.target.value)">
+      <input
+        type="checkbox"
+        v-bind="$attrs"
+        :checked="value || undefined"
+        :value="checkboxValue || true"
+        @input="$emit('input', $event.target.value)"
+      >
       <span>
         <slot></slot>
       </span>
@@ -12,6 +18,6 @@
 <script>
 export default {
   inheritAttrs: false,
-  props: ['value']
+  props: ['value', 'checkboxValue']
 }
 </script>
