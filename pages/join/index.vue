@@ -151,7 +151,7 @@ export default {
       return `${this.content.currency}${this.amount}${period}`;
     },
     canSubmit: function () {
-      return this.email && this.password;
+      return !!(this.email && this.password);
     },
     hasErrors: function () {
       return Object.values(this.errors).some(e => !!e);
