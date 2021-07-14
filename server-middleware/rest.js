@@ -64,6 +64,16 @@ app.get('/join/complete', wrapAsync(async (req, res) => {
 }));
 
 app.post('/join/setup', wrapAsyncForm(async (req, res) => {
+  await req.api.put('/member/me', {
+    email: req.body.email,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    profile: {
+      deliveryOptIn: req.body.profile.deliveryOptIn === 'true',
+      deliveryAddress: req.body.profile.deliveryAddress,
+      newsletterStatus: req.body.profile.newsletterStatus || 'unsubscribed'
+    }
+  });
   res.redirect('/profile');
 }));
 
