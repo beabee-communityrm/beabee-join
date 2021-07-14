@@ -8,7 +8,7 @@ $text-lighter: change-color($text, $lightness: 40%) !default;
 
 $label-color: $text !default;
 $input-color: $text !default;
-$input-border-color: $primary !default;
+$input-border-color: transparentize($primary, 0.5) !default;
 $input-hover-border-color: $primary !default;
 $input-shadow: none !default;
 $button-focus-box-shadow-size: 0 !default;
