@@ -1,8 +1,8 @@
+import axios from 'axios';
 import cookierParser from 'cookie-parser';
 import express from 'express';
 import multer from 'multer';
 
-import Api from './lib/api';
 import { wrapAsync, wrapAsyncForm } from './lib/utils';
 
 const app = express()
@@ -12,28 +12,37 @@ app.use(express.urlencoded({ extended: true }))
 app.use(multer().none());
 
 app.use((req, res, next) => {
-  req.api = new Api(req.cookies.session);
+  req.api = axios.create({
+    baseURL: process.env.SERVER_API_URL,
+    headers: {
+      'Cookie': 'session=' + req.cookies.session
+    }
+  });
   next();
 });
 
 app.post('/join', wrapAsyncForm(async (req, res) => {
-  try {
-    const data = await req.api.signUp(req.body, process.env.AUDIENCE_URL + '/join/complete');
-    res.redirect(data.redirectUrl);
-  } catch (error) {
-    if (error.response && error.response.status === 400) {
-      res.status(400).send(error.response.data);
-    } else {
-      throw error;
-    }
-  }
+  const response = await req.api.post('/signup', {
+    email: data.email,
+    password: data.password,
+    amount: Number(data.amount),
+    period: data.period,
+    payFee: data.payFee === 'true',
+    completeUrl: process.env.AUDIENCE_URL + '/join/complete'
+  });
+
+  res.redirect(response.data.redirectUrl);
 }));
 
 app.get('/join/complete', wrapAsync(async (req, res) => {
   try {
-    const {cookie} = await req.api.completeSignUp(req.query.redirect_flow_id)
-    const match = cookie.match(/session=([^;]+);/)
+    const response = await req.api.post('/signup/complete', {
+      redirectFlowId: req.query.redirect_flow_id
+    });
 
+    // Pass the cookie along
+    const cookie = response.headers['set-cookie'].find(s => s.startsWith('session'));
+    const match = cookie.match(/session=([^;]+);/)
     res.cookie('session', decodeURIComponent(match[1]), {
       maxAge: 267840000,
       httpOnly: true
@@ -58,8 +67,9 @@ app.post('/join/setup', wrapAsyncForm(async (req, res) => {
   res.redirect('/profile');
 }));
 
+// Proxy API requests
 app.get('/_api/*', wrapAsync(async (req, res) => {
-  const response = await req.api.instance.get('/' + req.params[0]);
+  const response = await req.api.get('/' + req.params[0]);
   res.send(response.data);
 }));
 
