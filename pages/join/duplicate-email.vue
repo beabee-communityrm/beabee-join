@@ -4,7 +4,9 @@
       This email address is already registered, you can login to proceed
     </p> 
     <p class="mb-5">
-      <a class="button is-medium is-primary is-fullwidth" href="/login">Login</a>
+      <NuxtLink class="button is-medium is-primary is-fullwidth" to="/login">
+        Login here
+      </NuxtLink>
     </p>
     <p class="has-text-centered">
       <NuxtLink to="/join">
