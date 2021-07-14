@@ -23,11 +23,11 @@ app.use((req, res, next) => {
 
 app.post('/join', wrapAsyncForm(async (req, res) => {
   const response = await req.api.post('/signup', {
-    email: data.email,
-    password: data.password,
-    amount: Number(data.amount),
-    period: data.period,
-    payFee: data.payFee === 'true',
+    email: req.body.email,
+    password: req.body.password,
+    amount: Number(req.body.amount),
+    period: req.body.period,
+    payFee: req.body.payFee === 'true',
     completeUrl: process.env.AUDIENCE_URL + '/join/complete'
   });
 
