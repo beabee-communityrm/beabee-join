@@ -109,8 +109,8 @@
 <script>
 export default {
   layout: 'join',
-  async asyncData(context) {
-    const content = await context.$content('join');
+  async asyncData({$axios}) {
+    const content = await $axios.$get('/_content/join');
     return {
       content,
       amount: content.initialAmount,

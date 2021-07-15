@@ -3,10 +3,6 @@ import path from 'path';
 
 export default function ContentModule() {
   const contentDir = path.join(this.options.srcDir, 'content');
-  this.addPlugin({
-    fileName: 'content/plugin.js',
-    src: path.join(__dirname, 'templates/plugin.js')
-  });
   this.addServerMiddleware({
     path: '_content',
     handler: async function (req, res) {
