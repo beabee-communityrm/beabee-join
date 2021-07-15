@@ -56,6 +56,8 @@ app.get('/join/complete', wrapAsync(async (req, res) => {
           return res.redirect('/join/duplicate-email');
         case 'restart-membership':
           return res.redirect('/join/restart-membership');
+        case 'confirm-email':
+          return res.redirect('/join/confirm-email');
       }
     }
 
