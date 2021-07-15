@@ -36,8 +36,5 @@ export default {
   },
   serverMiddleware: [
     '~/server-middleware/rest.js',
-  ],
-  env: {
-    AUDIENCE_URL: process.env.AUDIENCE_URL
-  }
+  ]
 }
