@@ -54,14 +54,14 @@
             <Input
               name="email" type="email" label="Email" required
               v-model="email"
-              :blur="checkEmail"
               :error="errors.email"
+              @blur="checkEmail"
             />
             <Input
               name="password" type="password" label="Password" required
               v-model="password"
-              :blur="checkPassword"
               :error="errors.password"
+              @blur="checkPassword"
             >
               <div class="help is-flex is-align-items-baseline">
                 <span class="icon mr-1">

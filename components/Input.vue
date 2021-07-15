@@ -11,7 +11,7 @@
         :id="id || name"
         :value="value"
         @input="$emit('input', $event.target.value)"
-        @blur="blur || undefined"
+        @blur="$emit('blur', $event)"
       >
     </div>
     <p class="help is-danger" v-show="!!error">
@@ -29,7 +29,6 @@ export default {
     name: {type: String, required: true},
     label: {type: String, required: true},
     value: {type: String, default: ""},
-    blur: {type: Function},
     error: {type: String}
   }
 }
