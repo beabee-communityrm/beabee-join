@@ -1,6 +1,7 @@
 $size-5: 1.15rem !default;
 $radius: 3px !default;
 
+$red: hsl(348, 86%, 61%) !default;
 $red-lighter: change-color($red, $lightness: 95%) !default;
 $grey-lightest: #efefef !default;
 

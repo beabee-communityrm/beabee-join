@@ -1,20 +1,25 @@
 @font-face {
-  font-family: "Open Sans";
-  src: url("~assets/fonts/main/OpenSans-Regular.woff2") format("woff2"),
-     url("~assets/fonts/main/OpenSans-Regular.woff") format("woff");
+  font-family: 'Fira Sans Condensed';
+  src: url('~assets/fonts/in-gl/FiraSansCondensed-Bold.woff2') format('woff2'), url('~assets/fonts/in-gl/FiraSansCondensed-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Fira Sans Condensed';
+  src: url('~assets/fonts/in-gl/FiraSansCondensed-Regular.woff2') format('woff2'), url('~assets/fonts/in-gl/FiraSansCondensed-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Open Sans";
-  src: url("~assets/fonts/main/OpenSans-Bold.woff2") format("woff2"),
-     url("~assets/fonts/main/OpenSans-Bold.woff") format("woff");
-  font-weight: 700;
+  font-family: 'Fira Sans Condensed';
+  src: url('~assets/fonts/in-gl/FiraSansCondensed-SemiBold.woff2') format('woff2');
+  font-weight: 600;
   font-style: normal;
 }
 
-$family-primary: "Open Sans", Helvetica, Arial, sans-serif;
+$family-primary: "Fira Sans Condensed", Helvetica, Arial, sans-serif;
 $family-secondary: $family-primary;
 $body-line-height: 1.3;
 
