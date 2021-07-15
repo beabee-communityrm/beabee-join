@@ -2,6 +2,7 @@ import meta from './content/meta.json';
 
 export default {
   components: true,
+  target: 'server',
   head: {
     title: meta.title,
     bodyAttrs: {
@@ -18,6 +19,10 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
+  css: [
+    '~/assets/css/fork-awesome.min',
+    `~/assets/css/theme/${process.env.THEME}`
+  ],
   plugins: [
     '~/plugins/submitForm.client'
   ],
@@ -29,14 +34,9 @@ export default {
   axios: {
     baseURL: process.env.AUDIENCE_URL
   },
-  css: [
-    '~/assets/css/fork-awesome.min',
-    `~/assets/css/theme/${process.env.THEME}`
-  ],
   serverMiddleware: [
     '~/server-middleware/rest.js',
   ],
-  target: 'server',
   env: {
     AUDIENCE_URL: process.env.AUDIENCE_URL
   }
