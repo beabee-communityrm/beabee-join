@@ -17,20 +17,20 @@
             <Input
               name="email" type="email" label="Email" required
               v-model="email"
-              :blur="checkEmail"
               :error="errors.email"
+              @blur="checkEmail"
             />
             <Input
               name="firstname" label="First name" required
               v-model="firstname"
-              :blur="checkRequired('firstname', 'First name')"
               :error="errors.firstname"
+              @blur="checkRequired('firstname', 'First name')"
             />
             <Input
               name="lastname" label="Last name" required
               v-model="lastname"
-              :blur="checkRequired('lastname', 'Last name')"
               :error="errors.lastname"
+              @blur="checkRequired('lastname', 'Last name')"
             />
           </fieldset>
         </section>

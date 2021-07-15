@@ -7,16 +7,19 @@
     {
       "label": "Monthly",
       "name": "monthly",
-      "presetAmounts": [3, 5, 10]
+      "presetAmounts": [3, 5, 10],
+      "minAmount": 1
     },
     {
       "label": "Annually",
       "name": "annually",
-      "presetAmounts": [36, 60, 120]
+      "presetAmounts": [36, 60, 120],
+      "minAmount": 12
     }
   ],
   "initialPeriod": "monthly",
   "initialAmount": 5,
+  "showAbsorbFee": false,
   "termsLink": "https://example.com/terms",
   "privacyLink": "https://example.com/privacy"
 }

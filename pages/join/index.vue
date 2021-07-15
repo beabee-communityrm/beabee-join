@@ -54,14 +54,14 @@
             <Input
               name="email" type="email" label="Email" required
               v-model="email"
-              :blur="checkEmail"
               :error="errors.email"
+              @blur="checkEmail"
             />
             <Input
               name="password" type="password" label="Password" required
               v-model="password"
-              :blur="checkPassword"
               :error="errors.password"
+              @blur="checkPassword"
             >
               <div class="help is-flex is-align-items-baseline">
                 <span class="icon mr-1">
@@ -76,7 +76,7 @@
           </fieldset>
         </section><!-- /#account-data -->
 
-        <section id="payment" class="block" v-show="period !== 'annually'">
+        <section id="payment" class="block" v-if="content.showAbsorbFee" v-show="period !== 'annually'">
           <h5 class="title is-5 mb-3">Payment method</h5>
           <div v-show="period !== 'annually'">
             <Checkbox v-model="payFee" name="payFee" checked>
@@ -137,7 +137,8 @@ export default {
       return period && period.presetAmounts;
     },
     minAmount: function () {
-      return this.period === 'monthly' ? 1 : 12;
+      const period = this.content.periods.find(p => p.name === this.period);
+      return period && period.minAmount;
     },
     periodForAmount: function() {
       switch (this.period) {
