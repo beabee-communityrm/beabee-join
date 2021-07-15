@@ -32,7 +32,7 @@ $custom-colors: (
 
 // Export SCSS vars to CSS for theming
 :root {
-  --join-page-bg: none;
+  --join-page-bg: url(~/assets/client/img/join-bg.jpg) #{$grey-lighter};
   --radius: #{$radius};
 
   --input-focus-box-shadow-size: #{$input-focus-box-shadow-size};
