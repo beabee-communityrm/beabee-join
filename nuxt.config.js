@@ -2,6 +2,7 @@ import meta from './content/meta.json';
 
 export default {
   components: true,
+  target: 'server',
   head: {
     title: meta.title,
     bodyAttrs: {
@@ -18,6 +19,10 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
+  css: [
+    '~/assets/css/fork-awesome.min',
+    `~/assets/css/theme/${process.env.THEME}`
+  ],
   plugins: [
     '~/plugins/submitForm.client'
   ],
@@ -29,21 +34,7 @@ export default {
   axios: {
     baseURL: process.env.AUDIENCE_URL
   },
-  css: [
-    '~/assets/css/fork-awesome.min',
-    `~/assets/css/theme/${process.env.THEME}`
-  ],
-  http: {serverTimeout: 5000},
   serverMiddleware: [
     '~/server-middleware/rest.js',
-  ],
-  target: 'server',
-  build: { // https://github.com/nuxt/nuxt.js/issues/9224#issuecomment-830577523
-    babel: {
-      plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]],
-    }
-  },
-  env: {
-    AUDIENCE_URL: process.env.AUDIENCE_URL
-  }
+  ]
 }

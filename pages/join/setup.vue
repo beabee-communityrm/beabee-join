@@ -75,9 +75,9 @@
 <script>
 export default {
   layout: 'join',
-  async asyncData({$axios, $content}) {
+  async asyncData({$axios}) {
     const member = await $axios.$get('/_api/member/me');
-    const content = await $content('join/setup');
+    const content = await $axios.$get('/_content/join/setup');
 
     return {
       email: member.email,
