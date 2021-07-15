@@ -56,9 +56,22 @@ app.get('/join/complete', wrapAsync(async (req, res) => {
           return res.redirect('/join/duplicate-email');
         case 'restart-membership':
           return res.redirect('/join/restart-membership');
+        case 'confirm-email':
+          return res.redirect('/join/confirm-email');
       }
     }
 
+    res.redirect('/join/failed');
+  }
+}));
+
+app.get('/join/confirm-email/:id', wrapAsync(async (req, res) => {
+  try {
+    await req.api.post('/signup/confirm-email', {
+      restartFlowId: req.params.id
+    })
+    res.redirect('/join/setup');
+  } catch (error) {
     res.redirect('/join/failed');
   }
 }));
