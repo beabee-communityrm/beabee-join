@@ -137,7 +137,8 @@ export default {
       return period && period.presetAmounts;
     },
     minAmount: function () {
-      return this.period === 'monthly' ? 1 : 12;
+      const period = this.content.periods.find(p => p.name === this.period);
+      return period && period.minAmount;
     },
     periodForAmount: function() {
       switch (this.period) {
