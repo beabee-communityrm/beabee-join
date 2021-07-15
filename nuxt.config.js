@@ -38,11 +38,6 @@ export default {
     '~/server-middleware/rest.js',
   ],
   target: 'server',
-  build: { // https://github.com/nuxt/nuxt.js/issues/9224#issuecomment-830577523
-    babel: {
-      plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]],
-    }
-  },
   env: {
     AUDIENCE_URL: process.env.AUDIENCE_URL
   }
