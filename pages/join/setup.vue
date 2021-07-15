@@ -35,6 +35,7 @@
           </fieldset>
         </section>
         <section class="block" v-if="content.showDeliveryAddress">
+          <h4 class="title is-5 mb-2">Delivery address</h4>
           <fieldset>
             <Input name="profile[deliveryAddress][line1]" label="Address line 1" v-model="deliveryAddress.line1" />
             <Input name="profile[deliveryAddress][line2]" label="Address line 2" v-model="deliveryAddress.line2" />
