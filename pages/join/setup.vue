@@ -35,7 +35,11 @@
           </fieldset>
         </section>
         <section class="block" v-if="content.showDeliveryAddress">
-          <h4 class="title is-5 mb-2">Delivery address</h4>
+          <p class="is-size-5 mb-1">Can we send you occasional mail?</p>
+          <p class="mb-1 has-text-lighter">{{ content.mail }}</p>
+          <Checkbox name="profile[deliveryOptIn]" :checked="deliveryOptIn">
+            <b>Yes, you can send me occasional mail</b>
+          </Checkbox>
           <fieldset>
             <Input name="profile[deliveryAddress][line1]" label="Address line 1" v-model="deliveryAddress.line1" />
             <Input name="profile[deliveryAddress][line2]" label="Address line 2" v-model="deliveryAddress.line2" />
@@ -48,13 +52,6 @@
               </div>
             </div>
           </fieldset>
-        </section>
-        <section class="block" v-if="content.showDeliveryAddress">
-          <p class="is-size-5 mb-1">Can we send you occasional mail?</p>
-          <p class="mb-1 has-text-lighter">{{ content.mail }}</p>
-          <Checkbox name="profile[deliveryOptIn]" :checked="deliveryOptIn">
-            <b>Yes, you can send me occasional mail</b>
-          </Checkbox>
         </section>
         <section class="block">
           <p class="is-size-5 mb-1">Keep up to do with our newsletter</p>
