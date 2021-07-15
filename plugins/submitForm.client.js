@@ -24,7 +24,8 @@ async function submitForm(evt) {
     if (error.response && error.response.status === 400) {
       const errors = {};
       for (const error of error.response.data.errors) {
-        errors[error.property] = 'Invalid value';
+        const firstConstraint = Object.keys(error.constraints)[0];
+        errors[error.property] = error.constraints[firstConstraint] || 'Invalid value';
       }
       return [errors];
     } else {
