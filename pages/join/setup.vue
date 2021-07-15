@@ -1,15 +1,15 @@
 <template>
   <div>
-    <JoinHeader :title="'Welcome ' + firstname">
+    <JoinHeader :title="'Welcome ' + firstname" subtitle="Please confirm your details...">
       <p class="is-size-5">{{ content.welcome }}</p>
     </JoinHeader>
-    <p class="block">Please confirm your details...</p>
     <Form
       method="POST"
       :checkForm="checkForm"
       :canSubmit="canSubmit"
       :hasErrors="hasErrors"
       v-on:errors="errors = $event"
+      submitButtonType="is-success"
     >
       <template #inputs>
         <section class="block">
@@ -34,25 +34,34 @@
             />
           </fieldset>
         </section>
-        <section class="block">
-          <h5 class="title is-5 mb-3">Delivery address</h5>
+        <section class="block" v-if="content.showDeliveryAddress">
+          <p class="is-size-5 mb-1">Can we send you occasional mail?</p>
+          <p class="mb-1 has-text-lighter">{{ content.mail }}</p>
+          <Checkbox name="profile[deliveryOptIn]" :checked="deliveryOptIn">
+            <b>Yes, you can send me occasional mail</b>
+          </Checkbox>
           <fieldset>
-            <Input name="addressLine1" label="Address line 1" v-model="addressLine1" />
-            <Input name="addressLine2" label="Address line 2" v-model="addressLine2" />
+            <Input name="profile[deliveryAddress][line1]" label="Address line 1" v-model="deliveryAddress.line1" />
+            <Input name="profile[deliveryAddress][line2]" label="Address line 2" v-model="deliveryAddress.line2" />
             <div class="columns">
               <div class="column">
-                <Input name="city" label="City/town" v-model="addressCity" />
+                <Input name="profile[deliveryAddress][city]" label="City/town" v-model="deliveryAddress.city" />
               </div>
               <div class="column">
-                <Input name="postcode" label="Postcode" v-model="addressPostcode" />
+                <Input name="profile[deliveryAddress][postcode]" label="Postcode" v-model="deliveryAddress.postcode" />
               </div>
             </div>
           </fieldset>
         </section>
         <section class="block">
-          <h5 class="title is-5 mb-3">Newsletters</h5>
-          <Checkbox name="newsletterStatus" checked>
-            Do you want to receive member emails?
+          <p class="is-size-5 mb-1">Keep up to do with our newsletter</p>
+          <p class="mb-1 has-text-lighter">{{ content.newsletter }}</p>
+          <Checkbox
+            name="profile[newsletterStatus]"
+            checkboxValue="subscribed"
+            :checked="newsletterStatus === 'subscribed'"
+          >
+            <b>Yes, I want to receive newsletters</b>
           </Checkbox>
         </section>
       </template>
@@ -68,34 +77,28 @@ export default {
   layout: 'join',
   async asyncData({$axios, $content}) {
     const member = await $axios.$get('/_api/member/me');
-    const content = await $content('join');
+    const content = await $content('join/setup');
 
     return {
       email: member.email,
       firstname: member.firstname,
       lastname: member.lastname,
-      addressLine1: 'Line 1',
-      addressLine2: 'Line 2',
-      addressCity: 'City',
-      addressPostcode: 'Postcode',
+      deliveryAddress: member.profile.deliveryAddress || {},
+      deliveryOptIn: member.profile.deliveryOptIn,
+      newsletterStatus: member.profile.newsletterStatus,
       content
     };
   },
   data: () => ({
-    newsletterStatus: true,
     errors: {
       email: null,
       firstname: null,
-      lastname: null,
-      addressLine1: null,
-      addressLine2: null,
-      addressCity: null,
-      addressPostcode: null,
+      lastname: null
     }
   }),
   computed: {
     canSubmit() {
-      return this.email && this.firstname && this.lastname;
+      return !!(this.email && this.firstname && this.lastname);
     },
     hasErrors() {
       return Object.values(this.errors).some(e => !!e);

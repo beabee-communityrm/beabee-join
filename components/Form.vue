@@ -36,8 +36,9 @@
     <section class="block">
       <p>
         <button
-          class="button wrap-text is-fullwidth is-primary"
-          :class="{'is-loading': isSubmitting}" :disabled="hasMounted && (!canSubmit || hasErrors)"
+          class="button wrap-text is-fullwidth"
+          :class="{[submitButtonType]: true, 'is-loading': isSubmitting}"
+          :disabled="hasMounted && (!canSubmit || hasErrors)"
         >
           <slot name="submit"></slot>
         </button>
@@ -48,7 +49,22 @@
 
 <script>
 export default {
-  props: ['canSubmit', 'checkForm', 'hasErrors'],
+  props: {
+    canSubmit: {
+      type: Boolean
+    },
+    checkForm: {
+      type: Function,
+      required: true
+    },
+    hasErrors: {
+      type: Boolean
+    },
+    submitButtonType: {
+      type: String,
+      default: 'is-primary'
+    }
+  },
   data: () => ({
     isSubmitting: false,
     hasMounted: false

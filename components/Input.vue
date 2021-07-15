@@ -28,7 +28,7 @@ export default {
     id: {type: String},
     name: {type: String, required: true},
     label: {type: String, required: true},
-    value: {type: String, required: true},
+    value: {type: String, default: ""},
     blur: {type: Function},
     error: {type: String}
   }

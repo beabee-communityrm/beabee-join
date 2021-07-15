@@ -4,10 +4,11 @@ $radius: 3px !default;
 $red-lighter: change-color($red, $lightness: 95%) !default;
 $grey-lightest: #efefef !default;
 $danger-lighter: $red-lighter !default;
+$text-lighter: change-color($text, $lightness: 40%) !default;
 
 $label-color: $text !default;
 $input-color: $text !default;
-$input-border-color: $primary !default;
+$input-border-color: transparentize($primary, 0.5) !default;
 $input-hover-border-color: $primary !default;
 $input-shadow: none !default;
 $button-focus-box-shadow-size: 0 !default;
@@ -72,11 +73,23 @@ input[type=radio] {
   align-items: flex-start;
 
   & > input {
-    margin-top: 0.1rem;
+    margin-top: 0.2rem;
     margin-right: 0.4rem;
   }
 }
 
 .input.is-danger {
   background-color: $danger-lighter;
+}
+
+.label:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.field:not(:last-child) {
+  margin-bottom: 1.25rem;
+}
+
+.has-text-lighter {
+  color: $text-lighter;
 }

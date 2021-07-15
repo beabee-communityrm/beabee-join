@@ -18,7 +18,6 @@
   "initialPeriod": "monthly",
   "initialAmount": 5,
   "termsLink": "https://example.com/terms",
-  "privacyLink": "https://example.com/privacy",
-  "welcome": "You are now a member of beabee dev newsroom, thank you for getting involved!"
+  "privacyLink": "https://example.com/privacy"
 }
 

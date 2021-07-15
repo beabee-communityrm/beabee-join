@@ -20,7 +20,10 @@ export function wrapAsyncForm(handler) {
     }
 
     wrapAsync(handler)(req, res, (error) => {
-      if (error && isXhr) {
+      // TODO: better way to check for API errors
+      if (error && error.response && error.response.status === 400) {
+        res.status(400).send(error.response.data);
+      } else if (error && isXhr) {
         res.status(500).send(error.toJSON());
       } else {
         next(error);

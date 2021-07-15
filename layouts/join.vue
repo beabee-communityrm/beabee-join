@@ -20,7 +20,7 @@
 </style>
 <template>
   <div class="join-wrapper">
-    <div class="join-container box px-5 has-background-white">
+    <div class="join-container box py-6 has-background-white">
       <Nuxt />
     </div>
   </div>

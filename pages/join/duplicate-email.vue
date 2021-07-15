@@ -1,11 +1,15 @@
 <template>
   <NoticeBox title="Duplicate email address">
     <p class="mb-5">
-      This email address is already registered, you can <a
-      href="/login">login</a> to proceeed.
+      This email address is already registered, you can login to proceed
     </p> 
-    <p>
-      <NuxtLink to="/join" class="button is-medium is-primary is-fullwidth">
+    <p class="mb-5">
+      <NuxtLink class="button is-medium is-primary is-fullwidth" to="/login">
+        Login here
+      </NuxtLink>
+    </p>
+    <p class="has-text-centered">
+      <NuxtLink to="/join">
         Back to join page
       </NuxtLink>
     </p>
