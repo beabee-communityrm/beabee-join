@@ -18,12 +18,7 @@ $family-primary: "Open Sans", Helvetica, Arial, sans-serif;
 $family-secondary: $family-primary;
 $body-line-height: 1.3;
 
-$black: #636260;
-$primary: #fe9f00;
+$black: #111111;
+$primary: #008dd4;
 
 @import "base";
-
-:root {
-  --join-page-bg: url(https://brushandbow.com/wp-content/uploads/2019/10/world-map-background_.gif) center;
-}
-
