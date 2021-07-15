@@ -33,7 +33,6 @@ export default {
     '~/assets/css/fork-awesome.min',
     `~/assets/css/theme/${process.env.THEME}`
   ],
-  http: {serverTimeout: 5000},
   serverMiddleware: [
     '~/server-middleware/rest.js',
   ],
