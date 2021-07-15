@@ -76,7 +76,7 @@
           </fieldset>
         </section><!-- /#account-data -->
 
-        <section id="payment" class="block" v-show="period !== 'annually'">
+        <section id="payment" class="block" v-if="content.showAbsorbFee" v-show="period !== 'annually'">
           <h5 class="title is-5 mb-3">Payment method</h5>
           <div v-show="period !== 'annually'">
             <Checkbox v-model="payFee" name="payFee" checked>
