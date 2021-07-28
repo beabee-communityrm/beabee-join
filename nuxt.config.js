@@ -29,10 +29,15 @@ export default {
   modules: [
     '~/modules/content',
     '@nuxtjs/axios',
+    'nuxt-i18n',
     ['nuxt-buefy', {css: false}]
   ],
   axios: {
     baseURL: process.env.AUDIENCE_URL
+  },
+  i18n: {
+    locales: ['en', 'de'],
+    defaultLocale: 'en'
   },
   serverMiddleware: [
     '~/server-middleware/rest.js',
