@@ -9,7 +9,7 @@
       </NuxtLink>
     </p>
     <p class="has-text-centered">
-      <NuxtLink to="/join">
+      <NuxtLink :to="localePath('/join')">
         Back to join page
       </NuxtLink>
     </p>

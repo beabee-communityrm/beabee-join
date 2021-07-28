@@ -5,7 +5,7 @@
       notified. Please contact support if the problem persists.
     </p> 
     <p>
-      <NuxtLink to="/join" class="button is-medium is-primary is-fullwidth">
+      <NuxtLink :to="localePath('/join')" class="button is-medium is-primary is-fullwidth">
         Back to join page
       </NuxtLink>
     </p>

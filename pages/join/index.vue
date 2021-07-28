@@ -30,7 +30,7 @@
               <label>
                 <input class="join-period-input" type="radio" name="period" :value="p.name" v-model="period" v-on:change="amount = p.presetAmounts[0]">
                 <span class="button is-primary is-outlined is-fullwidth">
-                  {{ p.label }}
+                  {{ $t(p.name) }}
                 </span>
               </label>
             </p>
@@ -43,22 +43,22 @@
             :currency="content.currency"
             :minAmount="minAmount"
             :presetAmounts="presetAmounts"
-            :period="periodForAmount"
+            :period="$t('per_' + period)"
           />
         </section><!-- /#amount -->
 
         <section id="account-data" class="block">
-          <h5 class="title is-5 mb-1">Member account</h5>
-          <p class="mb-3"><small>Are you a member already? <a href="/login">Log in</a></small></p>
+          <h5 class="title is-5 mb-1">{{ $t('Member account') }}</h5>
+          <p class="mb-3"><small>{{ $t('Are you a member already?') }} <a href="/login">{{ $t('Log in') }}</a></small></p>
           <fieldset>
             <Input
-              name="email" type="email" label="Email" required
+              name="email" type="email" :label="$t('Email')" required
               v-model="email"
               :error="errors.email"
               @blur="checkEmail"
             />
             <Input
-              name="password" type="password" label="Password" required
+              name="password" type="password" :label="$t('Password')" required
               v-model="password"
               :error="errors.password"
               @blur="checkPassword"
@@ -68,8 +68,7 @@
                   <i class="fa fa-info-circle"></i>
                 </span>
                 <span>
-                  Set a secure password: 8+ characters and at least one number,
-                  one uppercase and one lowercase letter
+                  {{ $t('Set a secure password: 8+ characters and at least one number, one uppercase and one lowercase letter') }}
                 </span>
               </div>
             </Input>
@@ -77,7 +76,7 @@
         </section><!-- /#account-data -->
 
         <section id="payment" class="block" v-if="content.showAbsorbFee" v-show="period !== 'annually'">
-          <h5 class="title is-5 mb-3">Payment method</h5>
+          <h5 class="title is-5 mb-3">{{ $t('Payment method') }}</h5>
           <div v-show="period !== 'annually'">
             <Checkbox v-model="payFee" name="payFee" checked>
               Our payment processor charges us per transaction, which means we
@@ -95,13 +94,15 @@
       </template>
 
       <template #submit>
-        <span>Contribute <span class="hidden-nojs">{{ submitText }}</span></span>
+        <span>{{ $t('Contribute') }} <span class="hidden-nojs">{{ submitText }}</span></span>
       </template>
     </Form>
 
     <p class="has-text-centered is-size-7 mt-4">
-      By proceeding, you are accepting the <a :href="content.termsLink">Terms of Service</a>
-      and <a :href="content.privacyLink">Privacy Policy</a>.
+      {{ $t('By proceeding, you are accepting the') }}
+      <a :href="content.termsLink">{{ $t('Terms of Service') }}</a>
+      {{ $t('and') }}
+      <a :href="content.privacyLink">{{ $t('Privacy Policy') }}</a>.
     </p>
   </div>
 </template>
@@ -143,15 +144,8 @@ export default {
       const period = this.content.periods.find(p => p.name === this.period);
       return period && period.minAmount;
     },
-    periodForAmount: function() {
-      switch (this.period) {
-        case 'monthly': return '/ month';
-        case 'annually': return '/ year';
-        default: return '';
-      }
-    },
     submitText: function() {
-      const period = this.period === 'single' ? '' : ' ' + this.period;
+      const period = this.period === 'single' ? '' : ' ' + this.$t(this.period);
       return `${this.content.currency}${this.amount}${period}`;
     },
     canSubmit: function () {
