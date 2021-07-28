@@ -1,4 +1,5 @@
 {
   "title": "beabee dev",
-  "description": "Empowering people to start independent local newsrooms"
+  "description": "Empowering people to start independent local newsrooms",
+  "defaultLocale": "en"
 }

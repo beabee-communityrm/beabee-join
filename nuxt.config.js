@@ -36,8 +36,13 @@ export default {
     baseURL: process.env.AUDIENCE_URL
   },
   i18n: {
-    locales: ['en', 'de'],
-    defaultLocale: 'en'
+    locales: [
+      {code: 'en', file: 'en.js'},
+      {code: 'de', file: 'de.js'}
+    ],
+    defaultLocale: meta.defaultLocale,
+    lazy: true,
+    langDir: 'locales'
   },
   serverMiddleware: [
     '~/server-middleware/rest.js',
