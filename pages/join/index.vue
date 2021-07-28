@@ -109,12 +109,15 @@
 <script>
 export default {
   layout: 'join',
-  async asyncData({$axios}) {
+  async asyncData({$axios, query}) {
     const content = await $axios.$get('/_content/join');
+    const period = content.periods.find(p => p.name === content.initialPeriod);
+    const amount = Math.max(period.minAmount, query.amount || content.initialAmount);
+
     return {
       content,
-      amount: content.initialAmount,
-      period: content.initialPeriod
+      amount,
+      period: period.name
     };
   },
   data: function() {
