@@ -40,10 +40,10 @@
         <section id="amount" class="block">
           <JoinAmount
             v-model="amount"
-            :currency="content.currency"
             :minAmount="minAmount"
             :presetAmounts="presetAmounts"
-            :period="$t('per_' + period)"
+            :prefix="content.currencySymbol"
+            :suffix="$t('per_' + period)"
           />
         </section><!-- /#amount -->
 

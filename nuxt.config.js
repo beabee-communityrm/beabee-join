@@ -42,7 +42,23 @@ export default {
     ],
     defaultLocale: meta.defaultLocale,
     lazy: true,
-    langDir: 'locales'
+    langDir: 'locales',
+    vueI18n: {
+      numberFormats: {
+        en: {
+          currency: {
+            style: 'currency',
+            currency: meta.currency
+          }
+        },
+        de: {
+          currency: {
+            style: 'currency',
+            currency: meta.currency
+          }
+        }
+      }
+    }
   },
   serverMiddleware: [
     '~/server-middleware/rest.js',
