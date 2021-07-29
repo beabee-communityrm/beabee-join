@@ -1,0 +1,67 @@
+{
+  "annually": "Jährlich",
+  "form": {
+    "amountPeriod": {
+      "annually": "/ Jahr",
+      "monthly": "/ Monat"
+    },
+    "errors": {
+      "invalidEmail": "",
+      "passwordRequirementsNotMet": ""
+    },
+    "hasErrors": "",
+    "inputs": {
+      "address": {
+        "city": "Ort",
+        "line1": "",
+        "line2": "",
+        "postcode": "Postleitzahl"
+      },
+      "email": "Email",
+      "firstName": "",
+      "lastName": "",
+      "password": "Passwort"
+    },
+    "securePassword": "Das Passwort muss aus mindestens acht Zeichen bestehen und mindesten eine Zahl, einen Groß- und einen Kleinbuchstaben enthalten."
+  },
+  "join": {
+    "contribute": "Mit {amount} {period} unterstützen",
+    "contributePeriod": {
+      "annually": "im Jahr",
+      "monthly": "im Monat"
+    },
+    "errors": {
+      "confirmEmail": {
+        "message": "",
+        "proceed": "",
+        "title": ""
+      },
+      "duplicateEmail": {
+        "message": "",
+        "title": ""
+      },
+      "failed": {
+        "backToJoin": "",
+        "message": "",
+        "title": ""
+      },
+      "restartMembership": {
+        "message": "",
+        "title": ""
+      }
+    },
+    "memberAccount": "Mitglieder-Account",
+    "memberAlready": "Sind sie bereits Mitglied?",
+    "notice": "Indem Sie fortfahren, akzeptieren Sie unsere {terms} und {privacy}.",
+    "paymentMethod": "Zahlungsmethode",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen"
+  },
+  "joinSetup": {
+    "confirmDetails": "",
+    "continue": "Weiter",
+    "welcome": ""
+  },
+  "login": "Log in",
+  "monthly": "Monatlich"
+}
