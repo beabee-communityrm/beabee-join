@@ -1,6 +1,9 @@
 <template>
   <div>
-    <JoinHeader :title="'Welcome ' + firstname" subtitle="Please confirm your details...">
+    <JoinHeader
+      :title="$t('joinSetup.welcome', {firstname})"
+      :subtitle="$t('joinSetup.confirmDetails')"
+    >
       <p class="is-size-5">{{ content.welcome }}</p>
     </JoinHeader>
     <Form
@@ -15,22 +18,25 @@
         <section class="block">
           <fieldset>
             <Input
-              name="email" type="email" label="Email" required
+              name="email" type="email" required
               v-model="email"
+              :label="$t('form.inputs.email')"
               :error="errors.email"
               @blur="checkEmail"
             />
             <Input
-              name="firstname" label="First name" required
+              name="firstname" required
               v-model="firstname"
+              :label="$t('form.inputs.firstName')"
               :error="errors.firstname"
-              @blur="checkRequired('firstname', 'First name')"
+              @blur="checkRequired('firstname', $t('form.inputs.firstName'))"
             />
             <Input
-              name="lastname" label="Last name" required
+              name="lastname" required
               v-model="lastname"
+              :label="$t('form.inputs.lastName')"
               :error="errors.lastname"
-              @blur="checkRequired('lastname', 'Last name')"
+              @blur="checkRequired('lastname', $t('form.inputs.lastName'))"
             />
           </fieldset>
         </section>
@@ -41,14 +47,30 @@
             <b>Yes, you can send me occasional mail</b>
           </Checkbox>
           <fieldset>
-            <Input name="profile[deliveryAddress][line1]" label="Address line 1" v-model="deliveryAddress.line1" />
-            <Input name="profile[deliveryAddress][line2]" label="Address line 2" v-model="deliveryAddress.line2" />
+            <Input
+              name="profile[deliveryAddress][line1]"
+              :label="$t('form.inputs.address.line1')"
+              v-model="deliveryAddress.line1"
+            />
+            <Input
+              name="profile[deliveryAddress][line2]"
+              :label="$t('form.inputs.address.line2')"
+              v-model="deliveryAddress.line2"
+            />
             <div class="columns">
               <div class="column">
-                <Input name="profile[deliveryAddress][city]" label="City/town" v-model="deliveryAddress.city" />
+                <Input
+                  name="profile[deliveryAddress][city]"
+                  :label="$t('form.inputs.address.city')"
+                  v-model="deliveryAddress.city"
+                />
               </div>
               <div class="column">
-                <Input name="profile[deliveryAddress][postcode]" label="Postcode" v-model="deliveryAddress.postcode" />
+                <Input
+                  name="profile[deliveryAddress][postcode]"
+                  :label="$t('form.inputs.address.postcode')"
+                  v-model="deliveryAddress.postcode"
+                />
               </div>
             </div>
           </fieldset>
@@ -66,7 +88,7 @@
         </section>
       </template>
       <template #submit>
-        All good! Continue
+        {{ $t('joinSetup.continue') }}
       </template>
     </form>
   </div>
