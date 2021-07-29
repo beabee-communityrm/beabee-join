@@ -1,12 +1,11 @@
 <template>
-  <NoticeBox title="Something went wrong">
+  <NoticeBox :title="$t('join.errors.failed.title')">
     <p class="mb-5">
-      There was a problem setting up your membership, our team has been
-      notified. Please contact support if the problem persists.
-    </p> 
+      {{ $t('join.errors.failed.message') }}
+    </p>
     <p>
       <NuxtLink :to="localePath('/join')" class="button is-medium is-primary is-fullwidth">
-        Back to join page
+        {{ $t('join.errors.failed.backToJoin') }}
       </NuxtLink>
     </p>
   </NoticeBox>

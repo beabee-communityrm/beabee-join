@@ -60,7 +60,7 @@
   "joinSetup": {
     "confirmDetails": "Please confirm your details",
     "continue": "All good! Continue",
-    "welcome": "Welcome {name}!"
+    "welcome": "Welcome {firstname}!"
   },
   "login": "Log in",
   "monthly": "Monthly"

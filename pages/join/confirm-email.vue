@@ -1,11 +1,10 @@
 <template>
-  <NoticeBox title="Confirm your email address">
+  <NoticeBox :title="$t('join.errors.confirmEmail.title')">
     <p class="mb-3">
-      Almost there! We just need to confirm your email address to finish setting
-      up your membership.
+      {{ $t('join.errors.confirmEmail.message') }}
     </p>
     <p>
-      <b>We've sent you an email, please click the link to proceed</b>
+      <b>{{ $t('join.errors.confirmEmail.proceed') }}</b>
     </p>
 </NoticeBox>
 </template>

@@ -1,16 +1,16 @@
 <template>
-  <NoticeBox title="Duplicate email address">
+  <NoticeBox :title="$t('join.errors.duplicateEmail.title')">
     <p class="mb-5">
-      This email address is already registered, you can login to proceed
+      {{ $t('join.errors.duplicateEmail.message') }}
     </p> 
     <p class="mb-5">
       <NuxtLink class="button is-medium is-primary is-fullwidth" to="/login">
-        Login here
+        {{ $t('login') }}
       </NuxtLink>
     </p>
     <p class="has-text-centered">
       <NuxtLink :to="localePath('/join')">
-        Back to join page
+       {{ $t('join.errors.failed.backToJoin') }}
       </NuxtLink>
     </p>
   </NoticeBox>
