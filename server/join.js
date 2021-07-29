@@ -1,27 +1,9 @@
-import axios from 'axios';
-import cookierParser from 'cookie-parser';
 import express from 'express';
-import multer from 'multer';
-
 import { wrapAsync, wrapAsyncForm } from './lib/utils';
 
-const app = express()
+const router = express.Router()
 
-app.use(cookierParser());
-app.use(express.urlencoded({ extended: true }))
-app.use(multer().none());
-
-app.use((req, res, next) => {
-  req.api = axios.create({
-    baseURL: process.env.SERVER_API_URL,
-    headers: {
-      'Cookie': 'session=' + req.cookies.session
-    }
-  });
-  next();
-});
-
-app.post('/join', wrapAsyncForm(async (req, res) => {
+router.post('/', wrapAsyncForm(async (req, res) => {
   const response = await req.api.post('/signup', {
     email: req.body.email,
     password: req.body.password,
@@ -34,7 +16,7 @@ app.post('/join', wrapAsyncForm(async (req, res) => {
   res.redirect(response.data.redirectUrl);
 }));
 
-app.get('/join/complete', wrapAsync(async (req, res) => {
+router.get('/complete', wrapAsync(async (req, res) => {
   try {
     const response = await req.api.post('/signup/complete', {
       redirectFlowId: req.query.redirect_flow_id
@@ -65,7 +47,7 @@ app.get('/join/complete', wrapAsync(async (req, res) => {
   }
 }));
 
-app.get('/join/confirm-email/:id', wrapAsync(async (req, res) => {
+router.get('/confirm-email/:id', wrapAsync(async (req, res) => {
   try {
     await req.api.post('/signup/confirm-email', {
       restartFlowId: req.params.id
@@ -76,7 +58,7 @@ app.get('/join/confirm-email/:id', wrapAsync(async (req, res) => {
   }
 }));
 
-app.post('/join/setup', wrapAsyncForm(async (req, res) => {
+router.post('/setup', wrapAsyncForm(async (req, res) => {
   await req.api.put('/member/me', {
     email: req.body.email,
     firstname: req.body.firstname,
@@ -90,12 +72,4 @@ app.post('/join/setup', wrapAsyncForm(async (req, res) => {
   res.redirect('/profile');
 }));
 
-// Proxy API requests
-app.get('/_api/*', wrapAsync(async (req, res) => {
-  const response = await req.api.get('/' + req.params[0]);
-  res.send(response.data);
-}));
-
-export default {
-  handler: app
-}
+export default router;

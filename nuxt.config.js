@@ -61,6 +61,6 @@ export default {
     }
   },
   serverMiddleware: [
-    '~/server-middleware/rest.js',
+    '~/server',
   ]
 }
