@@ -14,6 +14,7 @@ EXPOSE 8080
 
 ENV HOST=0.0.0.0
 ENV PORT=8080
+
 ENV NODE_ICU_DATA=node_modules/full-icu
 
 ENV THEME=default
