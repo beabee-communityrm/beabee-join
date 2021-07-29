@@ -151,10 +151,6 @@ export default {
       const period = this.content.periods.find(p => p.name === this.period);
       return period && period.minAmount;
     },
-    submitText: function() {
-      const period = this.period === 'single' ? '' : ' ' + this.$t(this.period);
-      return `${this.content.currency}${this.amount}${period}`;
-    },
     canSubmit: function () {
       return !!(this.email && this.password);
     },
