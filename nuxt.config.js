@@ -42,7 +42,7 @@ export default {
     ],
     defaultLocale: meta.defaultLocale,
     lazy: true,
-    langDir: 'locales',
+    langDir: '~/locales/',
     vueI18n: {
       numberFormats: {
         en: {
