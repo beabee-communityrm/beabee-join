@@ -2,16 +2,14 @@
   "name": "beabee",
   "title": "Join the beabee dev newsroom",
   "subtitle": "Members get exclusive opportunities to have a say while supporting quality journalism and our innovative model.",
-  "currency": "€",
+  "currencySymbol": "€",
   "periods": [
     {
-      "label": "Monthly",
       "name": "monthly",
       "presetAmounts": [3, 5, 10],
       "minAmount": 1
     },
     {
-      "label": "Annually",
       "name": "annually",
       "presetAmounts": [36, 60, 120],
       "minAmount": 12

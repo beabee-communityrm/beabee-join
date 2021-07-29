@@ -29,10 +29,36 @@ export default {
   modules: [
     '~/modules/content',
     '@nuxtjs/axios',
+    'nuxt-i18n',
     ['nuxt-buefy', {css: false}]
   ],
   axios: {
     baseURL: process.env.AUDIENCE_URL
+  },
+  i18n: {
+    locales: [
+      {code: 'en', file: 'en.js'},
+      {code: 'de', file: 'de.js'}
+    ],
+    defaultLocale: meta.defaultLocale,
+    lazy: true,
+    langDir: 'locales',
+    vueI18n: {
+      numberFormats: {
+        en: {
+          currency: {
+            style: 'currency',
+            currency: meta.currency
+          }
+        },
+        de: {
+          currency: {
+            style: 'currency',
+            currency: meta.currency
+          }
+        }
+      }
+    }
   },
   serverMiddleware: [
     '~/server-middleware/rest.js',
