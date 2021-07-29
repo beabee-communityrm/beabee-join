@@ -43,22 +43,22 @@
             :minAmount="minAmount"
             :presetAmounts="presetAmounts"
             :prefix="content.currencySymbol"
-            :suffix="$t('per_' + period)"
+            :suffix="$t('form.amountPeriod.' + period)"
           />
         </section><!-- /#amount -->
 
         <section id="account-data" class="block">
-          <h5 class="title is-5 mb-1">{{ $t('Member account') }}</h5>
-          <p class="mb-3"><small>{{ $t('Are you a member already?') }} <a href="/login">{{ $t('Log in') }}</a></small></p>
+          <h5 class="title is-5 mb-1">{{ $t('join.memberAccount') }}</h5>
+          <p class="mb-3"><small>{{ $t('join.memberAlready') }} <a href="/login">{{ $t('login') }}</a></small></p>
           <fieldset>
             <Input
-              name="email" type="email" :label="$t('Email')" required
+              name="email" type="email" :label="$t('form.email')" required
               v-model="email"
               :error="errors.email"
               @blur="checkEmail"
             />
             <Input
-              name="password" type="password" :label="$t('Password')" required
+              name="password" type="password" :label="$t('form.password')" required
               v-model="password"
               :error="errors.password"
               @blur="checkPassword"
@@ -68,7 +68,7 @@
                   <i class="fa fa-info-circle"></i>
                 </span>
                 <span>
-                  {{ $t('Set a secure password: 8+ characters and at least one number, one uppercase and one lowercase letter') }}
+                  {{ $t('form.securePassword') }}
                 </span>
               </div>
             </Input>
@@ -76,7 +76,7 @@
         </section><!-- /#account-data -->
 
         <section id="payment" class="block" v-if="content.showAbsorbFee" v-show="period !== 'annually'">
-          <h5 class="title is-5 mb-3">{{ $t('Payment method') }}</h5>
+          <h5 class="title is-5 mb-3">{{ $t('join.paymentMethod') }}</h5>
           <div v-show="period !== 'annually'">
             <Checkbox v-model="payFee" name="payFee" checked>
               Our payment processor charges us per transaction, which means we
@@ -94,15 +94,22 @@
       </template>
 
       <template #submit>
-        <span>{{ $t('Contribute') }} <span class="hidden-nojs">{{ submitText }}</span></span>
+        <i18n path="join.contribute">
+          <template #amount>{{ $n(amount, 'currency') }}</template>
+          <template #period>{{ $t('join.contributePeriod.' + period) }}</template>
+        </i18n>
       </template>
     </Form>
 
     <p class="has-text-centered is-size-7 mt-4">
-      {{ $t('By proceeding, you are accepting the') }}
-      <a :href="content.termsLink">{{ $t('Terms of Service') }}</a>
-      {{ $t('and') }}
-      <a :href="content.privacyLink">{{ $t('Privacy Policy') }}</a>.
+      <i18n path="join.notice">
+        <template #terms>
+          <a :href="content.termsLink">{{ $t('join.terms') }}</a>
+        </template>
+        <template #privacy>
+          <a :href="content.privacyLink">{{ $t('join.privacy') }}</a>
+        </template>
+      </i18n>
     </p>
   </div>
 </template>
