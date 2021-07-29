@@ -1,0 +1,67 @@
+{
+  "annually": "Annually",
+  "form": {
+    "amountPeriod": {
+      "annually": "/ year",
+      "monthly": "/ month"
+    },
+    "errors": {
+      "invalidEmail": "Invalid email address",
+      "passwordRequirementsNotMet": "Password does not meet requirements"
+    },
+    "hasErrors": "Something is missing, please check the fields above.",
+    "inputs": {
+      "address": {
+        "city": "City/town",
+        "line1": "Address line 1",
+        "line2": "Address line 2",
+        "postcode": "Postcode"
+      },
+      "email": "Email",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "password": "Password"
+    },
+    "securePassword": "Set a secure password: 8+ characters and at least one uppercase and one lowercase letter"
+  },
+  "join": {
+    "contribute": "Contribute {amount} {period}",
+    "contributePeriod": {
+      "annually": "annually",
+      "monthly": "monthly"
+    },
+    "errors": {
+      "confirmEmail": {
+        "message": "Almost there! We just need to confirm your email address to finish setting up your membership.",
+        "proceed": "We've sent you an email, please click the link to proceed",
+        "title": "Confirm your email address"
+      },
+      "duplicateEmail": {
+        "message": "This email address is already registered, you can login to proceed.",
+        "title": "Duplicate email address"
+      },
+      "failed": {
+        "backToJoin": "Back to join page",
+        "message": "There was a problem setting up your membership, our team has been notified. Please contact support if the problem persists.",
+        "title": "Something went wrong"
+      },
+      "restartMembership": {
+        "message": "This email address is associated with an expired membership, thanks for rejoining!\n\nFor security reasons we need to check you have access to the email address before restarting your membership. ",
+        "title": "Restart your membership"
+      }
+    },
+    "memberAccount": "Member account",
+    "memberAlready": "Are you a member already?",
+    "notice": "By proceeding, you are accepting the {terms} and {privacy}.",
+    "paymentMethod": "Payment method",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "joinSetup": {
+    "confirmDetails": "Please confirm your details",
+    "continue": "All good! Continue",
+    "welcome": "Welcome {name}!"
+  },
+  "login": "Log in",
+  "monthly": "Monthly"
+}

@@ -52,13 +52,13 @@
           <p class="mb-3"><small>{{ $t('join.memberAlready') }} <a href="/login">{{ $t('login') }}</a></small></p>
           <fieldset>
             <Input
-              name="email" type="email" :label="$t('form.email')" required
+              name="email" type="email" :label="$t('form.inputs.email')" required
               v-model="email"
               :error="errors.email"
               @blur="checkEmail"
             />
             <Input
-              name="password" type="password" :label="$t('form.password')" required
+              name="password" type="password" :label="$t('form.inputs.password')" required
               v-model="password"
               :error="errors.password"
               @blur="checkPassword"

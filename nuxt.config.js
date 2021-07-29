@@ -37,8 +37,8 @@ export default {
   },
   i18n: {
     locales: [
-      {code: 'en', file: 'en.js'},
-      {code: 'de', file: 'de.js'}
+      {code: 'en', file: 'en.json'},
+      {code: 'de', file: 'de.json'}
     ],
     defaultLocale: meta.defaultLocale,
     lazy: true,
