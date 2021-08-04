@@ -6,23 +6,23 @@
       "monthly": "/ Monat"
     },
     "errors": {
-      "invalidEmail": "",
-      "passwordRequirementsNotMet": ""
+      "invalidEmail": "Ungültige Email-Adresse",
+      "passwordRequirementsNotMet": "Das Passwort erfüllt nicht die Anforderungen"
     },
-    "hasErrors": "",
+    "hasErrors": "Felder mit * müssen ausgefüllt werden. ",
     "inputs": {
       "address": {
         "city": "Ort",
-        "line1": "",
-        "line2": "",
+        "line1": "Adresse",
+        "line2": "Adresse 2",
         "postcode": "Postleitzahl"
       },
       "email": "Email",
-      "firstName": "",
-      "lastName": "",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
       "password": "Passwort"
     },
-    "securePassword": "Das Passwort muss aus mindestens acht Zeichen bestehen und mindesten eine Zahl, einen Groß- und einen Kleinbuchstaben enthalten."
+    "securePassword": "Das Passwort muss aus mindestens acht Zeichen bestehen und mindestens eine Zahl, einen Groß- und einen Kleinbuchstaben enthalten."
   },
   "join": {
     "contribute": "Mit {amount} {period} unterstützen",
@@ -32,35 +32,35 @@
     },
     "errors": {
       "confirmEmail": {
-        "message": "",
-        "proceed": "",
-        "title": ""
+        "message": "Fast geschafft! Wir müssen nur noch Ihre Email-Adresse bestätigen, um fortzufahren.",
+        "proceed": "Wir haben Ihnen eine Email geschickt. Bitte klicken Sie auf den Bestätigung-Link, um fortzufahren.",
+        "title": "Email-Adresse bestätigen"
       },
       "duplicateEmail": {
-        "message": "",
-        "title": ""
+        "message": "Diese Email-Adresse ist bereits registriert. Bitte loggen Sie sich ein, um fortzufahren. ",
+        "title": "Email-Adresse wiederholen"
       },
       "failed": {
-        "backToJoin": "",
-        "message": "",
-        "title": ""
+        "backToJoin": "Zurück zur Registrierung",
+        "message": "Es gab ein Problem bei der Registrierung, unser Team wurde benachrichtigt. Bitte kontaktieren Sie uns, wenn das Problem weiterhin auftritt.",
+        "title": "Etwas ist schief gelaufen"
       },
       "restartMembership": {
-        "message": "",
-        "title": ""
+        "message": "Diese Email-Adresse war bereits in der Vergangenheit registriert.\nAus Sicherheitsgründen müssen wir überprüfen, ob Sie Zugriff auf diese Email-Adresse haben. ",
+        "title": "Mitgliedschaft erneuern"
       }
     },
     "memberAccount": "Mitglieder-Account",
-    "memberAlready": "Sind sie bereits Mitglied?",
+    "memberAlready": "Sind Sie bereits Mitglied?",
     "notice": "Indem Sie fortfahren, akzeptieren Sie unsere {terms} und {privacy}.",
     "paymentMethod": "Zahlungsmethode",
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen"
   },
   "joinSetup": {
-    "confirmDetails": "",
+    "confirmDetails": "Bitte bestätigen Sie Ihre Angaben",
     "continue": "Weiter",
-    "welcome": ""
+    "welcome": "Willkommen {firstname}!"
   },
   "login": "Log in",
   "monthly": "Monatlich"
