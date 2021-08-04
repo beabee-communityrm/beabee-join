@@ -17,8 +17,4 @@ ENV PORT=8080
 
 ENV NODE_ICU_DATA=node_modules/full-icu
 
-ENV THEME=default
-
-RUN npx nuxt build
-
 CMD [ "node", "./node_modules/.bin/nuxt", "start" ]
