@@ -3,6 +3,18 @@ import { wrapAsync, wrapAsyncForm } from './lib/utils';
 
 const router = express.Router()
 
+function goToSetup(apiResponse, res) {
+  // Pass the cookie along
+  const cookie = apiResponse.headers['set-cookie'].find(s => s.startsWith('session'));
+  const match = cookie.match(/session=([^;]+);/)
+  res.cookie('session', decodeURIComponent(match[1]), {
+    maxAge: 267840000,
+    httpOnly: true
+  });
+
+  res.redirect('/join/setup');
+}
+
 router.post('/', wrapAsyncForm(async (req, res) => {
   const response = await req.api.post('/signup', {
     email: req.body.email,
@@ -21,16 +33,7 @@ router.get('/complete', wrapAsync(async (req, res) => {
     const response = await req.api.post('/signup/complete', {
       redirectFlowId: req.query.redirect_flow_id
     });
-
-    // Pass the cookie along
-    const cookie = response.headers['set-cookie'].find(s => s.startsWith('session'));
-    const match = cookie.match(/session=([^;]+);/)
-    res.cookie('session', decodeURIComponent(match[1]), {
-      maxAge: 267840000,
-      httpOnly: true
-    });
-
-    res.redirect('/join/setup');
+    goToSetup(response, res);
   } catch (error) {
     if (error.response && error.response.status === 400) {
       switch (error.response.data.code) {
@@ -49,10 +52,10 @@ router.get('/complete', wrapAsync(async (req, res) => {
 
 router.get('/confirm-email/:id', wrapAsync(async (req, res) => {
   try {
-    await req.api.post('/signup/confirm-email', {
+    const response = await req.api.post('/signup/confirm-email', {
       restartFlowId: req.params.id
-    })
-    res.redirect('/join/setup');
+    });
+    goToSetup(response, res);
   } catch (error) {
     res.redirect('/join/failed');
   }
