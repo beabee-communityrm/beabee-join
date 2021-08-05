@@ -24,7 +24,7 @@ export function wrapAsyncForm(handler) {
       if (error && error.response && error.response.status === 400) {
         res.status(400).send(error.response.data);
       } else if (error && isXhr) {
-        res.status(500).send(error.toJSON());
+        res.status(500).send(error);
       } else {
         next(error);
       }
