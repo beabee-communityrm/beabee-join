@@ -67,9 +67,9 @@ router.post('/setup', wrapAsyncForm(async (req, res) => {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     profile: {
-      deliveryOptIn: req.body.profile.deliveryOptIn === 'true',
-      deliveryAddress: req.body.profile.deliveryAddress,
-      newsletterStatus: req.body.profile.newsletterStatus || 'unsubscribed'
+      deliveryOptIn: req.body.deliveryOptIn === 'true',
+      deliveryAddress: req.body.deliveryAddress,
+      newsletterStatus: req.body.newsletterStatus || 'unsubscribed'
     }
   });
   res.redirect('/profile');

@@ -43,31 +43,31 @@
         <section class="block" v-if="content.showDeliveryAddress">
           <p class="is-size-5 mb-1">Can we send you occasional mail?</p>
           <p class="mb-1 has-text-lighter">{{ content.mail }}</p>
-          <Checkbox name="profile[deliveryOptIn]" :checked="deliveryOptIn">
+          <Checkbox name="deliveryOptIn" :checked="deliveryOptIn">
             <b>Yes, you can send me occasional mail</b>
           </Checkbox>
           <fieldset>
             <Input
-              name="profile[deliveryAddress][line1]"
+              name="deliveryAddress[line1]"
               :label="$t('form.inputs.address.line1')"
               v-model="deliveryAddress.line1"
             />
             <Input
-              name="profile[deliveryAddress][line2]"
+              name="deliveryAddress[line2]"
               :label="$t('form.inputs.address.line2')"
               v-model="deliveryAddress.line2"
             />
             <div class="columns">
               <div class="column">
                 <Input
-                  name="profile[deliveryAddress][city]"
+                  name="deliveryAddress[city]"
                   :label="$t('form.inputs.address.city')"
                   v-model="deliveryAddress.city"
                 />
               </div>
               <div class="column">
                 <Input
-                  name="profile[deliveryAddress][postcode]"
+                  name="deliveryAddress[postcode]"
                   :label="$t('form.inputs.address.postcode')"
                   v-model="deliveryAddress.postcode"
                 />
@@ -79,7 +79,7 @@
           <p class="is-size-5 mb-1">Keep up to do with our newsletter</p>
           <p class="mb-1 has-text-lighter">{{ content.newsletter }}</p>
           <Checkbox
-            name="profile[newsletterStatus]"
+            name="newsletterStatus"
             checkboxValue="subscribed"
             :checked="newsletterStatus === 'subscribed'"
           >
