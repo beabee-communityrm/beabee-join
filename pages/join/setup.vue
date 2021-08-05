@@ -40,11 +40,11 @@
             />
           </fieldset>
         </section>
-        <section class="block" v-if="content.showDeliveryAddress">
-          <p class="is-size-5 mb-1">Can we send you occasional mail?</p>
-          <p class="mb-1 has-text-lighter">{{ content.mail }}</p>
+        <section class="block" v-if="content.showMailOptIn">
+          <p class="is-size-5 mb-1">{{ content.mailTitle }}</p>
+          <p class="mb-1 has-text-lighter">{{ content.mailText }}</p>
           <Checkbox name="deliveryOptIn" :checked="deliveryOptIn">
-            <b>Yes, you can send me occasional mail</b>
+            <b>{{ content.mailOptIn }}</b>
           </Checkbox>
           <fieldset>
             <Input
