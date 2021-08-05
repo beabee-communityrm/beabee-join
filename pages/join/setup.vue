@@ -75,15 +75,15 @@
             </div>
           </fieldset>
         </section>
-        <section class="block">
-          <p class="is-size-5 mb-1">Keep up to do with our newsletter</p>
-          <p class="mb-1 has-text-lighter">{{ content.newsletter }}</p>
+        <section class="block" v-if="content.showNewsletterOptIn">
+          <p class="is-size-5 mb-1">{{ content.newsletterTitle }}</p>
+          <p class="mb-1 has-text-lighter">{{ content.newsletterText }}</p>
           <Checkbox
             name="newsletterStatus"
             checkboxValue="subscribed"
             :checked="newsletterStatus === 'subscribed'"
           >
-            <b>Yes, I want to receive newsletters</b>
+            <b>{{ content.newsletterOptIn }}</b>
           </Checkbox>
         </section>
       </template>
