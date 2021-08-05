@@ -86,6 +86,7 @@
             <b>{{ content.newsletterOptIn }}</b>
           </Checkbox>
         </section>
+        <input v-if="!content.showNewsletterOptIn" type="hidden" name="newsletterStatus" value="subscribed">
       </template>
       <template #submit>
         {{ $t('joinSetup.continue') }}
