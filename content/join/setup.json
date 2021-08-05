@@ -2,8 +2,8 @@
   "welcome": "You are now a member of beabee dev newsroom, thank you for getting involved!",
   "showDeliveryAddress": false,
   "mail": "Sometimes we send our members special printed editions and other exclusive materials. You can change your mind later.",
-  "showNewsletterOptIn": false,
-  "newsletterTitle": "",
-  "newsletterText": "We'll send you fortnightly updates about beabee. You can unsubscribe at any time",
-  "newsletterOptIn": ""
+  "showNewsletterOptIn": true,
+  "newsletterTitle": "Want to keep up to date with beabee?",
+  "newsletterText": "We'll send you fortnightly updates about beabee. You can unsubscribe at any time.",
+  "newsletterOptIn": "Yes I'd like to receive the newsletter"
 }
