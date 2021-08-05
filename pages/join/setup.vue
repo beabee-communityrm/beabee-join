@@ -40,11 +40,11 @@
             />
           </fieldset>
         </section>
-        <section class="block" v-if="content.showDeliveryAddress">
-          <p class="is-size-5 mb-1">Can we send you occasional mail?</p>
-          <p class="mb-1 has-text-lighter">{{ content.mail }}</p>
+        <section class="block" v-if="content.showMailOptIn">
+          <p class="is-size-5 mb-1">{{ content.mailTitle }}</p>
+          <p class="mb-1 has-text-lighter">{{ content.mailText }}</p>
           <Checkbox name="deliveryOptIn" :checked="deliveryOptIn">
-            <b>Yes, you can send me occasional mail</b>
+            <b>{{ content.mailOptIn }}</b>
           </Checkbox>
           <fieldset>
             <Input
@@ -75,17 +75,18 @@
             </div>
           </fieldset>
         </section>
-        <section class="block">
-          <p class="is-size-5 mb-1">Keep up to do with our newsletter</p>
-          <p class="mb-1 has-text-lighter">{{ content.newsletter }}</p>
+        <section class="block" v-if="content.showNewsletterOptIn">
+          <p class="is-size-5 mb-1">{{ content.newsletterTitle }}</p>
+          <p class="mb-1 has-text-lighter">{{ content.newsletterText }}</p>
           <Checkbox
             name="newsletterStatus"
             checkboxValue="subscribed"
             :checked="newsletterStatus === 'subscribed'"
           >
-            <b>Yes, I want to receive newsletters</b>
+            <b>{{ content.newsletterOptIn }}</b>
           </Checkbox>
         </section>
+        <input v-if="!content.showNewsletterOptIn" type="hidden" name="newsletterStatus" value="subscribed">
       </template>
       <template #submit>
         {{ $t('joinSetup.continue') }}
