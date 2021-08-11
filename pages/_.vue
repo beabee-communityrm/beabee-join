@@ -1,5 +1,4 @@
-<template>
-</template>
+<template></template>
 
 <script>
 // This page is necessary while the Nuxt app only handles some routes,
@@ -8,7 +7,7 @@ export default {
   // Server side: don't handle routes that are in the app, they should use
   // Nuxt's 404 pages
   // NOTE: Must match regex in nginx
-  validate({req}) {
+  validate({ req }) {
     return !(process.server && /^\/((en|de)\/)?join/.test(req.url));
   },
   created() {
@@ -16,5 +15,5 @@ export default {
     // the old frontend
     window.location.href = window.location.href;
   }
-}
+};
 </script>

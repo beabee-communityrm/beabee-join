@@ -23,8 +23,14 @@ $box-shadow: 0 0 1em 0.125em transparentize($black, 0.6);
 $help-size: 0.9rem;
 
 $custom-colors: (
-  "danger-lighter": ($danger-lighter, $black),
-  "grey-lightest": ($grey-lightest, $black)
+  "danger-lighter": (
+    $danger-lighter,
+    $black
+  ),
+  "grey-lightest": (
+    $grey-lightest,
+    $black
+  )
 );
 
 // Import Bulma and Buefy styles
@@ -58,7 +64,7 @@ body.no-js .hidden-nojs {
   display: none !important;
 }
 
-input[type=radio] {
+input[type="radio"] {
   vertical-align: center;
 }
 

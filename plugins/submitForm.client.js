@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 async function submitForm(evt) {
   const formEl = evt.target;
@@ -7,7 +7,7 @@ async function submitForm(evt) {
     const response = await axios.post(formEl.action, new FormData(formEl), {
       withCredentials: true,
       headers: {
-        'X-Requested-With': 'XMLHttpRequest'
+        "X-Requested-With": "XMLHttpRequest"
       }
     });
 
@@ -25,7 +25,8 @@ async function submitForm(evt) {
       const errors = {};
       for (const error of error.response.data.errors) {
         const firstConstraint = Object.keys(error.constraints)[0];
-        errors[error.property] = error.constraints[firstConstraint] || 'Invalid value';
+        errors[error.property] =
+          error.constraints[firstConstraint] || "Invalid value";
       }
       return [errors];
     } else {
@@ -35,5 +36,5 @@ async function submitForm(evt) {
 }
 
 export default (context, inject) => {
-  inject('submitForm', submitForm);
+  inject("submitForm", submitForm);
 };

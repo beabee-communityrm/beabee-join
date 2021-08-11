@@ -27,7 +27,6 @@ npm start
 
 Go to http://localhost:8080
 
-
 ## Frontend router
 
 At the moment we are using nginx to only route selected paths to the Nuxt.js server
