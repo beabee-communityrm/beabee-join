@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "fibers": "^5.0.0",
+    "prettier": "2.3.2",
     "sass": "1.32.*",
     "sass-loader": "^10.2.0"
   }
