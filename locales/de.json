@@ -52,7 +52,7 @@
     },
     "memberAccount": "Mitglieder-Account",
     "memberAlready": "Sind Sie bereits Mitglied?",
-    "notice": "Indem Sie fortfahren, akzeptieren Sie unsere {terms} und {privacy}.",
+    "notice": "Indem Sie fortfahren, akzeptieren Sie unsere {privacy}.",
     "paymentMethod": "Zahlungsmethode",
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen"

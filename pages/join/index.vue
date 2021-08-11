@@ -98,9 +98,6 @@
 
     <p class="has-text-centered is-size-7 mt-4">
       <i18n path="join.notice">
-        <template #terms>
-          <a :href="content.termsLink">{{ $t('join.terms') }}</a>
-        </template>
         <template #privacy>
           <a :href="content.privacyLink">{{ $t('join.privacy') }}</a>
         </template>
