@@ -7,7 +7,7 @@
         :checked="value || undefined"
         :value="checkboxValue || true"
         @input="$emit('input', $event.target.value)"
-      >
+      />
       <span>
         <slot></slot>
       </span>
@@ -18,6 +18,6 @@
 <script>
 export default {
   inheritAttrs: false,
-  props: ['value', 'checkboxValue']
-}
+  props: ["value", "checkboxValue"]
+};
 </script>

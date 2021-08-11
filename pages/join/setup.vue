@@ -1,7 +1,7 @@
 <template>
   <div>
     <JoinHeader
-      :title="$t('joinSetup.welcome', {firstname})"
+      :title="$t('joinSetup.welcome', { firstname })"
       :subtitle="$t('joinSetup.confirmDetails')"
     >
       <p class="is-size-5">{{ content.welcome }}</p>
@@ -18,21 +18,25 @@
         <section class="block">
           <fieldset>
             <Input
-              name="email" type="email" required
+              name="email"
+              type="email"
+              required
               v-model="email"
               :label="$t('form.inputs.email')"
               :error="errors.email"
               @blur="checkEmail"
             />
             <Input
-              name="firstname" required
+              name="firstname"
+              required
               v-model="firstname"
               :label="$t('form.inputs.firstName')"
               :error="errors.firstname"
               @blur="checkRequired('firstname', $t('form.inputs.firstName'))"
             />
             <Input
-              name="lastname" required
+              name="lastname"
+              required
               v-model="lastname"
               :label="$t('form.inputs.lastName')"
               :error="errors.lastname"
@@ -86,21 +90,26 @@
             <b>{{ content.newsletterOptIn }}</b>
           </Checkbox>
         </section>
-        <input v-if="!content.showNewsletterOptIn" type="hidden" name="newsletterStatus" value="subscribed">
+        <input
+          v-if="!content.showNewsletterOptIn"
+          type="hidden"
+          name="newsletterStatus"
+          value="subscribed"
+        />
       </template>
       <template #submit>
-        {{ $t('joinSetup.continue') }}
+        {{ $t("joinSetup.continue") }}
       </template>
-    </form>
+    </Form>
   </div>
 </template>
 
 <script>
 export default {
-  layout: 'join',
-  async asyncData({$axios}) {
-    const member = await $axios.$get('/_api/member/me');
-    const content = await $axios.$get('/_content/join/setup');
+  layout: "join",
+  async asyncData({ $axios }) {
+    const member = await $axios.$get("/_api/member/me");
+    const content = await $axios.$get("/_content/join/setup");
 
     return {
       email: member.email,
@@ -124,24 +133,25 @@ export default {
       return !!(this.email && this.firstname && this.lastname);
     },
     hasErrors() {
-      return Object.values(this.errors).some(e => !!e);
+      return Object.values(this.errors).some((e) => !!e);
     }
   },
   methods: {
     checkEmail() {
-      const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-      this.errors.email = re.test(this.email) ? null : 'Invalid email address';
+      const re =
+        /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      this.errors.email = re.test(this.email) ? null : "Invalid email address";
     },
     checkRequired(name, label) {
       return () => {
-        this.errors[name] = this[name] ? null : label + ' is required';
+        this.errors[name] = this[name] ? null : label + " is required";
       };
     },
     async checkForm() {
       this.checkEmail();
-      this.checkRequired('firstname', 'First name');
-      this.checkRequired('lastname', 'Last name');
+      this.checkRequired("firstname", "First name");
+      this.checkRequired("lastname", "Last name");
     }
   }
-}
+};
 </script>

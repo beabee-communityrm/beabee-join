@@ -5,17 +5,17 @@ export function wrapAsync(handler) {
     } catch (error) {
       next(error);
     }
-  }
-};
+  };
+}
 
 export function wrapAsyncForm(handler) {
   return (req, res, next) => {
-    const isXhr = req.headers['x-requested-with'] === 'XMLHttpRequest';
+    const isXhr = req.headers["x-requested-with"] === "XMLHttpRequest";
 
     // Monkey patch redirects
     if (isXhr) {
       res.redirect = (url) => {
-        res.send({redirectUrl: url});
+        res.send({ redirectUrl: url });
       };
     }
 
@@ -29,5 +29,5 @@ export function wrapAsyncForm(handler) {
         next(error);
       }
     });
-  }
-};
+  };
+}

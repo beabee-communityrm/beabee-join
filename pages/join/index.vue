@@ -1,13 +1,13 @@
 <style lang="scss">
-  .join-period-input {
-    position: absolute;
-    opacity: 0;
-  }
+.join-period-input {
+  position: absolute;
+  opacity: 0;
+}
 
-  .join-period-input:checked + .button.is-primary.is-outlined {
-    background-color: var(--c-primary);
-    color: white;
-  }
+.join-period-input:checked + .button.is-primary.is-outlined {
+  background-color: var(--c-primary);
+  color: white;
+}
 </style>
 
 <template>
@@ -25,10 +25,17 @@
     >
       <template #inputs>
         <nav class="block columns is-mobile is-variable is-1">
-          <div class="column pt-0" v-for="(p) in content.periods" :key="p.name">
+          <div class="column pt-0" v-for="p in content.periods" :key="p.name">
             <p class="control is-expanded">
               <label>
-                <input class="join-period-input" type="radio" name="period" :value="p.name" v-model="period" v-on:change="amount = p.presetAmounts[0]">
+                <input
+                  class="join-period-input"
+                  type="radio"
+                  name="period"
+                  :value="p.name"
+                  v-model="period"
+                  v-on:change="amount = p.presetAmounts[0]"
+                />
                 <span class="button is-primary is-outlined is-fullwidth">
                   {{ $t(p.name) }}
                 </span>
@@ -45,20 +52,32 @@
             :prefix="content.currencySymbol"
             :suffix="$t('form.amountPeriod.' + period)"
           />
-        </section><!-- /#amount -->
+        </section>
+        <!-- /#amount -->
 
         <section id="account-data" class="block">
-          <h5 class="title is-5 mb-1">{{ $t('join.memberAccount') }}</h5>
-          <p class="mb-3"><small>{{ $t('join.memberAlready') }} <a href="/login">{{ $t('login') }}</a></small></p>
+          <h5 class="title is-5 mb-1">{{ $t("join.memberAccount") }}</h5>
+          <p class="mb-3">
+            <small
+              >{{ $t("join.memberAlready") }}
+              <a href="/login">{{ $t("login") }}</a></small
+            >
+          </p>
           <fieldset>
             <Input
-              name="email" type="email" :label="$t('form.inputs.email')" required
+              name="email"
+              type="email"
+              :label="$t('form.inputs.email')"
+              required
               v-model="email"
               :error="errors.email"
               @blur="checkEmail"
             />
             <Input
-              name="password" type="password" :label="$t('form.inputs.password')" required
+              name="password"
+              type="password"
+              :label="$t('form.inputs.password')"
+              required
               v-model="password"
               :error="errors.password"
               @blur="checkPassword"
@@ -68,15 +87,20 @@
                   <i class="fa fa-info-circle"></i>
                 </span>
                 <span>
-                  {{ $t('form.securePassword') }}
+                  {{ $t("form.securePassword") }}
                 </span>
               </div>
             </Input>
           </fieldset>
-        </section><!-- /#account-data -->
+        </section>
+        <!-- /#account-data -->
 
-        <section id="payment" class="block" v-if="content.showAbsorbFee && period !== 'annually'">
-          <h5 class="title is-5 mb-3">{{ $t('join.paymentMethod') }}</h5>
+        <section
+          id="payment"
+          class="block"
+          v-if="content.showAbsorbFee && period !== 'annually'"
+        >
+          <h5 class="title is-5 mb-3">{{ $t("join.paymentMethod") }}</h5>
           <div>
             <Checkbox v-model="payFee" name="payFee" checked>
               Our payment processor charges us per transaction, which means we
@@ -85,13 +109,16 @@
               Alternatively you could pay annually.
             </Checkbox>
           </div>
-        </section><!-- /#payment -->
+        </section>
+        <!-- /#payment -->
       </template>
 
       <template #submit>
         <i18n path="join.contribute">
-          <template #amount>{{ $n(amount, 'currency') }}</template>
-          <template #period>{{ $t('join.contributePeriod.' + period) }}</template>
+          <template #amount>{{ $n(amount, "currency") }}</template>
+          <template #period>{{
+            $t("join.contributePeriod." + period)
+          }}</template>
         </i18n>
       </template>
     </Form>
@@ -99,7 +126,7 @@
     <p class="has-text-centered is-size-7 mt-4">
       <i18n path="join.notice">
         <template #privacy>
-          <a :href="content.privacyLink">{{ $t('join.privacy') }}</a>
+          <a :href="content.privacyLink">{{ $t("join.privacy") }}</a>
         </template>
       </i18n>
     </p>
@@ -108,11 +135,16 @@
 
 <script>
 export default {
-  layout: 'join',
-  async asyncData({$axios, query}) {
-    const content = await $axios.$get('/_content/join');
-    const period = content.periods.find(p => p.name === content.initialPeriod);
-    const amount = Math.max(period.minAmount, query.amount || content.initialAmount);
+  layout: "join",
+  async asyncData({ $axios, query }) {
+    const content = await $axios.$get("/_content/join");
+    const period = content.periods.find(
+      (p) => p.name === content.initialPeriod
+    );
+    const amount = Math.max(
+      period.minAmount,
+      query.amount || content.initialAmount
+    );
 
     return {
       content,
@@ -120,10 +152,10 @@ export default {
       period: period.name
     };
   },
-  data: function() {
+  data: function () {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       payFee: true,
       errors: {
         email: null,
@@ -133,37 +165,43 @@ export default {
   },
   computed: {
     fee: function () {
-      return this.amount ? (this.amount + 20) + 'p' : '?'
+      return this.amount ? this.amount + 20 + "p" : "?";
     },
     presetAmounts: function () {
-      const period = this.content.periods.find(p => p.name === this.period);
+      const period = this.content.periods.find((p) => p.name === this.period);
       return period && period.presetAmounts;
     },
     minAmount: function () {
-      const period = this.content.periods.find(p => p.name === this.period);
+      const period = this.content.periods.find((p) => p.name === this.period);
       return period && period.minAmount;
     },
     canSubmit: function () {
       return !!(this.email && this.password);
     },
     hasErrors: function () {
-      return Object.values(this.errors).some(e => !!e);
+      return Object.values(this.errors).some((e) => !!e);
     }
   },
   methods: {
     checkEmail() {
-      const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-      this.errors.email = re.test(this.email) ? null : 'Invalid email address';
+      const re =
+        /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      this.errors.email = re.test(this.email) ? null : "Invalid email address";
     },
     checkPassword() {
-      const isValid = this.password.length >= 8 && /[A-Z]/.test(this.password) && /[a-z]/.test(this.password) &&
+      const isValid =
+        this.password.length >= 8 &&
+        /[A-Z]/.test(this.password) &&
+        /[a-z]/.test(this.password) &&
         /[0-9]/.test(this.password);
-      this.errors.password = isValid ? null : 'Password does not meet requirements';
+      this.errors.password = isValid
+        ? null
+        : "Password does not meet requirements";
     },
     checkForm() {
       this.checkPassword();
       this.checkEmail();
     }
   }
-}
+};
 </script>

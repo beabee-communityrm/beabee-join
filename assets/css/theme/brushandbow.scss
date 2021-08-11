@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Open Sans";
   src: url("~assets/fonts/main/OpenSans-Regular.woff2") format("woff2"),
-     url("~assets/fonts/main/OpenSans-Regular.woff") format("woff");
+    url("~assets/fonts/main/OpenSans-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -9,7 +9,7 @@
 @font-face {
   font-family: "Open Sans";
   src: url("~assets/fonts/main/OpenSans-Bold.woff2") format("woff2"),
-     url("~assets/fonts/main/OpenSans-Bold.woff") format("woff");
+    url("~assets/fonts/main/OpenSans-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
@@ -24,6 +24,6 @@ $primary: #fe9f00;
 @import "base";
 
 :root {
-  --join-page-bg: url(https://brushandbow.com/wp-content/uploads/2019/10/world-map-background_.gif) center;
+  --join-page-bg: url(https://brushandbow.com/wp-content/uploads/2019/10/world-map-background_.gif)
+    center;
 }
-

@@ -1,23 +1,23 @@
 <style lang="scss">
-  .form-errors {
-    display: flex;
-    margin-bottom: 1rem;
-    color: var(--c-danger);
-    font-weight: bold;
-    background-color: var(--c-danger-lighter);
-    border-radius: var(--radius);
-  }
+.form-errors {
+  display: flex;
+  margin-bottom: 1rem;
+  color: var(--c-danger);
+  font-weight: bold;
+  background-color: var(--c-danger-lighter);
+  border-radius: var(--radius);
+}
 
-  .form-errors__icon {
-    flex: 0 0 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--c-danger);
-    color: var(--c-danger-lighter);
-    border-top-left-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-  }
+.form-errors__icon {
+  flex: 0 0 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--c-danger);
+  color: var(--c-danger-lighter);
+  border-top-left-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+}
 </style>
 
 <template>
@@ -28,16 +28,14 @@
       <div class="form-errors__icon">
         <i class="fa fa-exclamation" aria-hidden="true"></i>
       </div>
-      <p class="p-3">
-        Something is missing, please check the fields above
-      </p>
+      <p class="p-3">Something is missing, please check the fields above</p>
     </div>
 
     <section class="block">
       <p>
         <button
           class="button wrap-text is-fullwidth"
-          :class="{[submitButtonType]: true, 'is-loading': isSubmitting}"
+          :class="{ [submitButtonType]: true, 'is-loading': isSubmitting }"
           :disabled="hasMounted && (!canSubmit || hasErrors)"
         >
           <slot name="submit"></slot>
@@ -62,7 +60,7 @@ export default {
     },
     submitButtonType: {
       type: String,
-      default: 'is-primary'
+      default: "is-primary"
     }
   },
   data: () => ({
@@ -80,11 +78,11 @@ export default {
         this.isSubmitting = true;
         const [errors] = await this.$submitForm(evt);
         if (errors) {
-          this.$emit('errors', errors);
+          this.$emit("errors", errors);
         }
         this.isSubmitting = false;
       }
-    },
+    }
   }
 };
 </script>

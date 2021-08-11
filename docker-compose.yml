@@ -1,4 +1,4 @@
-version: '3.4'
+version: "3.4"
 
 services:
   frontend:
@@ -11,7 +11,7 @@ services:
       - .env
     environment:
       NODE_ENV: development
-    command: [ 'node', './node_modules/.bin/nuxt' ]
+    command: ["node", "./node_modules/.bin/nuxt"]
     init: true
 
   router:
