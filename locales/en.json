@@ -52,7 +52,7 @@
     },
     "memberAccount": "Member account",
     "memberAlready": "Are you a member already?",
-    "notice": "By proceeding, you are accepting the {terms} and {privacy}.",
+    "notice": "By proceeding, you are accepting the {privacy}.",
     "paymentMethod": "Payment method",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service"
