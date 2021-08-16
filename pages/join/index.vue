@@ -208,6 +208,7 @@ export default {
         : "Password does not meet requirements";
     },
     checkForm() {
+      this.checkAmount();
       this.checkPassword();
       this.checkEmail();
     }
