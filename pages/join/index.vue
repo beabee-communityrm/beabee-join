@@ -102,21 +102,23 @@
           v-if="content.showAbsorbFee && period !== 'annually'"
         >
           <h5 class="title is-5 mb-3">{{ $t("join.paymentMethod") }}</h5>
-          <div>
-            <Checkbox v-model="payFee" name="payFee" checked>
-              Our payment processor charges us per transaction, which means we
-              receive less from monthly contributions. Are you happy to absorb
-              the <span class="hidden-nojs">{{ fee }}</span> transaction fee?
-              Alternatively you could pay annually.
-            </Checkbox>
-          </div>
+          <p class="mb-4">
+            Our payment processor charges us per transaction, which means we
+            receive less from monthly contributions. Are you happy to absorb
+            the <span class="hidden-nojs">{{ fee }}</span> transaction fee?
+            Alternatively you could pay annually.
+          </p>
+          <Checkbox v-model="payFee" name="payFee" checked>
+            Yes, I'll absorb the <span class="hidden-nojs">{{ fee }}</span> fee.
+          </Checkbox>
+          <p>{{payFee}}</p>
         </section>
         <!-- /#payment -->
       </template>
 
       <template #submit>
         <i18n path="join.contribute">
-          <template #amount>{{ $n(amount, "currency") }}</template>
+          <template #amount>{{ $n(amount + (payFee ? (amount + 20) / 100 : 0), "currency") }}</template>
           <template #period>{{
             $t("join.contributePeriod." + period)
           }}</template>
