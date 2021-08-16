@@ -190,7 +190,10 @@ export default {
       this.errors.amount =
         this.amount >= this.minAmount
           ? null
-          : `Minimum contribution is ${this.$n(this.minAmount, 'currency')} ${this.$t('form.amountPeriod.' + this.period)}`;
+          : `Minimum contribution is ${this.$n(
+              this.minAmount,
+              "currency"
+            )} ${this.$t("form.amountPeriod." + this.period)}`;
     },
     checkEmail() {
       const re =

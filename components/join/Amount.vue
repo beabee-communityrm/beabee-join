@@ -146,7 +146,10 @@
       <div class="column is-8">
         <label class="join-amount is-gapless" :class="{ 'is-danger': !!error }">
           <span class="join-amount__text">{{ prefix }}</span>
-          <div class="join-amount__input" :class="{ 'is-large': amount >= 100 }">
+          <div
+            class="join-amount__input"
+            :class="{ 'is-large': amount >= 100 }"
+          >
             <input
               type="number"
               name="amount"
