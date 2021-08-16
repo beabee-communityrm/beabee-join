@@ -52,7 +52,6 @@
             :prefix="content.currencySymbol"
             :suffix="$t('form.amountPeriod.' + period)"
             :error="errors.amount"
-            @input="checkAmount"
           />
         </section>
         <!-- /#amount -->
@@ -165,6 +164,11 @@ export default {
         password: null
       }
     };
+  },
+  watch: {
+    amount: function () {
+      this.checkAmount();
+    }
   },
   computed: {
     fee: function () {
