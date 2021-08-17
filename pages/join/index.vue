@@ -105,11 +105,12 @@
           <p class="mb-4">
             Our payment processor charges us per transaction, which means we
             receive less from monthly contributions. Are you happy to absorb the
-            <span class="hidden-nojs">{{ fee }}</span> transaction fee?
+            <span class="hidden-nojs">{{ fee }}p</span> transaction fee?
             Alternatively you could pay annually.
           </p>
           <Checkbox v-model="payFee" name="payFee">
-            Yes, I'll absorb the <span class="hidden-nojs">{{ fee }}</span> fee.
+            Yes, I'll absorb the
+            <span class="hidden-nojs">{{ fee }}p</span> fee.
           </Checkbox>
         </section>
         <!-- /#payment -->
@@ -119,7 +120,7 @@
         <i18n path="join.contribute">
           <template #amount>
             <span class="hidden-nojs">{{
-              $n(amount + (payFee ? (amount + 20) / 100 : 0), "currency")
+              $n(amount + (payFee ? fee / 100 : 0), "currency")
             }}</span>
           </template>
           <template #period>
@@ -179,7 +180,11 @@ export default {
   },
   computed: {
     fee: function () {
-      return this.amount ? this.amount + 20 + "p" : "?";
+      return this.period === "annually"
+        ? 0
+        : this.amount
+        ? this.amount + 20
+        : "?";
     },
     presetAmounts: function () {
       const period = this.content.periods.find((p) => p.name === this.period);
