@@ -13,7 +13,7 @@
         @blur="$emit('blur', $event)"
       />
     </div>
-    <p class="help is-danger" v-show="!!error">
+    <p class="help is-danger" v-if="!!error">
       {{ error }}
     </p>
     <slot></slot>
