@@ -117,10 +117,16 @@
 
       <template #submit>
         <i18n path="join.contribute">
-          <template #amount>{{ $n(amount + (payFee ? (amount + 20) / 100 : 0), "currency") }}</template>
-          <template #period>{{
-            $t("join.contributePeriod." + period)
-          }}</template>
+          <template #amount>
+            <span class="hidden-nojs">{{
+              $n(amount + (payFee ? (amount + 20) / 100 : 0), "currency")
+            }}</span>
+          </template>
+          <template #period>
+            <span class="hidden-nojs">{{
+              $t("join.contributePeriod." + period)
+            }}</span>
+          </template>
         </i18n>
       </template>
     </Form>
