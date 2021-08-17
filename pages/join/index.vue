@@ -104,8 +104,8 @@
           <h5 class="title is-5 mb-3">{{ $t("join.paymentMethod") }}</h5>
           <p class="mb-4">
             Our payment processor charges us per transaction, which means we
-            receive less from monthly contributions. Are you happy to absorb
-            the <span class="hidden-nojs">{{ fee }}</span> transaction fee?
+            receive less from monthly contributions. Are you happy to absorb the
+            <span class="hidden-nojs">{{ fee }}</span> transaction fee?
             Alternatively you could pay annually.
           </p>
           <Checkbox v-model="payFee" name="payFee">
