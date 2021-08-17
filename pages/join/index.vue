@@ -108,10 +108,9 @@
             the <span class="hidden-nojs">{{ fee }}</span> transaction fee?
             Alternatively you could pay annually.
           </p>
-          <Checkbox v-model="payFee" name="payFee" checked>
+          <Checkbox v-model="payFee" name="payFee">
             Yes, I'll absorb the <span class="hidden-nojs">{{ fee }}</span> fee.
           </Checkbox>
-          <p>{{payFee}}</p>
         </section>
         <!-- /#payment -->
       </template>
