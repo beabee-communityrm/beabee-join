@@ -4,6 +4,7 @@
       <input
         type="checkbox"
         v-model="checked"
+        :name="name"
         :value="checkboxValue || true"
         @change="$emit('input', checkedProxy)"
       />
@@ -17,7 +18,7 @@
 <script>
 export default {
   inheritAttrs: false,
-  props: ["value", "checkboxValue"],
+  props: ["value", "checkboxValue", "name"],
   data() {
     return {
       checkedProxy: this.checked
