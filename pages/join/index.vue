@@ -158,14 +158,14 @@ export default {
     return {
       content,
       amount,
-      period: period.name
+      period: period.name,
+      payFee: content.showAbsorbFee
     };
   },
   data: function () {
     return {
       email: "",
       password: "",
-      payFee: true,
       errors: {
         amount: null,
         email: null,
