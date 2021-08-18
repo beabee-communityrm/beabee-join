@@ -102,24 +102,32 @@
           v-if="content.showAbsorbFee && period !== 'annually'"
         >
           <h5 class="title is-5 mb-3">{{ $t("join.paymentMethod") }}</h5>
-          <div>
-            <Checkbox v-model="payFee" name="payFee" checked>
-              Our payment processor charges us per transaction, which means we
-              receive less from monthly contributions. Are you happy to absorb
-              the <span class="hidden-nojs">{{ fee }}</span> transaction fee?
-              Alternatively you could pay annually.
-            </Checkbox>
-          </div>
+          <p class="mb-4">
+            Our payment processor charges us per transaction, which means we
+            receive less from monthly contributions. Are you happy to absorb the
+            <span class="hidden-nojs">{{ fee }}p</span> transaction fee?
+            Alternatively you could pay annually.
+          </p>
+          <Checkbox v-model="payFee" name="payFee">
+            Yes, I'll absorb the
+            <span class="hidden-nojs">{{ fee }}p</span> fee.
+          </Checkbox>
         </section>
         <!-- /#payment -->
       </template>
 
       <template #submit>
         <i18n path="join.contribute">
-          <template #amount>{{ $n(amount, "currency") }}</template>
-          <template #period>{{
-            $t("join.contributePeriod." + period)
-          }}</template>
+          <template #amount>
+            <span class="hidden-nojs">{{
+              $n(amount + (payFee ? fee / 100 : 0), "currency")
+            }}</span>
+          </template>
+          <template #period>
+            <span class="hidden-nojs">{{
+              $t("join.contributePeriod." + period)
+            }}</span>
+          </template>
         </i18n>
       </template>
     </Form>
@@ -172,7 +180,11 @@ export default {
   },
   computed: {
     fee: function () {
-      return this.amount ? this.amount + 20 + "p" : "?";
+      return this.period === "annually"
+        ? 0
+        : this.amount
+        ? this.amount + 20
+        : "?";
     },
     presetAmounts: function () {
       const period = this.content.periods.find((p) => p.name === this.period);

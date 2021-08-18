@@ -3,10 +3,9 @@
     <label class="checkbox">
       <input
         type="checkbox"
-        v-bind="$attrs"
-        :checked="value || undefined"
+        v-model="checked"
         :value="checkboxValue || true"
-        @input="$emit('input', $event.target.value)"
+        @change="$emit('input', checkedProxy)"
       />
       <span>
         <slot></slot>
@@ -18,6 +17,21 @@
 <script>
 export default {
   inheritAttrs: false,
-  props: ["value", "checkboxValue"]
+  props: ["value", "checkboxValue"],
+  data() {
+    return {
+      checkedProxy: this.checked
+    };
+  },
+  computed: {
+    checked: {
+      get() {
+        return this.value;
+      },
+      set(val) {
+        this.checkedProxy = val;
+      }
+    }
+  }
 };
 </script>

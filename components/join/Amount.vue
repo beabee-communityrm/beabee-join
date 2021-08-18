@@ -193,7 +193,7 @@
         </div>
       </div>
     </div>
-    <p class="help is-danger join-amount-help" v-show="!!error">
+    <p class="help is-danger join-amount-help" v-if="!!error">
       {{ error }}
     </p>
   </div>
