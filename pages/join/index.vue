@@ -51,6 +51,7 @@
             :presetAmounts="presetAmounts"
             :prefix="content.currencySymbol"
             :suffix="$t('form.amountPeriod.' + period)"
+            :error="errors.amount"
           />
         </section>
         <!-- /#amount -->
@@ -158,10 +159,16 @@ export default {
       password: "",
       payFee: true,
       errors: {
+        amount: null,
         email: null,
         password: null
       }
     };
+  },
+  watch: {
+    amount: function () {
+      this.checkAmount();
+    }
   },
   computed: {
     fee: function () {
@@ -176,13 +183,22 @@ export default {
       return period && period.minAmount;
     },
     canSubmit: function () {
-      return !!(this.email && this.password);
+      return !!(this.email && this.password && this.amount >= this.minAmount);
     },
     hasErrors: function () {
       return Object.values(this.errors).some((e) => !!e);
     }
   },
   methods: {
+    checkAmount() {
+      this.errors.amount =
+        this.amount >= this.minAmount
+          ? null
+          : `Minimum contribution is ${this.$n(
+              this.minAmount,
+              "currency"
+            )} ${this.$t("form.amountPeriod." + this.period)}`;
+    },
     checkEmail() {
       const re =
         /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -199,6 +215,7 @@ export default {
         : "Password does not meet requirements";
     },
     checkForm() {
+      this.checkAmount();
       this.checkPassword();
       this.checkEmail();
     }

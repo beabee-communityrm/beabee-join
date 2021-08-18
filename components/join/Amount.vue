@@ -21,6 +21,11 @@
     box-shadow: var(--input-focus-box-shadow-size)
       var(--input-focus-box-shadow-color);
   }
+
+  &.is-danger {
+    border-color: var(--c-danger);
+    background-color: var(--c-danger-lighter);
+  }
 }
 
 .join-amount__text {
@@ -51,6 +56,7 @@
     font-size: inherit;
     line-height: 6.6rem;
     font-weight: bold;
+    background: transparent;
 
     -moz-appearance: textfield;
     &::-webkit-outer-spin-button,
@@ -125,62 +131,77 @@
     }
   }
 }
+
+.join-amount-help {
+  margin-top: -0.5rem;
+  @include tablet {
+    margin-top: -1.25rem;
+  }
+}
 </style>
 
 <template>
-  <div class="columns join-amount-container">
-    <div class="column is-8">
-      <label class="join-amount is-gapless">
-        <span class="join-amount__text">{{ prefix }}</span>
-        <div class="join-amount__input" :class="{ 'is-large': amount >= 100 }">
-          <input
-            type="number"
-            name="amount"
-            v-model.number="amount"
-            :min="minAmount"
-            step="1"
-          />
-        </div>
-        <span class="join-amount__text hidden-nojs">{{ suffix }}</span>
-        <div class="join-amount__buttons hidden-nojs">
-          <button
-            v-on:click="amount += 1"
-            class="button is-outlined"
-            type="button"
+  <div>
+    <div class="columns join-amount-container">
+      <div class="column is-8">
+        <label class="join-amount is-gapless" :class="{ 'is-danger': !!error }">
+          <span class="join-amount__text">{{ prefix }}</span>
+          <div
+            class="join-amount__input"
+            :class="{ 'is-large': amount >= 100 }"
           >
-            ▲
-          </button>
+            <input
+              type="number"
+              name="amount"
+              v-model.number="amount"
+              :min="minAmount"
+              step="1"
+            />
+          </div>
+          <span class="join-amount__text hidden-nojs">{{ suffix }}</span>
+          <div class="join-amount__buttons hidden-nojs">
+            <button
+              v-on:click="amount += 1"
+              class="button is-outlined"
+              type="button"
+            >
+              ▲
+            </button>
+            <button
+              v-on:click="amount -= 1"
+              class="button is-outlined"
+              type="button"
+              :disabled="amount <= minAmount"
+            >
+              ▼
+            </button>
+          </div>
+        </label>
+      </div>
+      <div class="column hidden-nojs">
+        <div class="join-amount-presets">
           <button
-            v-on:click="amount -= 1"
-            class="button is-outlined"
+            class="button"
             type="button"
-            :disabled="amount <= minAmount"
+            v-for="presetAmount in presetAmounts"
+            :key="presetAmount"
+            v-on:click="amount = presetAmount"
+            :class="{ 'is-active': amount === presetAmount }"
           >
-            ▼
+            {{ $n(presetAmount, "currency") }}
           </button>
         </div>
-      </label>
-    </div>
-    <div class="column hidden-nojs">
-      <div class="join-amount-presets">
-        <button
-          class="button"
-          type="button"
-          v-for="presetAmount in presetAmounts"
-          :key="presetAmount"
-          v-on:click="amount = presetAmount"
-          :class="{ 'is-active': amount === presetAmount }"
-        >
-          {{ $n(presetAmount, "currency") }}
-        </button>
       </div>
     </div>
+    <p class="help is-danger join-amount-help" v-show="!!error">
+      {{ error }}
+    </p>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["prefix", "suffix", "minAmount", "presetAmounts", "value"],
+  props: ["prefix", "suffix", "minAmount", "presetAmounts", "value", "error"],
   computed: {
     amount: {
       get() {
