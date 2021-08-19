@@ -21,4 +21,5 @@ for string in r:
 for locale in locales:
     with open('./locales/{0}.json'.format(locale), 'w', encoding='utf8') as f:
         json.dump(locale_strings[locale], f, sort_keys=True, indent=2, ensure_ascii=False)
+        f.write('\n');
 

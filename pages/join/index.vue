@@ -206,15 +206,17 @@ export default {
       this.errors.amount =
         this.amount >= this.minAmount
           ? null
-          : `Minimum contribution is ${this.$n(
-              this.minAmount,
-              "currency"
-            )} ${this.$t("form.amountPeriod." + this.period)}`;
+          : this.$t("form.errors.minimumContribution", {
+              amount: this.$n(this.minAmount, "currency"),
+              period: this.$t("form.amountPeriod." + this.period)
+            });
     },
     checkEmail() {
       const re =
         /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-      this.errors.email = re.test(this.email) ? null : "Invalid email address";
+      this.errors.email = re.test(this.email)
+        ? null
+        : this.$t("form.errors.invalidEmail");
     },
     checkPassword() {
       const isValid =
@@ -224,7 +226,7 @@ export default {
         /[0-9]/.test(this.password);
       this.errors.password = isValid
         ? null
-        : "Password does not meet requirements";
+        : this.$t("form.errors.passwordRequirementsNotMet");
     },
     checkForm() {
       this.checkAmount();
