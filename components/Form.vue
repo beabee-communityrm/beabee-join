@@ -28,7 +28,9 @@
       <div class="form-errors__icon">
         <i class="fa fa-exclamation" aria-hidden="true"></i>
       </div>
-      <p class="p-3">Something is missing, please check the fields above</p>
+      <p class="p-3">
+        {{ $t("form.hasErrors") }}, please check the fields above
+      </p>
     </div>
 
     <section class="block">
