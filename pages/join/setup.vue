@@ -32,7 +32,7 @@
               v-model="firstname"
               :label="$t('form.inputs.firstName')"
               :error="errors.firstname"
-              @blur="checkRequired('firstname', $t('form.inputs.firstName'))"
+              @blur="checkFirstName"
             />
             <Input
               name="lastname"
@@ -40,7 +40,7 @@
               v-model="lastname"
               :label="$t('form.inputs.lastName')"
               :error="errors.lastname"
-              @blur="checkRequired('lastname', $t('form.inputs.lastName'))"
+              @blur="checkLastName"
             />
           </fieldset>
         </section>
@@ -105,6 +105,12 @@
 </template>
 
 <script>
+function checkRequired(name, label) {
+  this.errors[name] = this[name]
+    ? null
+    : this.$t("form.errors.isRequired", { field: this.$t(label) });
+}
+
 export default {
   layout: "join",
   async asyncData({ $axios }) {
@@ -140,17 +146,20 @@ export default {
     checkEmail() {
       const re =
         /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-      this.errors.email = re.test(this.email) ? null : "Invalid email address";
+      this.errors.email = re.test(this.email)
+        ? null
+        : this.$t("form.errors.invalidEmail");
     },
-    checkRequired(name, label) {
-      return () => {
-        this.errors[name] = this[name] ? null : label + " is required";
-      };
+    checkFirstName() {
+      checkRequired.call(this, "firstname", "form.inputs.firstName");
+    },
+    checkLastName() {
+      checkRequired.call(this, "lastname", "form.inputs.lastName");
     },
     async checkForm() {
       this.checkEmail();
-      this.checkRequired("firstname", "First name");
-      this.checkRequired("lastname", "Last name");
+      this.checkFirstName();
+      this.checkLastName();
     }
   }
 };
