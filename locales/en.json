@@ -7,6 +7,8 @@
     },
     "errors": {
       "invalidEmail": "Invalid email address",
+      "isRequired": "{field} is required",
+      "minimumContribution": "Minimum contribution is {amount} {period}",
       "passwordRequirementsNotMet": "Password does not meet requirements"
     },
     "hasErrors": "Something is missing, please check the fields above.",
