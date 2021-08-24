@@ -7,8 +7,8 @@
     },
     "errors": {
       "invalidEmail": "Ungültige Email-Adresse",
-      "isRequired": "",
-      "minimumContribution": "",
+      "isRequired": "Pflichtfeld",
+      "minimumContribution": "Der minimal Beitrag ist {amount} {period}",
       "passwordRequirementsNotMet": "Das Passwort erfüllt nicht die Anforderungen"
     },
     "hasErrors": "Felder mit * müssen ausgefüllt werden. ",
