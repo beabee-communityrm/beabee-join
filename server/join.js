@@ -8,12 +8,7 @@ function goToSetup(apiResponse, res) {
   const cookie = apiResponse.headers["set-cookie"].find((s) =>
     s.startsWith("session")
   );
-  const match = cookie.match(/session=([^;]+);/);
-  res.cookie("session", decodeURIComponent(match[1]), {
-    maxAge: 267840000,
-    httpOnly: true
-  });
-
+  res.set("Set-Cookie", cookie);
   res.redirect("/join/setup");
 }
 
