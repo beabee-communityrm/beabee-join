@@ -1,8 +1,4 @@
-FROM nginx:1.18.0-alpine as router
-
-COPY nginx.conf /etc/nginx/templates/default.conf.template
-
-FROM node:12.16-alpine as app
+FROM node:12.16-alpine
 
 WORKDIR /opt/beabee-frontend
 
