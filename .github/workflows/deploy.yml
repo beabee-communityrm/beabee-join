@@ -48,7 +48,7 @@ jobs:
       - uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ secrets.DOCKER_ORGANISATION }}/frontend:${{ needs.init.outputs.tag }}
+          tags: ${{ secrets.DOCKER_ORGANISATION }}/join:${{ needs.init.outputs.tag }}
 
   deploy:
     runs-on: ubuntu-latest
