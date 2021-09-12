@@ -2,9 +2,11 @@ FROM node:14.17-alpine
 
 WORKDIR /opt/beabee-frontend
 
-COPY . ./
+COPY package.json package-lock.json ./
 
 RUN npm install
+
+COPY . ./
 
 EXPOSE 8080
 
