@@ -1,7 +1,7 @@
 <template>
   <div>
     <JoinHeader
-      :title="$t('joinSetup.welcome', { firstname })"
+      :title="$t('joinSetup.welcome', { firstname, lastname })"
       :subtitle="$t('joinSetup.confirmDetails')"
     >
       <p class="is-size-5">{{ content.welcome }}</p>
