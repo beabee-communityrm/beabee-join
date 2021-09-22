@@ -103,14 +103,18 @@
         >
           <h5 class="title is-5 mb-3">{{ $t("join.paymentMethod") }}</h5>
           <p class="mb-4">
-            Our payment processor charges us per transaction, which means we
-            receive less from monthly contributions. Are you happy to absorb the
-            <span class="hidden-nojs">{{ fee }}p</span> transaction fee?
-            Alternatively you could pay annually.
+            <i18n path="join.absorbFeeText">
+              <template #fee>
+                <span class="hidden-nojs">{{ $n(fee, "currency") }}</span>
+              </template>
+            </i18n>
           </p>
           <Checkbox v-model="payFee" name="payFee">
-            Yes, I'll absorb the
-            <span class="hidden-nojs">{{ fee }}p</span> fee.
+            <i18n path="join.absorbFeeOptIn">
+              <template #fee>
+                <span class="hidden-nojs">{{ $n(fee, "currency") }}</span>
+              </template>
+            </i18n>
           </Checkbox>
         </section>
         <!-- /#payment -->
@@ -120,7 +124,7 @@
         <i18n path="join.contribute">
           <template #amount>
             <span class="hidden-nojs">{{
-              $n(amount + (payFee ? fee / 100 : 0), "currency")
+              $n(amount + (payFee ? fee : 0), "currency")
             }}</span>
           </template>
           <template #period>
@@ -183,7 +187,7 @@ export default {
       return this.period === "annually"
         ? 0
         : this.amount
-        ? this.amount + 20
+        ? (this.amount + 20) / 100
         : "?";
     },
     presetAmounts: function () {

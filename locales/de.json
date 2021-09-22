@@ -27,6 +27,8 @@
     "securePassword": "Das Passwort muss aus mindestens acht Zeichen bestehen und mindestens eine Zahl, einen Groß- und einen Kleinbuchstaben enthalten."
   },
   "join": {
+    "absorbFeeOptIn": "Ja, ich übernehme die {fee} Transaktionskosten.",
+    "absorbFeeText": "Bei unserem Zahlungsdienstleister zahlen wir für jede einzelne Transaktion. Das heißt, wir erhalten weniger von Ihrem monatlichen Beitrag. Sie haben die Möglichkeit, die Kosten dafür für uns zu übernehmen. Möchten Sie das? Alternativ können Sie auch jährlich bezahlen. ",
     "contribute": "Mit {amount} {period} unterstützen",
     "contributePeriod": {
       "annually": "im Jahr",
