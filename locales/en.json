@@ -27,6 +27,8 @@
     "securePassword": "Set a secure password: 8+ characters and at least one uppercase and one lowercase letter"
   },
   "join": {
+    "absorbFeeOptIn": "Yes, I'll absorb the {fee} fee.",
+    "absorbFeeText": "Our payment processor charges us per transaction, which means we receive less from monthly contributions. Are you happy to absorb the {fee} transaction fee?  Alternatively you could pay annually.\n",
     "contribute": "Contribute {amount} {period}",
     "contributePeriod": {
       "annually": "annually",

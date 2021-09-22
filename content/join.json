@@ -17,6 +17,6 @@
   ],
   "initialPeriod": "monthly",
   "initialAmount": 5,
-  "showAbsorbFee": false,
+  "showAbsorbFee": true,
   "privacyLink": "https://example.com/privacy"
 }
