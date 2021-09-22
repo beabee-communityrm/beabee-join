@@ -1,6 +1,10 @@
 {
   "title": "beabee dev",
   "description": "Empowering people to start independent local newsrooms",
+  "locales": [
+    { "code": "en", "file": "en.json" },
+    { "code": "de", "file": "de@informal.json" }
+  ],
   "defaultLocale": "en",
   "currency": "EUR"
 }

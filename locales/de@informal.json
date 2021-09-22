@@ -8,7 +8,7 @@
     "errors": {
       "invalidEmail": "Ungültige Email-Adresse",
       "isRequired": "Pflichtfeld",
-      "minimumContribution": "Der minimal Beitrag ist {amount} {period}",
+      "minimumContribution": "Der minimale Beitrag ist {amount} {period}",
       "passwordRequirementsNotMet": "Das Passwort erfüllt nicht die Anforderungen"
     },
     "hasErrors": "Felder mit * müssen ausgefüllt werden. ",
@@ -28,7 +28,7 @@
   },
   "join": {
     "absorbFeeOptIn": "Ja, ich übernehme die {fee} Transaktionskosten.",
-    "absorbFeeText": "Bei unserem Zahlungsdienstleister zahlen wir für jede einzelne Transaktion. Das heißt, wir erhalten weniger von Ihrem monatlichen Beitrag. Sie haben die Möglichkeit, die Kosten dafür für uns zu übernehmen. Möchten Sie das? Alternativ können Sie auch jährlich bezahlen. ",
+    "absorbFeeText": "Bei unserem Zahlungsdienstleister zahlen wir für jede einzelne Transaktion. Das heißt, wir erhalten weniger von Deinem monatlichen Beitrag. Du hast die Möglichkeit, die Kosten dafür zu übernehmen. Möchtest Du das? Alternativ kannst Du auch jährlich bezahlen.",
     "contribute": "Mit {amount} {period} unterstützen",
     "contributePeriod": {
       "annually": "im Jahr",
@@ -36,35 +36,35 @@
     },
     "errors": {
       "confirmEmail": {
-        "message": "Fast geschafft! Wir müssen nur noch Ihre Email-Adresse bestätigen, um fortzufahren.",
-        "proceed": "Wir haben Ihnen eine Email geschickt. Bitte klicken Sie auf den Bestätigung-Link, um fortzufahren.",
+        "message": "Fast geschafft! Wir müssen nur noch Deine Email-Adresse bestätigen, um fortzufahren.",
+        "proceed": "Wir haben Dir eine Email geschickt. Bitte klicke auf den Bestätigungslink, um fortzufahren. ",
         "title": "Email-Adresse bestätigen"
       },
       "duplicateEmail": {
-        "message": "Diese Email-Adresse ist bereits registriert. Bitte loggen Sie sich ein, um fortzufahren. ",
+        "message": "Diese Email-Adresse ist bereits registriert. Bitte logge Dich ein, um fortzufahren.",
         "title": "Email-Adresse wiederholen"
       },
       "failed": {
         "backToJoin": "Zurück zur Registrierung",
-        "message": "Es gab ein Problem bei der Registrierung, unser Team wurde benachrichtigt. Bitte kontaktieren Sie uns, wenn das Problem weiterhin auftritt.",
+        "message": "Es gab ein Problem bei der Registrierung, unser Team wurde benachrichtigt. Bitte kontaktiere uns, wenn das Problem weiterhin auftritt.",
         "title": "Etwas ist schief gelaufen"
       },
       "restartMembership": {
-        "message": "Diese Email-Adresse war bereits in der Vergangenheit registriert.\nAus Sicherheitsgründen müssen wir überprüfen, ob Sie Zugriff auf diese Email-Adresse haben. ",
+        "message": "Diese Email-Adresse war bereits in der Vergangenheit registriert. Aus Sicherheitsgründen müssen wir überprüfen, ob Du Zugriff auf diese Email-Adresse hast.",
         "title": "Mitgliedschaft erneuern"
       }
     },
     "memberAccount": "Mitglieder-Account",
-    "memberAlready": "Sind Sie bereits Mitglied?",
-    "notice": "Indem Sie fortfahren, akzeptieren Sie unsere {privacy}.",
+    "memberAlready": "Bist Du bereits Mitglied?",
+    "notice": "Indem Du fortfährst, akzeptierst Du unsere {privacy}.",
     "paymentMethod": "Zahlungsmethode",
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen"
   },
   "joinSetup": {
-    "confirmDetails": "Bitte bestätigen Sie Ihre Angaben",
+    "confirmDetails": "Bitte bestätige Deine Angaben",
     "continue": "Weiter",
-    "welcome": "Willkommen {firstname} {lastname}!"
+    "welcome": "Willkommen {firstname}!"
   },
   "login": "Log in",
   "monthly": "Monatlich"

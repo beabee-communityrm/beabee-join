@@ -34,10 +34,7 @@ export default {
     baseURL: process.env.AUDIENCE_URL
   },
   i18n: {
-    locales: [
-      { code: "en", file: "en.json" },
-      { code: "de", file: "de.json" }
-    ],
+    locales: meta.locales,
     defaultLocale: meta.defaultLocale,
     lazy: true,
     langDir: "~/locales/",
