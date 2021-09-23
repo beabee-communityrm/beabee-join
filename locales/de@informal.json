@@ -28,7 +28,7 @@
   },
   "join": {
     "absorbFeeOptIn": "Ja, ich übernehme die {fee} Transaktionskosten.",
-    "absorbFeeText": "Bei unserem Zahlungsdienstleister zahlen wir für jede einzelne Transaktion. Das heißt, wir erhalten weniger von Deinem monatlichen Beitrag. Du hast die Möglichkeit, die Kosten dafür zu übernehmen. Möchtest Du das? Alternativ kannst Du auch jährlich bezahlen.",
+    "absorbFeeText": "Unser Zahlungsdienstleister stellt uns jede Transaktion in Rechnung. Das heißt, wir erhalten weniger von deinem monatlichen Beitrag. Möchtest du die Kosten dafür übernehmen? Alternativ kannst du auch jährlich bezahlen.",
     "contribute": "Mit {amount} {period} unterstützen",
     "contributePeriod": {
       "annually": "im Jahr",
@@ -36,12 +36,12 @@
     },
     "errors": {
       "confirmEmail": {
-        "message": "Fast geschafft! Wir müssen nur noch Deine Email-Adresse bestätigen, um fortzufahren.",
-        "proceed": "Wir haben Dir eine Email geschickt. Bitte klicke auf den Bestätigungslink, um fortzufahren. ",
+        "message": "Fast geschafft! Wir müssen nur noch deine Email-Adresse bestätigen, um fortzufahren.",
+        "proceed": "Wir haben dir eine Email geschickt. Bitte klicke auf den Bestätigungslink, um fortzufahren. ",
         "title": "Email-Adresse bestätigen"
       },
       "duplicateEmail": {
-        "message": "Diese Email-Adresse ist bereits registriert. Bitte logge Dich ein, um fortzufahren.",
+        "message": "Diese Email-Adresse ist bereits registriert. Bitte logge dich ein, um fortzufahren.",
         "title": "Email-Adresse wiederholen"
       },
       "failed": {
@@ -50,19 +50,19 @@
         "title": "Etwas ist schief gelaufen"
       },
       "restartMembership": {
-        "message": "Diese Email-Adresse war bereits in der Vergangenheit registriert. Aus Sicherheitsgründen müssen wir überprüfen, ob Du Zugriff auf diese Email-Adresse hast.",
+        "message": "Diese Email-Adresse war bereits in der Vergangenheit registriert. Aus Sicherheitsgründen müssen wir überprüfen, ob du Zugriff auf diese Email-Adresse hast.",
         "title": "Mitgliedschaft erneuern"
       }
     },
     "memberAccount": "Mitglieder-Account",
-    "memberAlready": "Bist Du bereits Mitglied?",
-    "notice": "Indem Du fortfährst, akzeptierst Du unsere {privacy}.",
+    "memberAlready": "Bist du bereits Mitglied?",
+    "notice": "Indem du fortfährst, akzeptierst Du unsere {privacy}.",
     "paymentMethod": "Zahlungsmethode",
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen"
   },
   "joinSetup": {
-    "confirmDetails": "Bitte bestätige Deine Angaben",
+    "confirmDetails": "Bitte bestätige deine Angaben",
     "continue": "Weiter",
     "welcome": "Willkommen {firstname}!"
   },
