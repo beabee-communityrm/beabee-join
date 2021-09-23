@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "Fira Sans";
+  src: url("~assets/fonts/089wehringhausen/FiraSans-Bold.woff2") format("woff2"),
+    url("~assets/fonts/089wehringhausen/FiraSans-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src: url("~assets/fonts/089wehringhausen/FiraSans-Light.woff2")
+      format("woff2"),
+    url("~assets/fonts/089wehringhausen/FiraSans-Light.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$family-primary: "Fira Sans", Helvetica, Arial, sans-serif;
+$family-secondary: $family-primary;
+
+$black: #323334;
+$primary: #eb5e65;
+$red: #b7232b;
+
+@import "base";
