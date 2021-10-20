@@ -3,15 +3,6 @@ import { wrapAsync, wrapAsyncForm } from "./lib/utils";
 
 const router = express.Router();
 
-function goToSetup(apiResponse, res) {
-  // Pass the cookie along
-  const cookie = apiResponse.headers["set-cookie"].find((s) =>
-    s.startsWith("session")
-  );
-  res.set("Set-Cookie", cookie);
-  res.redirect("/join/setup");
-}
-
 router.post(
   "/",
   wrapAsyncForm(async (req, res) => {
@@ -32,22 +23,12 @@ router.get(
   "/complete",
   wrapAsync(async (req, res) => {
     try {
-      const response = await req.api.post("/signup/complete", {
-        redirectFlowId: req.query.redirect_flow_id
+      await req.api.post("/signup/complete", {
+        redirectFlowId: req.query.redirect_flow_id,
+        confirmUrl: process.env.AUDIENCE_URL + "/join/confirm-email"
       });
-      goToSetup(response, res);
+      res.redirect("/join/confirm-email");
     } catch (error) {
-      if (error.response && error.response.status === 400) {
-        switch (error.response.data.code) {
-          case "duplicate-email":
-            return res.redirect("/join/duplicate-email");
-          case "restart-membership":
-            return res.redirect("/join/restart-membership");
-          case "confirm-email":
-            return res.redirect("/join/confirm-email");
-        }
-      }
-
       res.redirect("/join/failed");
     }
   })
@@ -57,12 +38,21 @@ router.get(
   "/confirm-email/:id",
   wrapAsync(async (req, res) => {
     try {
-      const response = await req.api.post("/signup/confirm-email", {
-        restartFlowId: req.params.id
+      const apiResponse = await req.api.post("/signup/confirm-email", {
+        joinFlowId: req.params.id
       });
-      goToSetup(response, res);
+      // Pass the cookie along
+      const cookie = apiResponse.headers["set-cookie"].find((s) =>
+        s.startsWith("session")
+      );
+      res.set("Set-Cookie", cookie);
+      res.redirect("/join/setup");
     } catch (error) {
-      res.redirect("/join/failed");
+      if (error.response?.data?.code === "duplicate-email") {
+        res.redirect("/join/duplicate-email");
+      } else {
+        res.redirect("/join/failed");
+      }
     }
   })
 );
