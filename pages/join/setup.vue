@@ -79,19 +79,20 @@
             </div>
           </fieldset>
         </section>
-        <section class="block" v-if="content.showNewsletterOptIn">
+        <section
+          class="block"
+          v-if="
+            content.showNewsletterOptIn && newsletterStatus !== 'subscribed'
+          "
+        >
           <p class="is-size-5 mb-1">{{ content.newsletterTitle }}</p>
           <p class="mb-1 has-text-lighter">{{ content.newsletterText }}</p>
-          <Checkbox
-            name="newsletterStatus"
-            checkboxValue="subscribed"
-            :checked="newsletterStatus === 'subscribed'"
-          >
+          <Checkbox name="newsletterStatus" checkboxValue="subscribed">
             <b>{{ content.newsletterOptIn }}</b>
           </Checkbox>
         </section>
         <input
-          v-if="!content.showNewsletterOptIn"
+          v-else
           type="hidden"
           name="newsletterStatus"
           value="subscribed"
